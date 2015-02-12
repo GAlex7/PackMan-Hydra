@@ -1,0 +1,6 @@
+d:\users\alex\documents\visual studio 2013\Projects\HydraPacMan\HydraPacMan\bin\Debug\HydraPacMan.exe.config
+D:\USERS\ALEX\Documents\Visual Studio 2013\Projects\HydraPacMan\HydraPacMan\bin\Debug\HydraPacMan.exe
+D:\USERS\ALEX\Documents\Visual Studio 2013\Projects\HydraPacMan\HydraPacMan\bin\Debug\HydraPacMan.pdb
+D:\USERS\ALEX\Documents\Visual Studio 2013\Projects\HydraPacMan\HydraPacMan\obj\Debug\HydraPacMan.csprojResolveAssemblyReference.cache
+D:\USERS\ALEX\Documents\Visual Studio 2013\Projects\HydraPacMan\HydraPacMan\obj\Debug\HydraPacMan.exe
+D:\USERS\ALEX\Documents\Visual Studio 2013\Projects\HydraPacMan\HydraPacMan\obj\Debug\HydraPacMan.pdb
