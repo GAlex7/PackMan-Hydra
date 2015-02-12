@@ -35,7 +35,7 @@ class TwoFourEight
             Console.WriteLine(remainder);
         }
         Console.WriteLine(result);
-        Console.WriteLine("Test");
+        Console.WriteLine("Different");
     }
 }
 
