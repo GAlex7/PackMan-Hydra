@@ -36,7 +36,7 @@ class TwoFourEight
         }
         Console.WriteLine("hi");
         Console.WriteLine("TestTest");
-        
+        Console.WriteLine();
     }
 }
 
