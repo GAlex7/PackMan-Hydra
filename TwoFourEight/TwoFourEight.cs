@@ -34,9 +34,11 @@ class TwoFourEight
             remainder = result % 4;
             Console.WriteLine(remainder);
         }
+
         Console.WriteLine("hi");
         Console.WriteLine("TestTest");
-        Console.WriteLine();
+        Console.WriteLine("Change");
+
     }
 }
 

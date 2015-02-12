@@ -1,0 +1,2 @@
+C:\Users\Mariyan\Desktop\Test\PackMan-Hydra\TwoFourEight\bin\Debug\TwoFourEight.exe.config
+C:\Users\asus\Desktop\Нова папка\PackMan-Hydra\TwoFourEight\bin\Debug\TwoFourEight.exe.config
