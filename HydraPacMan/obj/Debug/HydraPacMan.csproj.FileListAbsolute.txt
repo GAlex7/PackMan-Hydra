@@ -4,3 +4,9 @@ D:\USERS\ALEX\Documents\Visual Studio 2013\Projects\HydraPacMan\HydraPacMan\bin\
 D:\USERS\ALEX\Documents\Visual Studio 2013\Projects\HydraPacMan\HydraPacMan\obj\Debug\HydraPacMan.csprojResolveAssemblyReference.cache
 D:\USERS\ALEX\Documents\Visual Studio 2013\Projects\HydraPacMan\HydraPacMan\obj\Debug\HydraPacMan.exe
 D:\USERS\ALEX\Documents\Visual Studio 2013\Projects\HydraPacMan\HydraPacMan\obj\Debug\HydraPacMan.pdb
+d:\Users\ALEX\Desktop\PackMan\PackMan-Hydra\HydraPacMan\bin\Debug\HydraPacMan.exe.config
+d:\Users\ALEX\Desktop\PackMan\PackMan-Hydra\HydraPacMan\obj\Debug\HydraPacMan.exe
+d:\Users\ALEX\Desktop\PackMan\PackMan-Hydra\HydraPacMan\obj\Debug\HydraPacMan.pdb
+d:\Users\ALEX\Desktop\PackMan\PackMan-Hydra\HydraPacMan\obj\Debug\HydraPacMan.csprojResolveAssemblyReference.cache
+d:\Users\ALEX\Desktop\PackMan\PackMan-Hydra\HydraPacMan\bin\Debug\HydraPacMan.exe
+d:\Users\ALEX\Desktop\PackMan\PackMan-Hydra\HydraPacMan\bin\Debug\HydraPacMan.pdb
