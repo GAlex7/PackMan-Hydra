@@ -95,4 +95,3 @@ using System.Text;
             return wallsArr;
         }
     }
-}
