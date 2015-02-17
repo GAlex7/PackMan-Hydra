@@ -57,7 +57,7 @@ class Ivaylo
         Console.Write("********************");
         Console.WriteLine();
         Console.CursorVisible = false;
-        int menuInput = int.Parse(Console.ReadLine());
+
     }
 }
 
