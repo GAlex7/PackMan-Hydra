@@ -1,5 +1,4 @@
-﻿// най-напред да се преборим с GitHub!!!
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,6 +36,7 @@ class PackManHydra
         DrawLogo(20);
         Console.ReadKey();
         Console.Clear();
+
 
 
 
