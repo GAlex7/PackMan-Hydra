@@ -7,9 +7,5 @@ using System.Threading.Tasks;
 class Dimitar
 {
 
-    static void Write()
-    {
-        Console.WriteLine("Hi");
-    }
 }
 
