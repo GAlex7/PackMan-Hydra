@@ -1,5 +1,4 @@
-﻿// най-напред да се преборим с GitHub!!!
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,6 +34,8 @@ class PackManHydra
            
         // Принтиране на логото, изчакване за натискане на клавиш преди преминаване напред
         DrawLogo(20);
+        Console.ReadKey();
+        Console.Clear();
 
 
 
