@@ -8,6 +8,9 @@ using System.Globalization;
 
 class PackManHydra
 {
+    public const int windowWidth = 30;
+    public const int windowHeight = 30;
+
     static void Main(string[] args)
     {
         int[,] walls = CreateWallArr();
@@ -20,8 +23,12 @@ class PackManHydra
         Console.OutputEncoding = Encoding.UTF8;
 
         // Задаваме размер на конзолата
-        Console.BufferHeight = Console.WindowHeight; // 35
-        Console.BufferWidth = Console.WindowWidth; //30
+        Console.WindowHeight = windowWidth;
+        Console.WindowWidth = windowWidth;
+        Console.BufferHeight = windowHeight; // 35
+        Console.BufferWidth = windowWidth; //30
+        
+
 
         // Изчистваме конзолата
         Console.Clear();
@@ -29,7 +36,6 @@ class PackManHydra
         // Принтиране на логото, изчакване за натискане на клавиш преди преминаване напред
         DrawLogo(20);
         // Меню: 1.New Game, 2.Load Game, 3.Score, 4.Exit
-        Dimitar acc = new Dimitar();
         // Ако е натиснато 1 -> чертаем лабиринта и на мястото на  READY да има брояч -> 3, 2, 1 (сменят се) -> GO
     }
     
