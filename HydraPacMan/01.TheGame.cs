@@ -42,6 +42,7 @@ class PackManHydra
 
 
 
+
         // Меню: 1.New Game, 2.Load Game, 3.Score, 4.Exit
         // Ако е натиснато 1 -> чертаем лабиринта и на мястото на  READY да има брояч -> 3, 2, 1 (сменят се) -> GO
     }
