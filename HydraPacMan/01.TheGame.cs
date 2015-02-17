@@ -13,8 +13,9 @@ class PackManHydra
         int[,] walls = CreateWallArr();
         // where the cells is 1 means that you can't go there
 
-        DrawGameBoard();
-
+        //DrawGameBoard();
+        
+        
         // Задаваме encoding за гадовете
         Console.OutputEncoding = Encoding.UTF8;
 
@@ -28,10 +29,10 @@ class PackManHydra
         // Принтиране на логото, изчакване за натискане на клавиш преди преминаване напред
         DrawLogo(20);
         // Меню: 1.New Game, 2.Load Game, 3.Score, 4.Exit
-           
+        Dimitar acc = new Dimitar();
         // Ако е натиснато 1 -> чертаем лабиринта и на мястото на  READY да има брояч -> 3, 2, 1 (сменят се) -> GO
     }
-
+    
 
     private static void DrawGameBoard()
     {
