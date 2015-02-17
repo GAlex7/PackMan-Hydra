@@ -35,7 +35,8 @@ class PackManHydra
            
         // Принтиране на логото, изчакване за натискане на клавиш преди преминаване напред
         DrawLogo(20);
-
+        Console.ReadKey();
+        Console.Clear();
 
 
 
