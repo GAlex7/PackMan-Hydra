@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 class Antonina
 {
-
+    // Гад 2
 }
 

@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 class Georgi
 {
-
+    // Изчертаване на екрана
 }
 

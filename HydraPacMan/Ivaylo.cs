@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 class Ivaylo
 {
+    // Гад 1
+
     public static void PrintingMenuGame()
     {
         Console.SetCursorPosition(5, 11);
