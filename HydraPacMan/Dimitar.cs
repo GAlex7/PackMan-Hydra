@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 class Dimitar
 {
-
+    // Гад 3
 }
 
