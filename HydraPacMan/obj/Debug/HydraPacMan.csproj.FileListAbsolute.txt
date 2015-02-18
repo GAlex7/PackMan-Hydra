@@ -10,3 +10,9 @@ D:\telerik academy\otborna igra\HydraPacMan\obj\Debug\HydraPacMan.pdb
 D:\telerik academy\otborna igra\HydraPacMan\bin\Debug\HydraPacMan.exe
 D:\telerik academy\otborna igra\HydraPacMan\bin\Debug\HydraPacMan.pdb
 D:\telerik academy\otborna igra\HydraPacMan\obj\Debug\HydraPacMan.csprojResolveAssemblyReference.cache
+d:\Users\ALEX\Desktop\PackMan Hydra\PackMan-Hydra\HydraPacMan\bin\Debug\HydraPacMan.exe.config
+d:\Users\ALEX\Desktop\PackMan Hydra\PackMan-Hydra\HydraPacMan\obj\Debug\HydraPacMan.exe
+d:\Users\ALEX\Desktop\PackMan Hydra\PackMan-Hydra\HydraPacMan\obj\Debug\HydraPacMan.pdb
+d:\Users\ALEX\Desktop\PackMan Hydra\PackMan-Hydra\HydraPacMan\bin\Debug\HydraPacMan.exe
+d:\Users\ALEX\Desktop\PackMan Hydra\PackMan-Hydra\HydraPacMan\bin\Debug\HydraPacMan.pdb
+d:\Users\ALEX\Desktop\PackMan Hydra\PackMan-Hydra\HydraPacMan\obj\Debug\HydraPacMan.csprojResolveAssemblyReference.cache
