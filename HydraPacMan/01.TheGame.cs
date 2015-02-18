@@ -17,8 +17,10 @@ class PackManHydra
     public static int[,] smallAndBigDots = new int[29,29];
 
     public static bool endGame = true;
-    public bool endLevelOne = true;
-    public bool endLevelTwo = true;
+    public static bool endLevelOne = true;
+    public static bool endLevelTwo = true;
+    public static int points = 0;
+    public static int lives = 3;
 
     static void Main()
     {
