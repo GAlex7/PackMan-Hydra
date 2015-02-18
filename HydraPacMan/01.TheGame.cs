@@ -7,20 +7,26 @@ using System.Globalization;
 
 class PackManHydra
 {
-    public const int windowWidth = 30;
-    public const int windowHeight = 35;
+    public const int windowWidth = 31;
+    public const int windowHeight = 33;
 
-    public static string badGuys = "ѮѪѦѰ";
+    public static string badGuys = "CQWMZ";
 
+    public static string[] colors = { "Yellow", "Green", "White", "Magenta", "Cyan"};
     public static int[,] badGuysCoordinates = new int[5, 4];
+    public static int[,] smallAndBigDots = new int[29,29];
 
-    public static bool endGame = false;
-    public bool endLevel = false;
+    public static bool endGame = true;
+    public bool endLevelOne = true;
+    public bool endLevelTwo = true;
 
     static void Main()
     {
         // Заглавие на конзолата
         Console.Title = "PacMan";
+
+        // Задаваме encoding за гадовете
+        Console.OutputEncoding = Encoding.UTF8;
 
         // Задаваме размер на конзолата
         Console.WindowHeight = windowHeight;
@@ -28,63 +34,75 @@ class PackManHydra
         Console.BufferHeight = Console.WindowHeight;
         Console.BufferWidth = Console.WindowWidth;
 
-
-        // Задаваме encoding за гадовете
-        Console.OutputEncoding = Encoding.UTF8;
-
-        DrawGameBoard();
-
-        // Изчистваме конзолата
-        Console.Clear();
-        Console.CursorVisible = false; // и скриваме курсора да не ни мига...    
-
         // Принтиране на логото, изчакване за натискане на клавиш преди преминаване напред
-        //DrawLogo(20);
+        DrawLogo(20);
         Console.ReadKey();
         Console.Clear();
 
         // Меню: 1.New Game, 2.Load Game, 3.Score, 4.Exit
 
         Ivaylo.PrintingMenuGame();
+        Console.ReadKey();
+        Console.Clear();
 
+        DrawGameBoard();
+        // Изчистваме конзолата
+        //Console.Clear();
+        Console.CursorVisible = false; // и скриваме курсора да не ни мига...    
+
+        // Принтиране на логото, изчакване за натискане на клавиш преди преминаване напред
         // Ако е натиснато 1 -> чертаем лабиринта и на мястото на  READY да има брояч -> 3, 2, 1 (сменят се) -> GO
+
+        while (true)
+        {
+            Thread.Sleep(100);
+
+            // Викане на гадовете от класове
+
+            // Викане на нашето човече
+
+            // Обновяване на екрана
+
+            // 
+
+        }
     }
 
 
     private static void DrawGameBoard()
     {
-        Console.WriteLine("┌────────────┐ ┌────────────┐");
-        Console.WriteLine("│............│ │............│");
-        Console.WriteLine("│.┌──┐.┌───┐.│ │.┌───┐.┌──┐.│");
-        Console.WriteLine("│.│  │.│ # │.│ │.│ # │.│  │.│");
-        Console.WriteLine("│@└──┘.└─┘└┘.└─┘.└┘└─┘.└──┘@│");
-        Console.WriteLine("│...........................│");
-        Console.WriteLine("│.┌──┐.┌┐.┌───────┐.┌┐.┌──┐.│");
-        Console.WriteLine("│.└──┘.││.└──┐ ┌──┘.││.└──┘.│");
-        Console.WriteLine("│......││....│ │....││......│");
-        Console.WriteLine("└────┐.│└──┐ │ │ ┌──┘│.┌────┘");
-        Console.WriteLine("     │.│┌──┘ └─┘ └──┐│.│     ");
-        Console.WriteLine("     │.││           ││.│     ");
-        Console.WriteLine("─────┘.└┘ ┌─┐┌─┐┌─┐ └┘.└─────");
-        Console.WriteLine("      .   │ #   # │   .      ");
-        Console.WriteLine("─────┐.┌┐ └───────┘ ┌┐.┌─────");
-        Console.WriteLine("     │.││   READY!  ││.│     ");
-        Console.WriteLine("     │.││ ┌───────┐ ││.│     ");
-        Console.WriteLine("┌────┘.└┘ └──┐ ┌──┘ └┘.└────┐");
-        Console.WriteLine("│............│ │............│");
-        Console.WriteLine("│.┌──┐.┌───┐.│ │.┌───┐.┌──┐.│");
-        Console.WriteLine("│.└─┐│.└───┘.└─┘.└───┘.│┌─┘.│");
-        Console.WriteLine("│@..││....... X .......││..@│");
-        Console.WriteLine("└─┐.││.┌┐.┌───────┐.┌┐.││.┌─┘");
-        Console.WriteLine("┌─┘.└┘.││.└──┐ ┌──┘.││.└┘.└─┐");
-        Console.WriteLine("│......││....│ │....││......│");
-        Console.WriteLine("│.┌────┘└──┐.│ │.┌──┘└────┐.│");
-        Console.WriteLine("│.└────────┘.└─┘.└────────┘.│");
-        Console.WriteLine("│...........................│");
-        Console.WriteLine("└───────────────────────────┘");
+        Console.WriteLine(" ┌────────────┐ ┌────────────┐");
+        Console.WriteLine(" │............│ │............│");
+        Console.WriteLine(" │.┌──┐.┌───┐.│ │.┌───┐.┌──┐.│");
+        Console.WriteLine(" │.│  │.│ Q │.│ │.│ W │.│  │.│");
+        Console.WriteLine(" │о└──┘.└┘─└┘.└─┘.└┘─└┘.└──┘о│");
+        Console.WriteLine(" │...........................│");
+        Console.WriteLine(" │.┌──┐.┌┐.┌───────┐.┌┐.┌──┐.│");
+        Console.WriteLine(" │.└──┘.││.└──┐ ┌──┘.││.└──┘.│");
+        Console.WriteLine(" │......││....│ │....││......│");
+        Console.WriteLine(" └────┐.│└──┐ │ │ ┌──┘│.┌────┘");
+        Console.WriteLine("      │.│┌──┘ └─┘ └──┐│.│     ");
+        Console.WriteLine("      │.││           ││.│     ");
+        Console.WriteLine(" ─────┘.└┘ ┌┐─┌─┐─┌┐ └┘.└─────");
+        Console.WriteLine("       .   │ Z   M │   .      ");
+        Console.WriteLine(" ─────┐.┌┐ └───────┘ ┌┐.┌─────");
+        Console.WriteLine("      │.││   READY!  ││.│     ");
+        Console.WriteLine("      │.││ ┌───────┐ ││.│     ");
+        Console.WriteLine(" ┌────┘.└┘ └──┐ ┌──┘ └┘.└────┐");
+        Console.WriteLine(" │............│ │............│");
+        Console.WriteLine(" │.┌──┐.┌───┐.│ │.┌───┐.┌──┐.│");
+        Console.WriteLine(" │.└─┐│.└───┘.└─┘.└───┘.│┌─┘.│");
+        Console.WriteLine(" │о..││....... C .......││..о│");
+        Console.WriteLine(" └─┐.││.┌┐.┌───────┐.┌┐.││.┌─┘");
+        Console.WriteLine(" ┌─┘.└┘.││.└──┐ ┌──┘.││.└┘.└─┐");
+        Console.WriteLine(" │......││....│ │....││......│");
+        Console.WriteLine(" │.┌────┘└──┐.│ │.┌──┘└────┐.│");
+        Console.WriteLine(" │.└────────┘.└─┘.└────────┘.│");
+        Console.WriteLine(" │...........................│");
+        Console.WriteLine(" └───────────────────────────┘");
     }
 
-    public const int[,] walls =
+    public static int[,] walls =
     {
             {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
             {1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1},

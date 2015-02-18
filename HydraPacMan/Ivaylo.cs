@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 class Ivaylo
 {
-    // Гад 1
+    // Гад 1 -> M
 
     public static void PrintingMenuGame()
     {

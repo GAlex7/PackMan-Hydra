@@ -6,6 +6,6 @@ using System.Threading.Tasks;
 
 class Marian
 {
-    // Гад 4
+    // Гад 4 - > W
 }
 
