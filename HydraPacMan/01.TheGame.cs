@@ -9,8 +9,8 @@ class PackManHydra
 {
     public const int windowWidth = 31;
     public const int windowHeight = 33;
-
-    public static string badGuys = "CQWMZ";
+    public static string ourGuy = "X<>^v";
+    public static string badGuys = "xQWMZ";
 
     public static string[] colors = { "Yellow", "Green", "White", "Magenta", "Cyan" };
     public static int[,] badGuysCoordinates = new int[5, 4];
@@ -21,7 +21,7 @@ class PackManHydra
     public static bool endLevelTwo = true;
     public static int points = 0;
     public static int lives = 3;
-
+    public static int direction; // by GA
     static void Main()
     {
         // Заглавие на конзолата
@@ -31,10 +31,10 @@ class PackManHydra
         Console.OutputEncoding = Encoding.UTF8;
 
         // Задаваме размер на конзолата
-        Console.WindowHeight = windowHeight;
-        Console.WindowWidth = windowWidth;
-        Console.BufferHeight = Console.WindowHeight;
-        Console.BufferWidth = Console.WindowWidth;
+        badGuysCoordinates[0, 0] = 15; //Console.WindowHeight = windowHeight;
+        badGuysCoordinates[0, 1] = 21; //Console.WindowWidth = windowWidth;
+        //Console.BufferHeight = Console.WindowHeight;
+        //Console.BufferWidth = Console.WindowWidth;
 
         // Принтиране на логото, изчакване за натискане на клавиш преди преминаване напред
         DrawLogo(20);
@@ -47,7 +47,7 @@ class PackManHydra
         Console.ReadKey();
         Console.Clear();
 
-        
+
         // Изчистваме конзолата
         //Console.Clear();
         Console.CursorVisible = false; // и скриваме курсора да не ни мига...    
@@ -70,24 +70,25 @@ class PackManHydra
         Console.ForegroundColor = ConsoleColor.Magenta;
         Console.Write("-GO!-");
         Console.Beep(1500, 1000);
-
+        Console.SetCursorPosition(13, 15);
+        Console.Write("     ");
         Console.SetCursorPosition(0, 30);
 
-        //while (true)
-        //{
-        //    Thread.Sleep(100);
+        while (true)
+        {
+            Thread.Sleep(200);
 
-        //    // Викане на гадовете от класове
+            // Викане на гадовете от класове
 
-        //    // Викане на нашето човече
+            // Викане на нашето човече
 
-        //    // Обновяване на екрана
+            // Обновяване на екрана
 
-        Georgi.RefreshScreen(badGuysCoordinates);
+            Georgi.RefreshScreen(badGuysCoordinates);
 
-        //    // 
+            // 
 
-        //}
+        }
     }
 
 
@@ -114,7 +115,7 @@ class PackManHydra
         Console.WriteLine(" │............│ │............│");
         Console.WriteLine(" │.┌──┐.┌───┐.│ │.┌───┐.┌──┐.│");
         Console.WriteLine(" │.└─┐│.└───┘.└─┘.└───┘.│┌─┘.│");
-        Console.WriteLine(" │о..││....... C .......││..о│");
+        Console.WriteLine(" │о..││....... X .......││..о│");
         Console.WriteLine(" └─┐.││.┌┐.┌───────┐.┌┐.││.┌─┘");
         Console.WriteLine(" ┌─┘.└┘.││.└──┐ ┌──┘.││.└┘.└─┐");
         Console.WriteLine(" │......││....│ │....││......│");
@@ -141,13 +142,13 @@ class PackManHydra
             {1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1},
             {0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0},
             {1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1},
-            {1,1,1,1,1,1,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,1,1,1,1},
+            {1,1,1,1,1,1,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,1,1,1,1},//15
             {1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1},
             {1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1},
             {1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1},
             {1,1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1},
             {1,1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1},
-            {1,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,1},
+            {1,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,1},//21
             {1,1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1},
             {1,1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1},
             {1,1,0,0,0,0,0,0,1,1,0,0,0,0,1,1,1,0,0,0,0,1,1,0,0,0,0,0,0,1},
