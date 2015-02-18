@@ -21,9 +21,19 @@ class Dimitar
     }
     public static void BadGuyZ(int[,] BadGuysCoordinates)
     {
-        
-        
-        PackManHydra.badGuysCoordinates
+        PositionZ[] positon = 
+        { 
+            new PositionZ(13, 14), 
+            new PositionZ(11, 14), 
+            new PositionZ(11, 11),
+            new PositionZ(18, 11),
+            new PositionZ(18, 2),
+            new PositionZ(21, 2),
+            new PositionZ(21, 4),
+            new PositionZ(24, 4),
+            new PositionZ(24, 7),
+            new PositionZ(21, 7),
+        };
     }
 }
 
