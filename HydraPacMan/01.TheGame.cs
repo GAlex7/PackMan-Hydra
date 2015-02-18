@@ -10,10 +10,7 @@ class PackManHydra
     public const int windowWidth = 30;
     public const int windowHeight = 35;
 
-    public static string badGuyOne = "Ѯ";
-    public static string badGuyTwo = "Ѫ";
-    public static string badGuyThree = "Ѧ";
-    public static string badGuyFour = "Ѱ";
+    public static string badGuys = "ѮѪѦѰ";
 
     public static int[,] badGuysCoordinates = new int[5, 4];
 
