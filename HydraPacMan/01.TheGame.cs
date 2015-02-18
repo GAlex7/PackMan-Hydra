@@ -8,41 +8,44 @@ using System.Globalization;
 class PackManHydra
 {
     public const int windowWidth = 30;
-    public const int windowHeight = 30;
+    public const int windowHeight = 35;
 
-    static void Main(string[] args)
+    public static string badGuyOne = "Ѯ";
+    public static string badGuyTwo = "Ѫ";
+    public static string badGuyThree = "Ѧ";
+    public static string badGuyFour = "Ѱ";
+
+    public static int[,] badGuysCoordinates = new int[5, 4];
+
+    public static bool endGame = false;
+    public bool endLevel = false;
+
+    static void Main()
     {
-        int[,] walls = CreateWallArr();
-        // where the cells is 1 means that you can't go there
+        // Заглавие на конзолата
+        Console.Title = "PacMan";
 
-        //DrawGameBoard();
-        
-        
+        // Задаваме размер на конзолата
+        Console.WindowHeight = windowHeight;
+        Console.WindowWidth = windowWidth;
+        Console.BufferHeight = Console.WindowHeight; 
+        Console.BufferWidth = Console.WindowWidth;
+
         // Задаваме encoding за гадовете
         Console.OutputEncoding = Encoding.UTF8;
 
-        // Задаваме размер на конзолата
-        Console.WindowHeight = windowWidth;
-        Console.WindowWidth = windowWidth;
-        Console.BufferHeight = windowHeight; // 35
-        Console.BufferWidth = windowWidth; //30
-        
+        int[,] walls = CreateWallArr();
+        // where the cells is 1 means that you can't go there
 
+        DrawGameBoard();
 
         // Изчистваме конзолата
-        Console.Clear();
-           
+        //Console.Clear();
+
         // Принтиране на логото, изчакване за натискане на клавиш преди преминаване напред
-        DrawLogo(20);
+        //DrawLogo(20);
         Console.ReadKey();
         Console.Clear();
-
-
-
-
-
-
-
 
         // Меню: 1.New Game, 2.Load Game, 3.Score, 4.Exit
 
@@ -50,7 +53,7 @@ class PackManHydra
 
         // Ако е натиснато 1 -> чертаем лабиринта и на мястото на  READY да има брояч -> 3, 2, 1 (сменят се) -> GO
     }
-    
+
 
     private static void DrawGameBoard()
     {
@@ -147,7 +150,7 @@ class PackManHydra
                     Console.Write("\\");
                 }
                 else if ((int)Math.Abs(radius - c) * (int)Math.Abs(radius - c) +
-                         (int)Math.Abs(radius - r) * (int)Math.Abs(radius - r) -1 <=
+                         (int)Math.Abs(radius - r) * (int)Math.Abs(radius - r) - 1 <=
                                        radius * radius)
                 {
                     if (r >= radius + 1 && (c - radius >= r - radius) ||
@@ -166,7 +169,7 @@ class PackManHydra
                         {
                             Console.ForegroundColor = ConsoleColor.Red;
                         }
-                        
+
                         Console.Write("*");
                     }
 
@@ -181,5 +184,5 @@ class PackManHydra
         };
         Console.WriteLine();
     }
-            
+
 }
