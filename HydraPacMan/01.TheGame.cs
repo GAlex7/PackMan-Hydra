@@ -9,10 +9,10 @@ class PackManHydra
 {
     public const int windowWidth = 30;
     public const int windowHeight = 30;
-
+    
     static void Main(string[] args)
     {
-        int[,] walls = CreateWallArr();
+        //walls = CreateWallArr();
         // where the cells is 1 means that you can't go there
 
         //DrawGameBoard();
@@ -31,7 +31,7 @@ class PackManHydra
 
         // Изчистваме конзолата
         Console.Clear();
-           
+        Console.CursorVisible = false; // и скриваме курсора да не ни мига...    
         // Принтиране на логото, изчакване за натискане на клавиш преди преминаване напред
         DrawLogo(20);
         Console.ReadKey();
@@ -85,10 +85,10 @@ class PackManHydra
         Console.WriteLine("└───────────────────────────┘");
     }
 
-    private static int[,] CreateWallArr()
+    public const int[,] walls =
     {
-        int[,] wallsArr = new int[,]
-            {
+        //int[,] wallsArr = new int[,]
+        //    {
             {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
             {1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1},
             {1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1},
@@ -118,9 +118,9 @@ class PackManHydra
             {1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1},
             {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
             {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-            };
-        return wallsArr;
-    }
+        //    }
+        //return wallsArr;
+    };
 
     private static void DrawLogo(int n)
     {
