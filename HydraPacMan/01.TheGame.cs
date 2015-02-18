@@ -83,6 +83,8 @@ class PackManHydra
 
         //    // Обновяване на екрана
 
+        Georgi.RefreshScreen(badGuysCoordinates);
+
         //    // 
 
         //}

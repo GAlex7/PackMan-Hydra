@@ -33,6 +33,14 @@ class Dimitar
             new PositionZ(24, 4),
             new PositionZ(24, 7),
             new PositionZ(21, 7),
+            new PositionZ(21, 13),
+            new PositionZ(18, 13),
+            new PositionZ(18, 10),
+            new PositionZ(15, 10),
+            new PositionZ(15, 21),
+            new PositionZ(11, 21),
+            new PositionZ(11, 14),
+
         };
     }
 }
