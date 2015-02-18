@@ -28,19 +28,18 @@ class PackManHydra
         // Задаваме размер на конзолата
         Console.WindowHeight = windowHeight;
         Console.WindowWidth = windowWidth;
-        Console.BufferHeight = Console.WindowHeight; 
+        Console.BufferHeight = Console.WindowHeight;
         Console.BufferWidth = Console.WindowWidth;
+
 
         // Задаваме encoding за гадовете
         Console.OutputEncoding = Encoding.UTF8;
 
-        int[,] walls = CreateWallArr();
-        // where the cells is 1 means that you can't go there
-
         DrawGameBoard();
 
         // Изчистваме конзолата
-        //Console.Clear();
+        Console.Clear();
+        Console.CursorVisible = false; // и скриваме курсора да не ни мига...    
 
         // Принтиране на логото, изчакване за натискане на клавиш преди преминаване напред
         //DrawLogo(20);
@@ -88,10 +87,8 @@ class PackManHydra
         Console.WriteLine("└───────────────────────────┘");
     }
 
-    private static int[,] CreateWallArr()
+    public const int[,] walls =
     {
-        int[,] wallsArr = new int[,]
-            {
             {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
             {1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1},
             {1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1},
@@ -121,9 +118,7 @@ class PackManHydra
             {1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1},
             {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
             {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-            };
-        return wallsArr;
-    }
+    };
 
     private static void DrawLogo(int n)
     {
