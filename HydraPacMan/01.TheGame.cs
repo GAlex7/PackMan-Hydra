@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Globalization;
+using System.Media;
+using System.IO;
 
 class PackManHydra
 {
@@ -22,6 +24,8 @@ class PackManHydra
     public static int points = 0;
     public static int lives = 3;
     public static int direction; // by GA
+
+    private static string gameSounds = Directory.GetCurrentDirectory();
     static void Main()
     {
         // Заглавие на конзолата
@@ -36,10 +40,15 @@ class PackManHydra
         //Console.BufferHeight = Console.WindowHeight;
         //Console.BufferWidth = Console.WindowWidth;
 
+        // Музика
+        SoundPlayer player = new SoundPlayer();
+
         // Принтиране на логото, изчакване за натискане на клавиш преди преминаване напред
+
         DrawLogo(20);
         Console.ReadKey();
         Console.Clear();
+
 
         // Меню: 1.New Game, 2.Load Game, 3.Score, 4.Exit
 
@@ -54,7 +63,7 @@ class PackManHydra
 
         // Принтиране на логото, изчакване за натискане на клавиш преди преминаване напред
         // Ако е натиснато 1 -> чертаем лабиринта и на мястото на  READY да има брояч -> 3, 2, 1 (сменят се) -> GO
-
+        
         DrawGameBoard();
         Thread.Sleep(1000);
         Console.ForegroundColor = ConsoleColor.Green;
@@ -74,6 +83,10 @@ class PackManHydra
         Console.Write("     ");
         Console.SetCursorPosition(0, 30);
 
+        player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
+        player.Load();
+        player.Play();
+
         while (true)
         {
             Thread.Sleep(200);
@@ -83,7 +96,7 @@ class PackManHydra
             // Викане на нашето човече
 
             // Обновяване на екрана
-
+            
             Georgi.RefreshScreen(badGuysCoordinates);
 
             // 
