@@ -6,6 +6,7 @@ using System.Threading;
 
 class Georgi
 {
+
     // Изчертаване на екрана
     static public void RefreshScreen(int[,] crawliesPos)
     {
@@ -24,10 +25,10 @@ class Georgi
                 Console.ForegroundColor = (ConsoleColor)Enum.Parse(type, PackManHydra.colors[i]);
                 if (i == 0)
                 {
-                    Console.Write(PackManHydra.ourGuy[PackManHydra.direction+5]);
+                    Console.Write(PackManHydra.ourGuy[PackManHydra.direction + 5]);
                     Thread.Sleep(50); Console.SetCursorPosition(crawliesPos[i, 2], crawliesPos[i, 3]);
                     Console.Write(PackManHydra.ourGuy[PackManHydra.direction]);
-            }
+                }
                 else Console.Write(PackManHydra.badGuys[i]);
                 PackManHydra.points += PackManHydra.smallAndBigDots[crawliesPos[i, 3], crawliesPos[i, 2]];
                 crawliesPos[i, 0] = crawliesPos[i, 2];
@@ -51,11 +52,11 @@ class Georgi
         int x = coordinates[0, 0];
         int y = coordinates[0, 1];
         int[][] directions = new int[5][];
-        directions[0] = new int[] { 0, 0 };   // just staing
+        directions[0] = new int[] { 0, 0 };  // just staing
         directions[1] = new int[] { 0, 1 };  // right
         directions[2] = new int[] { 0, -1 }; // left
         directions[3] = new int[] { 1, 0 };  // down
-        directions[4] = new int[] { -1, 0 };  // up
+        directions[4] = new int[] { -1, 0 }; // up
 
         int posoka = PackManHydra.direction;
         if (Console.KeyAvailable)
