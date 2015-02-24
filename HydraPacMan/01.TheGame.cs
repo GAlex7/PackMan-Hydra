@@ -93,6 +93,8 @@ class PackManHydra
             {20, 18},
             {19, 18},
         };
+    private static string gameSounds = Directory.GetCurrentDirectory();
+
     static void Main()
     {
         // Заглавие на конзолата
@@ -109,6 +111,7 @@ class PackManHydra
 
         // Фонова музика
         //SoundPlayer player = new SoundPlayer();
+        SoundPlayer player = new SoundPlayer();
 
         // Принтиране на логото, изчакване за натискане на клавиш преди преминаване напред
 
@@ -130,7 +133,7 @@ class PackManHydra
 
         // Принтиране на логото, изчакване за натискане на клавиш преди преминаване напред
         // Ако е натиснато 1 -> чертаем лабиринта и на мястото на  READY да има брояч -> 3, 2, 1 (сменят се) -> GO
-        
+
         DrawGameBoard();
         Thread.Sleep(1000);
         Console.ForegroundColor = ConsoleColor.Green;
@@ -157,17 +160,25 @@ class PackManHydra
         while (true)
         {
             Thread.Sleep(150);
+            player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
+            player.Load();
+            player.Play();
 
-            // Викане на гадовете от класове
+            while (true)
+            {
+                Thread.Sleep(200);
 
-            // Викане на нашето човече
+                // Викане на гадовете от класове
 
-            // Обновяване на екрана
-            
-            Georgi.RefreshScreen(badGuysCoordinates);
+                // Викане на нашето човече
 
-            // 
+                // Обновяване на екрана
 
+                Georgi.RefreshScreen(badGuysCoordinates);
+
+                // 
+
+            }
         }
     }
 
