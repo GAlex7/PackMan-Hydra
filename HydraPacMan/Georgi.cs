@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 class Georgi
 {
@@ -23,7 +23,11 @@ class Georgi
                 Console.SetCursorPosition(crawliesPos[i, 2], crawliesPos[i, 3]);
                 Console.ForegroundColor = (ConsoleColor)Enum.Parse(type, PackManHydra.colors[i]);
                 if (i == 0)
+                {
+                    Console.Write(PackManHydra.ourGuy[PackManHydra.direction+5]);
+                    Thread.Sleep(50); Console.SetCursorPosition(crawliesPos[i, 2], crawliesPos[i, 3]);
                     Console.Write(PackManHydra.ourGuy[PackManHydra.direction]);
+            }
                 else Console.Write(PackManHydra.badGuys[i]);
                 PackManHydra.points += PackManHydra.smallAndBigDots[crawliesPos[i, 3], crawliesPos[i, 2]];
                 crawliesPos[i, 0] = crawliesPos[i, 2];
