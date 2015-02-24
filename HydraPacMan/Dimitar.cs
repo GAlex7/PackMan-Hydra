@@ -8,40 +8,23 @@ class Dimitar
 {
     // Гад 3 - > Z
 
-    struct PositionZ
+    public static void MonsterZ()
     {
-        public int Row;
-        public int Col;
+        PackManHydra.badGuysCoordinates[3, 0] = PackManHydra.badGuysCoordinates[3, 2];
+        PackManHydra.badGuysCoordinates[3, 1] = PackManHydra.badGuysCoordinates[3, 3];
+        PackManHydra.badGuysCoordinates[3, 2] = PackManHydra.badGuysCoordinates[PackManHydra.GadThreeCounter, 0];
+        PackManHydra.badGuysCoordinates[3, 3] = PackManHydra.badGuysCoordinates[PackManHydra.GadThreeCounter, 1];
 
-        public PositionZ(int row, int col)
+        if (PackManHydra.GadThreeCounter == 99)
         {
-            this.Row = row;
-            this.Col = col;
+            PackManHydra.GadThreeCounter = 0;
         }
-    }
-    public static void BadGuyZ(int[,] BadGuysCoordinates)
-    {
-        PositionZ[] positon = 
-        { 
-            new PositionZ(13, 14), 
-            new PositionZ(11, 14), 
-            new PositionZ(11, 11),
-            new PositionZ(18, 11),
-            new PositionZ(18, 2),
-            new PositionZ(21, 2),
-            new PositionZ(21, 4),
-            new PositionZ(24, 4),
-            new PositionZ(24, 7),
-            new PositionZ(21, 7),
-            new PositionZ(21, 13),
-            new PositionZ(18, 13),
-            new PositionZ(18, 10),
-            new PositionZ(15, 10),
-            new PositionZ(15, 21),
-            new PositionZ(11, 21),
-            new PositionZ(11, 14),
+        else
+        {
+            PackManHydra.GadThreeCounter++;
+        }
 
-        };
     }
+    
 }
 
