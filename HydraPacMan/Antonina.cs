@@ -5,11 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 
-class Antonina
-{
-    // Гад 2 -> Q
-}
-
 
 class Antonina
 {

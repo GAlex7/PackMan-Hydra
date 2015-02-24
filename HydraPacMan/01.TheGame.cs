@@ -153,9 +153,9 @@ class PackManHydra
         Console.Write("     ");
         Console.SetCursorPosition(0, 30);
 
-        //player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
-        //player.Load();
-        //player.Play();
+        player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
+        player.Load();
+        player.Play();
 
         while (true)
         {
@@ -171,7 +171,7 @@ class PackManHydra
                 // Викане на гадовете от класове
 
                 // Викане на нашето човече
-
+                Ivaylo.MonsterM();
                 // Обновяване на екрана
 
                 Georgi.RefreshScreen(badGuysCoordinates);
