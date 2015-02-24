@@ -40,7 +40,7 @@ class PackManHydra
         //Console.BufferHeight = Console.WindowHeight;
         //Console.BufferWidth = Console.WindowWidth;
 
-        // Музика
+        // Фонова музика
         SoundPlayer player = new SoundPlayer();
 
         // Принтиране на логото, изчакване за натискане на клавиш преди преминаване напред
