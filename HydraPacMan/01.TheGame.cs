@@ -9,7 +9,7 @@ class PackManHydra
 {
     public const int windowWidth = 31;
     public const int windowHeight = 33;
-    public static string ourGuy = "X<>^v";
+    public static string ourGuy = "X<>^vx--::";
     public static string badGuys = "xQWMZ";
 
     public static string[] colors = { "Yellow", "Green", "White", "Magenta", "Cyan" };
@@ -76,7 +76,7 @@ class PackManHydra
 
         while (true)
         {
-            Thread.Sleep(200);
+            Thread.Sleep(150);
 
             // Викане на гадовете от класове
 
