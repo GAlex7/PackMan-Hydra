@@ -6,7 +6,25 @@ using System.Threading.Tasks;
 
 class Ivaylo
 {
-    // Гад 1 -> M
+    // Гад 1 -> M row 13 col 17 GadOneCounter = 0; -> +1
+    public static void MonsterM()
+    {
+        PackManHydra.badGuysCoordinates[1, 0] = PackManHydra.badGuysCoordinates[1, 2];
+        PackManHydra.badGuysCoordinates[1, 1] = PackManHydra.badGuysCoordinates[1, 3];
+        PackManHydra.badGuysCoordinates[1, 2] = PackManHydra.monsterArray[PackManHydra.GadOneCounter, 0];
+        PackManHydra.badGuysCoordinates[1, 3] = PackManHydra.monsterArray[PackManHydra.GadOneCounter, 1];
+        if (PackManHydra.GadOneCounter == 56)
+        {
+            PackManHydra.GadOneCounter = 6;
+        }
+        else
+        {
+            PackManHydra.GadOneCounter++;
+        }
+        PackManHydra.badGuysCoordinates[1, 2] = PackManHydra.monsterArray[PackManHydra.GadOneCounter, 0];
+        PackManHydra.badGuysCoordinates[1, 3] = PackManHydra.monsterArray[PackManHydra.GadOneCounter, 1];
+    }
+
 
     public static void PrintingMenuGame()
     {
@@ -60,4 +78,3 @@ class Ivaylo
 
     }
 }
-
