@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading;
-using System.Globalization;
-using System.Media;
-using System.IO;
 
 class PackManHydra
 {
     public const int windowWidth = 31;
     public const int windowHeight = 33;
     public static string ourGuy = "X<>^vx--::";
-    public static string badGuys = "xMQZW";
+    public static string badGuys = "xНЕИД";
 
     public static string[] colors = { "Yellow", "Green", "White", "Magenta", "Cyan" };
     public static int[,] badGuysCoordinates = new int[5, 4];
