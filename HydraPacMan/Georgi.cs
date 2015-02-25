@@ -13,24 +13,51 @@ class Georgi
         Type type = typeof(ConsoleColor);
 
         PackMan(crawliesPos);
-
+        char dotsChar;
         for (int i = 0; i < 5; i++)
         {
 
             if (PackManHydra.walls[crawliesPos[i, 3], crawliesPos[i, 2]] == 0)
             {
-                Console.SetCursorPosition(crawliesPos[i, 0], crawliesPos[i, 1]);
-                Console.Write(" ");
-                Console.SetCursorPosition(crawliesPos[i, 2], crawliesPos[i, 3]);
-                Console.ForegroundColor = (ConsoleColor)Enum.Parse(type, PackManHydra.colors[i]);
+                
                 if (i == 0)
                 {
+                    Console.SetCursorPosition(crawliesPos[i, 0], crawliesPos[i, 1]);
+                    PackManHydra.points += PackManHydra.smallAndBigDots[crawliesPos[i, 1], crawliesPos[i, 0]] * 10;
+                    Console.Write(" "); PackManHydra.smallAndBigDots[crawliesPos[i, 1],crawliesPos[i, 0]] = 0;
+                    Console.SetCursorPosition(crawliesPos[i, 2], crawliesPos[i, 3]);
                     Console.Write(PackManHydra.ourGuy[PackManHydra.direction + 5]);
                     Thread.Sleep(50); Console.SetCursorPosition(crawliesPos[i, 2], crawliesPos[i, 3]);
+                    Console.ForegroundColor = (ConsoleColor)Enum.Parse(type, PackManHydra.colors[i]);
                     Console.Write(PackManHydra.ourGuy[PackManHydra.direction]);
                 }
-                else Console.Write(PackManHydra.badGuys[i]);
-                PackManHydra.points += PackManHydra.smallAndBigDots[crawliesPos[i, 3], crawliesPos[i, 2]];
+                else
+                {
+                    Console.SetCursorPosition(crawliesPos[i, 0], crawliesPos[i, 1]);
+                    switch (PackManHydra.smallAndBigDots[crawliesPos[i, 1],crawliesPos[i, 0]])
+                    {
+                        case 1:
+                            {
+                                dotsChar = '.';
+                                break;
+                            }
+                        case 5:
+                            {
+                                dotsChar = 'o';
+                                break;
+                            }
+                        default:
+                            {
+                                dotsChar = ' ';
+                                break;
+                            }
+                    }
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write(dotsChar);
+                    Console.SetCursorPosition(crawliesPos[i, 2], crawliesPos[i, 3]);
+                    Console.ForegroundColor = (ConsoleColor)Enum.Parse(type, PackManHydra.colors[i]);
+                    Console.Write(PackManHydra.badGuys[i]);
+                }
                 crawliesPos[i, 0] = crawliesPos[i, 2];
                 crawliesPos[i, 1] = crawliesPos[i, 3];
                 // lifes level score

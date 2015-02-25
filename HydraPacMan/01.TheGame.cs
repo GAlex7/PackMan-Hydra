@@ -24,7 +24,7 @@ class PackManHydra
     public static int points = 0;
     public static int lives = 3;
     public static int direction; // by GA
-
+    // public static int[,] dots;   // GAlex
     public static int GadOneCounter = 0;
     public static int GadTwoCounter = 0;
     public static int GadThreeCounter = 0;
@@ -255,7 +255,7 @@ class PackManHydra
             {02, 13},
             {01, 13},
             {00, 13},
-            {29, 13},
+            {29, 13}, //
             {28, 13},
             {27, 13},
             {26, 13},
@@ -298,7 +298,7 @@ class PackManHydra
     {
         // Заглавие на конзолата
         Console.Title = "PacMan";
-
+        InitDotsArray();                               //GAlex
         // Задаваме encoding за гадовете
         Console.OutputEncoding = Encoding.UTF8;
 
@@ -366,7 +366,7 @@ class PackManHydra
             while (true)
             {
                 Thread.Sleep(200);
-            // Викане на нашето човече
+                // Викане на нашето човече
                 // Викане на гадовете от класове
 
                 // Викане на нашето човече
@@ -509,5 +509,22 @@ class PackManHydra
         };
         Console.WriteLine();
     }
-
+    private static void InitDotsArray()
+    {
+        string fileName = @"..\..\Dots.txt";
+        int row = -1;
+        using (StreamReader streamReader = new StreamReader(fileName))
+        {
+            string textRow = streamReader.ReadLine();
+            while (textRow != null)
+            {
+                row++;
+                for (int i = 0; i < textRow.Length; i++)
+                {
+                    smallAndBigDots[row, i] = int.Parse(textRow[i].ToString());
+                }
+                textRow = streamReader.ReadLine();
+            }
+        }
+    }
 }
