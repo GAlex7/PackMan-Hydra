@@ -4,3 +4,6 @@ D:\telerik academy\otborna igra\HydraPacMan\bin\Debug\HydraPacMan.exe
 D:\telerik academy\otborna igra\HydraPacMan\bin\Debug\HydraPacMan.pdb
 D:\telerik academy\otborna igra\HydraPacMan\obj\Debug\HydraPacMan.exe
 D:\telerik academy\otborna igra\HydraPacMan\obj\Debug\HydraPacMan.pdb
+C:\Users\asus\Desktop\Game\HydraPacMan\bin\Debug\HydraPacMan.exe.config
+C:\Users\asus\Desktop\Game\HydraPacMan\obj\Debug\HydraPacMan.exe
+C:\Users\asus\Desktop\Game\HydraPacMan\obj\Debug\HydraPacMan.pdb
