@@ -12,17 +12,18 @@ class Dimitar
     {
         PackManHydra.badGuysCoordinates[3, 0] = PackManHydra.badGuysCoordinates[3, 2];
         PackManHydra.badGuysCoordinates[3, 1] = PackManHydra.badGuysCoordinates[3, 3];
-        PackManHydra.badGuysCoordinates[3, 2] = PackManHydra.badGuysCoordinates[PackManHydra.GadThreeCounter, 0];
-        PackManHydra.badGuysCoordinates[3, 3] = PackManHydra.badGuysCoordinates[PackManHydra.GadThreeCounter, 1];
-
-        if (PackManHydra.GadThreeCounter == 99)
+        PackManHydra.badGuysCoordinates[3, 2] = PackManHydra.monsterZ[PackManHydra.GadThreeCounter, 0];
+        PackManHydra.badGuysCoordinates[3, 3] = PackManHydra.monsterZ[PackManHydra.GadThreeCounter, 1];
+        if (PackManHydra.GadThreeCounter == 85)
         {
-            PackManHydra.GadThreeCounter = 0;
+            PackManHydra.GadThreeCounter = 6;
         }
         else
         {
             PackManHydra.GadThreeCounter++;
         }
+        PackManHydra.badGuysCoordinates[3, 2] = PackManHydra.monsterZ[PackManHydra.GadThreeCounter, 0];
+        PackManHydra.badGuysCoordinates[3, 3] = PackManHydra.monsterZ[PackManHydra.GadThreeCounter, 1];
 
     }
 
