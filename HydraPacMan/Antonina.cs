@@ -10,118 +10,27 @@ class Antonina
 {
     // Гад 2 -> Q4
 
-    public static int[,] badGuysCoordinates = new int[5, 4];
-    struct Position
-    {
-        public int row;
-        public int col;
-        public Position(int row, int col)
+        public static void BadGuyQ()
         {
-            this.row = row;
-            this.col = col;
-        }
-    }
-
-      public static void BadGuyQ()
-        {
-            Position[] availablePositions = new Position[]
-    {        
-                new Position(3,10),
-                new Position(4,10),
-                new Position(5,10),
-                new Position(5,9),
-                new Position(5,8),
-                new Position(5,7),
-                new Position(5,6),
-                new Position(5,5),
-                new Position(5,4),
-                new Position(5,3),
-                new Position(5,2),
-                new Position(6,2),
-                new Position(7,2),
-                new Position(8,2), 
-                new Position(8,3),
-                new Position(8,4),
-                new Position(8,5),
-                new Position(8,6),
-                new Position(8,7), 
-                new Position(7,7),
-                new Position(6,7),
-                new Position(4,7),
-                new Position(3,7),
-                new Position(2,7),
-                new Position(1,7),
-                new Position(1,6),
-                new Position(1,5),
-                new Position(1,4),
-                new Position(1,3),
-                new Position(1,2),
-                new Position(2,2),
-                new Position(3,2),
-                new Position(4,2),
-                new Position(5,2),
-                new Position(5,3),
-                new Position(5,4),
-                new Position(5,5),
-                new Position(5,6),
-                new Position(5,7),
-                new Position(5,8),
-                new Position(5,9),
-                new Position(5,10),
-                new Position(5,11),
-                new Position(5,12),
-                new Position(5,13),
-                new Position(4,13),
-                new Position(3,13),
-                new Position(2,13),
-                new Position(1,13),
-                new Position(1,12),
-                new Position(1,11),
-                new Position(1,10),
-                new Position(1,9),
-                new Position(1,8),
-                new Position(1,7),
-                new Position(2,7),
-                new Position(3,7),
-                new Position(4,7),
-                new Position(5,7),
-                new Position(5,8),
-                new Position(5,9),
-    
-    };
-            //Position[] dots = availablePositions;
-            Console.SetCursorPosition(3, 10);
-            Console.CursorVisible = false;
-            Queue<Position> gadinka = new Queue<Position>();
-
-            gadinka.Enqueue(new Position(3, 10));
-
-            //while (true)
-            //{
-            //  foreach (Position position in availablePositions)
-            // {
-            int count = 0;
-            //Thread.Sleep(200);
-
-            //gadinka.Enqueue(position);
-            //Console.SetCursorPosition(availablePositions[count].col, availablePositions[count].row);
-            //Console.ForegroundColor = ConsoleColor.Cyan;
-            gadinka.Enqueue(availablePositions[count]);
-            badGuysCoordinates[2, 0] = availablePositions[count].col;
-            badGuysCoordinates[2, 1] = availablePositions[count].row;
-            //Console.Write("Q");
-            Position lastGad = gadinka.Dequeue();
-            badGuysCoordinates[2, 2] = lastGad.col;
-            badGuysCoordinates[2, 3] = lastGad.row;
-            //Console.SetCursorPosition(lastGad.col, lastGad.row);
-            //Console.ForegroundColor = ConsoleColor.Yellow;
-            //Console.WriteLine(".");
-            count++;
-            if (count==availablePositions.Length)
-            {
-                count = 0;
-            }
+            PackManHydra.badGuysCoordinates[2, 0] = PackManHydra.badGuysCoordinates[2,2];
+            PackManHydra.badGuysCoordinates[2, 1] = PackManHydra.badGuysCoordinates[2,3];
             
+            PackManHydra.badGuysCoordinates[2, 2] = PackManHydra.availablePositionsGuyQ[PackManHydra.GadTwoCounter, 0];
+            PackManHydra.badGuysCoordinates[2, 3] = PackManHydra.availablePositionsGuyQ[PackManHydra.GadTwoCounter, 1];
+            
+            if (PackManHydra.GadTwoCounter==PackManHydra.availablePositionsGuyQ.GetLength(0)-1)
+            {
+                PackManHydra.GadTwoCounter = 1;
+            }
+                else
+            {
+
+                PackManHydra.GadTwoCounter++;
+            }
+
+            PackManHydra.badGuysCoordinates[2, 2] = PackManHydra.availablePositionsGuyQ[PackManHydra.GadTwoCounter, 0];
+            PackManHydra.badGuysCoordinates[2, 3] = PackManHydra.availablePositionsGuyQ[PackManHydra.GadTwoCounter, 1];
+         
         }
  
     public static void HydraTeam()

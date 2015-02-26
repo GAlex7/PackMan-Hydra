@@ -32,6 +32,74 @@ class PackManHydra
 
     //private static string gameSounds = Directory.GetCurrentDirectory();
 
+    //Антонина 
+     public static int[,] availablePositionsGuyQ = new int[,]
+    {           
+                {10,5},
+                {9,5},
+                {8,5},
+                {7,5},
+                {6,5},
+                {5,5},
+                {4,5},
+                {3,5},
+                {2,5},
+                {2,6},
+                {2,7},
+                {2,8},
+                {3,8}, 
+                {4,8},
+                {5,8},
+                {6,8},
+                {7,8},
+                {7,7},
+                {7,6}, 
+                {7,5},
+                {7,4},
+                {7,3},
+                {7,2},
+                {7,1},
+                {6,1},
+                {5,1},
+                {4,1},
+                {3,1},
+                {2,1},
+                {2,2},
+                {2,3},
+                {2,4},
+                {2,5},
+                {2,5},
+                {3,5},
+                {4,5},
+                {5,5},
+                {6,5},
+                {7,5},
+                {8,5},
+                {9,5},
+                {10,5},
+                {11,5},
+                {12,5},
+                {13,4},
+                {13,3},
+                {13,2},
+                {13,1},
+                {12,1},
+                {11,1},
+                {10,1},
+                {9,1},
+                {8,1},
+                {7,1},
+                {7,2},
+                {7,3},
+                {7,4},
+                {7,5},
+                {8,5},
+                {9,5},
+                {10,4},
+                
+    
+    };
+
     //Ивайло
     public static int[,] monsterArray = new int[57, 2] 
         {
@@ -310,7 +378,7 @@ class PackManHydra
 
         // Фонова музика
         //SoundPlayer player = new SoundPlayer();
-        SoundPlayer player = new SoundPlayer();
+       // SoundPlayer player = new SoundPlayer();
 
         // Принтиране на логото, изчакване за натискане на клавиш преди преминаване напред
 
@@ -352,16 +420,16 @@ class PackManHydra
         Console.Write("     ");
         Console.SetCursorPosition(0, 30);
 
-        player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
-        player.Load();
-        player.Play();
+        //player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
+        //player.Load();
+        //player.Play();
 
         while (true)
         {
             Thread.Sleep(150);
-            player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
-            player.Load();
-            player.Play();
+            //player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
+            //player.Load();
+            //player.Play();
 
             while (true)
             {
@@ -373,6 +441,7 @@ class PackManHydra
                 Ivaylo.MonsterM();
                 Dimitar.MonsterZ();
                 Marian.MonsterW();
+                Antonina.BadGuyQ();
                 // Обновяване на екрана
 
                 Georgi.RefreshScreen(badGuysCoordinates);

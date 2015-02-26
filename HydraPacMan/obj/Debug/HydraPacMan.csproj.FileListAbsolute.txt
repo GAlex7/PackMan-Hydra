@@ -10,3 +10,9 @@ C:\Users\asus\Desktop\Game\HydraPacMan\obj\Debug\HydraPacMan.pdb
 C:\Users\asus\Desktop\Game\HydraPacMan\bin\Debug\HydraPacMan.exe
 C:\Users\asus\Desktop\Game\HydraPacMan\bin\Debug\HydraPacMan.pdb
 C:\Users\asus\Desktop\Game\HydraPacMan\obj\Debug\HydraPacMan.csprojResolveAssemblyReference.cache
+C:\Users\bekosiko\Desktop\Game\PackMan-Hydra\HydraPacMan\bin\Debug\HydraPacMan.exe.config
+C:\Users\bekosiko\Desktop\Game\PackMan-Hydra\HydraPacMan\obj\Debug\HydraPacMan.exe
+C:\Users\bekosiko\Desktop\Game\PackMan-Hydra\HydraPacMan\obj\Debug\HydraPacMan.pdb
+C:\Users\bekosiko\Desktop\Game\PackMan-Hydra\HydraPacMan\bin\Debug\HydraPacMan.exe
+C:\Users\bekosiko\Desktop\Game\PackMan-Hydra\HydraPacMan\bin\Debug\HydraPacMan.pdb
+C:\Users\bekosiko\Desktop\Game\PackMan-Hydra\HydraPacMan\obj\Debug\HydraPacMan.csprojResolveAssemblyReference.cache
