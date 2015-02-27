@@ -8,40 +8,114 @@ class Dimitar
 {
     // Гад 3 - > Z
 
-    struct PositionZ
-    {
-        public int Row;
-        public int Col;
 
-        public PositionZ(int row, int col)
+    public static int[,] monsterZ = new int[86, 2] 
         {
-            this.Row = row;
-            this.Col = col;
-        }
-    }
-    public static void BadGuyZ(int[,] BadGuysCoordinates)
-    {
-        PositionZ[] positon = 
-        { 
-            new PositionZ(13, 14), 
-            new PositionZ(11, 14), 
-            new PositionZ(11, 11),
-            new PositionZ(18, 11),
-            new PositionZ(18, 2),
-            new PositionZ(21, 2),
-            new PositionZ(21, 4),
-            new PositionZ(24, 4),
-            new PositionZ(24, 7),
-            new PositionZ(21, 7),
-            new PositionZ(21, 13),
-            new PositionZ(18, 13),
-            new PositionZ(18, 10),
-            new PositionZ(15, 10),
-            new PositionZ(15, 21),
-            new PositionZ(11, 21),
-            new PositionZ(11, 14),
-
+            {13, 15},    
+            {12, 15},
+            {11, 15},
+            {10, 15},
+            {10, 16},
+            {10, 17},
+            {10, 18},
+            {9, 18},
+            {8, 18},
+            {7, 18},
+            {6, 18},
+            {5, 18},
+            {4, 18},
+            {3, 18},
+            {2, 18},
+            {2, 19},
+            {2, 20},
+            {2, 21},
+            {3, 21},
+            {4, 21},
+            {4, 22},
+            {4, 23},
+            {4, 24},
+            {5, 24},
+            {6, 24},
+            {7, 24},
+            {7, 23},
+            {7, 22},
+            {7, 21},
+            {7, 20},
+            {7, 19},
+            {7, 18},
+            {8, 18},
+            {9, 18},
+            {10, 18},
+            {11, 18},
+            {12, 18},
+            {13, 18},
+            {13, 19},
+            {13, 20},
+            {13, 21},
+            {12, 21},
+            {11, 21},
+            {10, 21},
+            {10, 22},
+            {10, 23},
+            {10, 24},
+            {11, 24},
+            {12, 24},
+            {13, 24},
+            {13, 25},
+            {13, 26},
+            {13, 27},
+            {12, 27},
+            {11, 27},
+            {10, 27},
+            {9, 27},
+            {8, 27},
+            {7, 27},
+            {6, 27},
+            {5, 27},
+            {4, 27},
+            {3, 27},
+            {2, 27},
+            {2,26},
+            {2,25},
+            {2,24},
+            {3,24},
+            {4,24},
+            {5,24},
+            {6,24},
+            {7,24},
+            {7,23},
+            {7,22},
+            {7,21},
+            {8,21},
+            {9,21},
+            {10,21},
+            {11,21},
+            {12,21},
+            {13,21},
+            {13,20},
+            {13,19},
+            {13,18},
+            {12,18},
+            {11,18},
         };
+    public static void MonsterZ()
+    {
+        PackManHydra.badGuysCoordinates[3, 0] = PackManHydra.badGuysCoordinates[3, 2];
+        PackManHydra.badGuysCoordinates[3, 1] = PackManHydra.badGuysCoordinates[3, 3];
+        PackManHydra.badGuysCoordinates[3, 2] = monsterZ[PackManHydra.GadThreeCounter, 0];
+        PackManHydra.badGuysCoordinates[3, 3] = monsterZ[PackManHydra.GadThreeCounter, 1];
+        if (PackManHydra.GadThreeCounter == 85)
+        {
+            PackManHydra.GadThreeCounter = 6;
+        }
+        else
+        {
+            PackManHydra.GadThreeCounter++;
+        }
+        PackManHydra.badGuysCoordinates[3, 2] = monsterZ[PackManHydra.GadThreeCounter, 0];
+        PackManHydra.badGuysCoordinates[3, 3] = monsterZ[PackManHydra.GadThreeCounter, 1];
+
     }
+
 }
 
