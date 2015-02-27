@@ -16,3 +16,6 @@ C:\Users\bekosiko\Desktop\Game\PackMan-Hydra\HydraPacMan\obj\Debug\HydraPacMan.p
 C:\Users\bekosiko\Desktop\Game\PackMan-Hydra\HydraPacMan\bin\Debug\HydraPacMan.exe
 C:\Users\bekosiko\Desktop\Game\PackMan-Hydra\HydraPacMan\bin\Debug\HydraPacMan.pdb
 C:\Users\bekosiko\Desktop\Game\PackMan-Hydra\HydraPacMan\obj\Debug\HydraPacMan.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\Otborna Igra\HydraPacMan\bin\Debug\HydraPacMan.exe.config
+C:\Users\User\Desktop\Otborna Igra\HydraPacMan\obj\Debug\HydraPacMan.exe
+C:\Users\User\Desktop\Otborna Igra\HydraPacMan\obj\Debug\HydraPacMan.pdb
