@@ -83,9 +83,9 @@ class PackManHydra
         Console.Write("     ");
         Console.SetCursorPosition(0, 30);
 
-        player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
-        player.Load();
-        player.Play();
+        //player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
+        //player.Load();
+        //player.Play();
 
         while (true)
         {
