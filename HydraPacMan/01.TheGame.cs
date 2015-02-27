@@ -300,7 +300,9 @@ class PackManHydra
         Console.ReadKey();
         Console.Clear();
 
-
+        DimitarPiskov.Introduction();
+        Console.ReadKey();
+        Console.Clear();
         // Меню: 1.New Game, 2.Load Game, 3.Score, 4.Exit
 
         Ivaylo.PrintingMenuGame();
