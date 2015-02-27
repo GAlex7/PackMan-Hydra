@@ -46,6 +46,8 @@ class PackManHydra
         // Принтиране на логото, изчакване за натискане на клавиш преди преминаване напред
 
         DrawLogo(20);
+
+        DimitarPiskov.PrintGameName();
         Console.ReadKey();
         Console.Clear();
 
@@ -83,9 +85,9 @@ class PackManHydra
         Console.Write("     ");
         Console.SetCursorPosition(0, 30);
 
-        //player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
-        //player.Load();
-        //player.Play();
+        player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
+        player.Load();
+        player.Play();
 
         while (true)
         {

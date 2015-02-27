@@ -8,8 +8,22 @@ class DimitarPiskov
 {
     public static void PrintGameName()
     {
-        Console.SetCursorPosition(22, 7);
-        Console.WriteLine(123);
+        Console.SetCursorPosition(4, 20);
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine(@"  
+  ╔══ ╔══╗ ══╦══
+  ║   ║  ║   ║
+  ╠══ ╠══╣   ║
+  ║   ║  ║   ║
+  ╚══ ║  ║   ║ 
+
+    ╔═══ ║  ║ ╔══╗ ╔══╗ ╔══╗
+    ║    ║  ║ ║  ║ ║  ║ ║  ║
+    ╚══╗ ╠══╣ ╠══╣ ╠╦═╝ ╠══╝
+       ║ ║  ║ ║  ║ ║╚═╗ ║  
+    ═══╝ ║  ║ ║  ║ ║  ║ ║  
+
+");
     }
 
 }
