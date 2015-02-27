@@ -42,7 +42,7 @@ class Ivaylo
         Console.SetCursorPosition(5, 14);
         Console.Write("*  ");
         Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.Write("1. NEW    GAME");
+        Console.Write("1. NEW GAME   ");
         Console.ForegroundColor = ConsoleColor.Red;
         Console.Write("  *\n");
         Console.SetCursorPosition(5, 15);
@@ -58,7 +58,7 @@ class Ivaylo
         Console.SetCursorPosition(5, 18);
         Console.Write("*  ");
         Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.Write("3. HIGH  SCORE");
+        Console.Write("3. HIGH SCORES");
         Console.ForegroundColor = ConsoleColor.Red;
         Console.Write("  *\n");
         Console.SetCursorPosition(5, 19);
@@ -66,7 +66,7 @@ class Ivaylo
         Console.SetCursorPosition(5, 20);
         Console.Write("*  ");
         Console.ForegroundColor = ConsoleColor.Yellow;
-        Console.Write("4. EXIT   GAME");
+        Console.Write("4. EXIT GAME  ");
         Console.ForegroundColor = ConsoleColor.Red;
         Console.Write("  *\n");
         Console.SetCursorPosition(5, 21);
