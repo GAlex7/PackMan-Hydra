@@ -43,9 +43,9 @@ class Georgi
         {
             // дали не е изяден
             if ((i != 0) &&
-                (crawliesPos[0, 0] == crawliesPos[i, 0] || crawliesPos[0, 0] + x == crawliesPos[i, 0])
+                (crawliesPos[0, 0] == crawliesPos[i, 0] || crawliesPos[0, 0] + x == crawliesPos[i, 0] || crawliesPos[0, 0] - x == crawliesPos[i, 0])
                 &&
-                (crawliesPos[0, 1] == crawliesPos[i, 1] || crawliesPos[0, 1] + y == crawliesPos[i, 1]))
+                (crawliesPos[0, 1] == crawliesPos[i, 1] || crawliesPos[0, 1] + y == crawliesPos[i, 1] || crawliesPos[0, 1] - y == crawliesPos[i, 1]))
             {
                 Console.SetCursorPosition(crawliesPos[i, 0], crawliesPos[i, 1]);
                 Console.Write(" ");
