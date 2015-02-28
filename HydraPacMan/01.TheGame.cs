@@ -14,7 +14,7 @@ class PackManHydra
     public static string ourGuy = "X<>^vx--::";
     public static string badGuys = "xНЕИД";
 
-    public static string[] colors = { "Yellow", "Green", "White", "Magenta", "Cyan" };
+    public static string[] colors = { "Yellow", "Green", "White", "DarkMagenta", "Blue" };
     public static int[,] badGuysCoordinates = new int[5, 4];
     public static int[,] smallAndBigDots = new int[29, 30];
 
@@ -31,6 +31,8 @@ class PackManHydra
     public static int GadFourCounter = 0;
 
     private const int numberOfMovingObjects = 5;
+
+    private static bool returnFromHighScores = true;
     //private static string gameSounds = Directory.GetCurrentDirectory();
 
     //Антонина 
@@ -103,69 +105,7 @@ class PackManHydra
     };
 
     //Ивайло
-    public static int[,] monsterArray = new int[,] 
-        {
-            {17, 14}, 
-            {18, 15},    
-            {19, 15},
-            {20, 15},
-            {20, 16},
-            {20, 17},
-            {20, 18},
-            {19, 18},
-            {18, 18},
-            {17, 18},
-            {17, 19},
-            {17, 20},
-            {17, 21},
-            {18, 21},
-            {19, 21},
-            {20, 21},
-            {20, 22},
-            {20, 23},
-            {20, 24},
-            {19, 24},
-            {18, 24},
-            {17, 24},
-            {17, 25},
-            {17, 26},
-            {17, 27},
-            {18, 27},
-            {19, 27},
-            {20, 27},
-            {21, 27},
-            {22, 27},
-            {23, 27},
-            {24, 27},
-            {25, 27},
-            {26, 27},
-            {27, 27},
-            {28, 27},
-            {28, 26},
-            {28, 25},
-            {28, 24},
-            {27, 24},
-            {26, 24},
-            {26, 23},
-            {26, 22},
-            {26, 21},
-            {27, 21},
-            {28, 21},
-            {28, 20},
-            {28, 19},
-            {28, 18},
-            {27, 18},
-            {26, 18},
-            {25, 18},
-            {24, 18},
-            {23, 18},
-            {22, 18},
-            {21, 18},
-            {20, 18},
-            {19, 18},
-        };
-
-
+    
     //Мариян
     public static int[,] monsterW = new int[,] 
         {
@@ -296,15 +236,18 @@ class PackManHydra
 
         // Принтиране на логото и заглавието, изчакване за натискане на клавиш преди преминаване напред
 
-        DrawLogo(20);
+        if (returnFromHighScores)
+        {
+            DrawLogo(20);
 
-        DimitarPiskov.PrintGameName();
-        Console.ReadKey();
-        Console.Clear();
+            DimitarPiskov.PrintGameName();
+            Console.ReadKey();
+            Console.Clear();
 
-        DimitarPiskov.Introduction();
-        Console.ReadKey();
-        Console.Clear();
+            DimitarPiskov.Introduction();
+            Console.ReadKey();
+            Console.Clear();
+        }
 
         // Меню: 1.New Game, 2.Instruction, 3.High Score, 4.Exit game
 
@@ -349,6 +292,7 @@ class PackManHydra
                             userScores.Write(nickname[i].KeyChar);
                         }
                         userScores.Write(" - ");
+                        userScores.Flush();
                     }
                     inputSuccess = false;
                 }
@@ -420,10 +364,29 @@ class PackManHydra
         else if (choice.Key == ConsoleKey.D3)
         {
             Console.Clear();
-            Console.WriteLine("Hight scores");
-
+            Console.SetCursorPosition(11, 2);
+            Console.Write("HIGH SCORES");
+            Console.SetCursorPosition(3, 5);
             // Извикване на файла, който държи High scores
-            Console.ReadKey(true);
+            StreamReader userScoresRead = new StreamReader(@"..\..\HighScores.txt");
+            Console.WriteLine(userScoresRead.ReadToEnd());
+            Console.SetCursorPosition(5, 30);
+            Console.Write("Press enter to return");
+            Console.SetCursorPosition(10, 31);
+            Console.Write("to the MENU");
+
+            if (Console.ReadKey().Key == ConsoleKey.Enter)
+            {
+                returnFromHighScores = false;
+                Console.Clear();
+                Main();
+            }
+            else
+            {
+                returnFromHighScores = false;
+                Console.Clear();
+                Main();
+            }
 
         }
         else if (choice.Key == ConsoleKey.D4)
