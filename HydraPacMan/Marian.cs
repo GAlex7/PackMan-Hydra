@@ -8,7 +8,7 @@ class Marian
 {
     // Гад 4 - > W
 
-    public static void MonsterW()
+    public static void MonsterIlevelOne()
     {
         PackManHydra.badGuysCoordinates[4, 0] = PackManHydra.badGuysCoordinates[4, 2];
         PackManHydra.badGuysCoordinates[4, 1] = PackManHydra.badGuysCoordinates[4, 3];
@@ -26,7 +26,25 @@ class Marian
         PackManHydra.badGuysCoordinates[4, 3] = PackManHydra.monsterW[PackManHydra.GadFourCounter, 1];
     }
 
-    public static int[,] monsterWLevelII = new int[86, 2] 
+    public static void MonsterILevelTwo()
+    {
+        PackManHydra.badGuysCoordinates[3, 0] = PackManHydra.badGuysCoordinates[3, 2];
+        PackManHydra.badGuysCoordinates[3, 1] = PackManHydra.badGuysCoordinates[3, 3];
+        PackManHydra.badGuysCoordinates[3, 2] = PackManHydra.monsterW[PackManHydra.GadFourCounter, 0];
+        PackManHydra.badGuysCoordinates[3, 3] = PackManHydra.monsterW[PackManHydra.GadFourCounter, 1];
+        if (PackManHydra.GadFourCounter == 117)
+        {
+            PackManHydra.GadFourCounter = 5;
+        }
+        else
+        {
+            PackManHydra.GadFourCounter++;
+        }
+        PackManHydra.badGuysCoordinates[3, 2] = PackManHydra.monsterW[PackManHydra.GadFourCounter, 0];
+        PackManHydra.badGuysCoordinates[3, 3] = PackManHydra.monsterW[PackManHydra.GadFourCounter, 1];
+    }
+
+    public static int[,] monsterICoordinatesLevelTwo = new int[118, 2] 
         {
             {13, 13},    
             {13, 14},
@@ -93,27 +111,59 @@ class Marian
             {2, 18},
             {2, 18},
             {2, 19},
-            {2, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
+            {2, 20},
+            {2, 21},
+            {3, 21},
+            {4, 21},
+            {4, 22},
+            {4, 23},
+            {4, 24},
+            {3, 24},
+            {2, 24},
+            {2, 25},
+            {2, 26},
+            {2, 27},
+            {3, 27},
+            {4, 27},
+            {5, 27},
+            {6, 27},
+            {7, 27},
+            {8, 27},
+            {9, 27},
+            {10, 27},
+            {11, 27},
+            {12, 27},
+            {13, 27},
+            {13, 26},
+            {13, 25},
+            {13, 24},
+            {12, 24},
+            {11, 24},
+            {10, 24},
+            {10, 23},
+            {10, 22},
+            {10, 21},
+            {11, 21},
+            {12, 21},
+            {13, 21},
+            {13, 20},
+            {13, 19},
+            {13, 18},
+            {12, 18},
+            {11, 18},
+            {10, 18},
+            {09, 18},
+            {08, 18},
+            {07, 18},
+            {07, 17},
+            {07, 16},
+            {07, 15},
+            {07, 14},
+            {07, 13},
+            {08, 13},
+            {09, 13},
+            {10, 13},
+            {10, 14}
         };
 
     public static void DrawGameBoardLevelOne()

@@ -394,7 +394,7 @@ class PackManHydra
             Console.Clear();
             Environment.Exit(-1);
         }
-        Console.CursorVisible = false; 
+        Console.CursorVisible = false;
 
     }
 
@@ -483,11 +483,15 @@ class PackManHydra
             {
                 row++;
                 string[] xy = textRow.Split(' ');
+
                 badGuysCoordinates[row, 0] = int.Parse(xy[0]);
                 badGuysCoordinates[row, 1] = int.Parse(xy[1]);
+                badGuysCoordinates[row, 2] = int.Parse(xy[2]);
+                badGuysCoordinates[row, 3] = int.Parse(xy[3]);
+
                 textRow = streamReader.ReadLine();
             }
         }
     }
-    
+
 }
