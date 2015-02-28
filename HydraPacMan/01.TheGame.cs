@@ -34,7 +34,7 @@ class PackManHydra
     //private static string gameSounds = Directory.GetCurrentDirectory();
 
     //Антонина 
-     public static int[,] availablePositionsGuyQ = new int[,]
+    public static int[,] availablePositionsGuyQ = new int[,]
     {           
                 {10,5},
                 {9,5},
@@ -163,7 +163,7 @@ class PackManHydra
             {19, 18},
         };
 
-  
+
     //Мариян
     public static int[,] monsterW = new int[102, 2] 
         {
@@ -286,7 +286,7 @@ class PackManHydra
 
         // Бонус точки
         InitDotsArray();
-        
+
         // Фонова музика
         // SoundPlayer player = new SoundPlayer();
         // SoundPlayer player = new SoundPlayer();
@@ -308,8 +308,8 @@ class PackManHydra
         Ivaylo.PrintingMenuGame();
 
         // Начална позиция на нашето човече
-        badGuysCoordinates[0, 0] = 15;
-        badGuysCoordinates[0, 1] = 21;
+        //badGuysCoordinates[0, 0] = 15;
+        //badGuysCoordinates[0, 1] = 21;
 
         ConsoleKeyInfo choice = Console.ReadKey();
 
@@ -318,7 +318,7 @@ class PackManHydra
         if (choice.Key == ConsoleKey.D1)
         {
             Console.Clear();
-            
+
             int currentColumn = 15;
             bool inputSuccess = true;
             var nickname = new List<ConsoleKeyInfo>();
@@ -378,8 +378,8 @@ class PackManHydra
                     {
                         currentColumn++;
                     }
-                }               
-                
+                }
+
                 Console.Clear();
             }
 
@@ -436,15 +436,15 @@ class PackManHydra
 
             // Извикване на файла, който държи High scores
             Console.ReadKey(true);
-            
+
         }
         else if (choice.Key == ConsoleKey.D4)
         {
             Console.Clear();
             Environment.Exit(-1);
         }
-            
-        
+
+
 
 
         // Изчистваме конзолата
@@ -454,11 +454,11 @@ class PackManHydra
         // Принтиране на логото, изчакване за натискане на клавиш преди преминаване напред
         // Ако е натиснато 1 -> чертаем лабиринта и на мястото на  READY да има брояч -> 3, 2, 1 (сменят се) -> GO
 
-       
+
         //player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
         //player.Load();
         //player.Play();
-        
+
     }
 
 
@@ -601,6 +601,20 @@ class PackManHydra
                 {
                     smallAndBigDots[row, i] = int.Parse(textRow[i].ToString());
                 }
+                textRow = streamReader.ReadLine();
+            }
+        }
+        fileName = @"..\..\LevelOneInit.txt";
+        row = -1;
+        using (StreamReader streamReader = new StreamReader(fileName))
+        {
+            string textRow = streamReader.ReadLine();
+            while (textRow != null)
+            {
+                row++;
+                string[] xy = textRow.Split(' ');
+                badGuysCoordinates[row, 0] = int.Parse(xy[0]);
+                badGuysCoordinates[row, 1] = int.Parse(xy[1]);
                 textRow = streamReader.ReadLine();
             }
         }

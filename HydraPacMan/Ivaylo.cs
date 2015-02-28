@@ -237,8 +237,8 @@ class Ivaylo
     {
         PackManHydra.badGuysCoordinates[2, 0] = PackManHydra.badGuysCoordinates[2, 2];
         PackManHydra.badGuysCoordinates[2, 1] = PackManHydra.badGuysCoordinates[2, 3];
-        PackManHydra.badGuysCoordinates[2, 2] = PackManHydra.monsterArrayQ2[PackManHydra.GadTwoCounter, 0];
-        PackManHydra.badGuysCoordinates[2, 3] = PackManHydra.monsterArrayQ2[PackManHydra.GadTwoCounter, 1];
+        //PackManHydra.badGuysCoordinates[2, 2] = PackManHydra.monsterArrayQ2[PackManHydra.GadTwoCounter, 0];
+        //PackManHydra.badGuysCoordinates[2, 3] = PackManHydra.monsterArrayQ2[PackManHydra.GadTwoCounter, 1];
         if (PackManHydra.GadTwoCounter == 78)
         {
             PackManHydra.GadTwoCounter = 4;
@@ -247,8 +247,8 @@ class Ivaylo
         {
             PackManHydra.GadTwoCounter++;
         }
-        PackManHydra.badGuysCoordinates[2, 2] = PackManHydra.monsterArrayQ2[PackManHydra.GadTwoCounter, 0];
-        PackManHydra.badGuysCoordinates[2, 3] = PackManHydra.monsterArrayQ2[PackManHydra.GadTwoCounter, 1];
+        //PackManHydra.badGuysCoordinates[2, 2] = PackManHydra.monsterArrayQ2[PackManHydra.GadTwoCounter, 0];
+        //PackManHydra.badGuysCoordinates[2, 3] = PackManHydra.monsterArrayQ2[PackManHydra.GadTwoCounter, 1];
     }
 
     public static void PrintingMenuGame()
