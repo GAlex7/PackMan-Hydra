@@ -116,7 +116,7 @@ class Marian
             {0, 1},
         };
 
-    private static void DrawGameBoardLevelOne()
+    public static void DrawGameBoardLevelOne()
     {
         Console.WriteLine(" ┌────────────┐ ┌────────────┐");
         Console.WriteLine(" │............│ │............│");
@@ -149,7 +149,7 @@ class Marian
         Console.WriteLine(" └───────────────────────────┘");
     }
 
-    private static void DrawGameBoardLevelTwo()
+    public static void DrawGameBoardLevelTwo()
     {
         Console.WriteLine(" ┌───────────┐   ┌───────────┐");
         Console.WriteLine(" │...........................│");

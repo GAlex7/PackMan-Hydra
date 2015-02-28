@@ -386,7 +386,8 @@ class PackManHydra
                 Console.Clear();
             }
 
-            DrawGameBoardLevelOne();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Marian.DrawGameBoardLevelOne();
             Dimitar.StartCounter();
 
             //player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
