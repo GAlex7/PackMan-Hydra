@@ -4,3 +4,6 @@ C:\Users\asus\Desktop\Game\HydraPacMan\bin\Debug\HydraPacMan.pdb
 C:\Users\asus\Desktop\Game\HydraPacMan\obj\Debug\HydraPacMan.csprojResolveAssemblyReference.cache
 C:\Users\asus\Desktop\Game\HydraPacMan\obj\Debug\HydraPacMan.exe
 C:\Users\asus\Desktop\Game\HydraPacMan\obj\Debug\HydraPacMan.pdb
+C:\Users\Mariyan\SkyDrive\Telerik\C# Programming Part II\PacMan\PackMan-Hydra\HydraPacMan\bin\Debug\HydraPacMan.exe.config
+C:\Users\Mariyan\SkyDrive\Telerik\C# Programming Part II\PacMan\PackMan-Hydra\HydraPacMan\obj\Debug\HydraPacMan.exe
+C:\Users\Mariyan\SkyDrive\Telerik\C# Programming Part II\PacMan\PackMan-Hydra\HydraPacMan\obj\Debug\HydraPacMan.pdb
