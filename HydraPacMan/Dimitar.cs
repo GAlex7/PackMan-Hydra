@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 class Dimitar
 {
-    public static int[,] monsterICoordinates = new int[86, 2] 
+    public static int[,] monsterICoordinates = new int[88, 2] 
         {
+            {13, 13},
+            {13, 14},
             {13, 15},    
             {12, 15},
             {11, 15},
@@ -101,7 +103,7 @@ class Dimitar
         PackManHydra.badGuysCoordinates[3, 1] = PackManHydra.badGuysCoordinates[3, 3];
         PackManHydra.badGuysCoordinates[3, 2] = monsterICoordinates[PackManHydra.GadThreeCounter, 0];
         PackManHydra.badGuysCoordinates[3, 3] = monsterICoordinates[PackManHydra.GadThreeCounter, 1];
-        if (PackManHydra.GadThreeCounter == 85)
+        if (PackManHydra.GadThreeCounter == 87)
         {
             PackManHydra.GadThreeCounter = 6;
         }
@@ -113,6 +115,15 @@ class Dimitar
         PackManHydra.badGuysCoordinates[3, 3] = monsterICoordinates[PackManHydra.GadThreeCounter, 1];
 
     }
+
+    public static void SetConsoleWidthAndHeight()
+    {
+        Console.WindowHeight = PackManHydra.windowHeight;
+        Console.WindowWidth = PackManHydra.windowWidth;
+        Console.BufferHeight = Console.WindowHeight;
+        Console.BufferWidth = Console.WindowWidth;
+    }
+    
 
 }
 
