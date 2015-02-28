@@ -107,37 +107,33 @@ class PackManHydra
                 }
 
                 ConsoleKeyInfo inputLetter = Console.ReadKey();
-                if (inputLetter.Key == ConsoleKey.Enter && nickname.Count >= 1)
+                if (inputLetter.Key == ConsoleKey.Enter && nickname.Count >= 3)
                 {
                     StreamReader userScoresRead = new StreamReader(@"..\..\HighScores.txt");
                     using (userScoresRead)
                     {
-                        string line = userScoresRead.ReadLine();
-
-                        while (line != null)
-                        {
-                            user.Append(line);
-                            line = userScoresRead.ReadLine();
-                        }
+                        user.Append(userScoresRead.ReadToEnd());
+                        user.Append("\n");
                     }
                     StreamWriter userScores = new StreamWriter(@"..\..\HighScores.txt");
                     using (userScores)
                     {
+                        user.Append("         ");
                         for (int i = 0; i < nickname.Count; i++)
                         {
                             user.Append(nickname[i].KeyChar);
                         }
                         user.Append(" - ");
-                        userScores.WriteLine(user);
+                        userScores.Write(user);
                     }
                     inputSuccess = false;
                 }
-                else if (inputLetter.Key == ConsoleKey.Enter && nickname.Count == 0)
+                else if (inputLetter.Key == ConsoleKey.Enter && nickname.Count < 3)
                 {
                     Console.Clear();
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.SetCursorPosition(2, 17);
-                    Console.WriteLine("Enter at least 1 character!");
+                    Console.SetCursorPosition(2, 19);
+                    Console.WriteLine("Enter at least 3 characters!");
                     continue;
                 }
 
@@ -195,17 +191,6 @@ class PackManHydra
 
             if (endGame == false)
             {
-                StreamReader userScoresRead = new StreamReader(@"..\..\HighScores.txt");
-                using (userScoresRead)
-                {
-                    string line = userScoresRead.ReadLine();
-
-                    while (line != null)
-                    {
-                        user.Append(line);
-                        line = userScoresRead.ReadLine();
-                    }
-                }
                 StreamWriter userScores = new StreamWriter(@"..\..\HighScores.txt");
                 using (userScores)
                 {
@@ -243,11 +228,12 @@ class PackManHydra
         {
             StreamReader userScoresRead = new StreamReader(@"..\..\HighScores.txt");
             Console.Clear();
-            Console.SetCursorPosition(11, 2);
+            Console.SetCursorPosition(10, 2);
             Console.Write("HIGH SCORES");
-            Console.SetCursorPosition(3, 5);
+            
             // Извикване на файла, който държи High scores
-            Console.WriteLine();
+            Console.SetCursorPosition(3, 5);
+            Console.WriteLine(userScoresRead.ReadToEnd());
             Console.SetCursorPosition(5, 30);
             Console.Write("Press enter to return");
             Console.SetCursorPosition(10, 31);
