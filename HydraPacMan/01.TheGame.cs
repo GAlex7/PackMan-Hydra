@@ -54,8 +54,7 @@ class PackManHydra
         InitDotsArray();
 
         // Фонова музика
-        // SoundPlayer player = new SoundPlayer();
-        // SoundPlayer player = new SoundPlayer();
+        SoundPlayer player = new SoundPlayer();
 
         // Принтиране на логото и заглавието, изчакване за натискане на клавиш преди преминаване напред
         try
@@ -167,9 +166,9 @@ class PackManHydra
                 Mariyan.DrawGameBoardLevelOne();
                 Dimitar.StartCounter();
 
-                //player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
-                //player.Load();
-                //player.Play();
+                player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
+                player.Load();
+                player.Play();
 
                 while (endGame)
                 {
