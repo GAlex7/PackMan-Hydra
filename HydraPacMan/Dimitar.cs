@@ -119,10 +119,10 @@ class Dimitar
 
     public static void SetConsoleWidthAndHeight()
     {
-        //Console.WindowHeight = PackManHydra.windowHeight;
-        //Console.WindowWidth = PackManHydra.windowWidth;
-        //Console.BufferHeight = Console.WindowHeight;
-        //Console.BufferWidth = Console.WindowWidth;
+        Console.WindowHeight = PackManHydra.windowHeight;
+        Console.WindowWidth = PackManHydra.windowWidth;
+        Console.BufferHeight = Console.WindowHeight;
+        Console.BufferWidth = Console.WindowWidth;
     }
     
     public static void StartCounter()
