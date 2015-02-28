@@ -8,8 +8,10 @@ class Ivaylo
 {
     public static int[,] monsterNCoordinatesLevelOne = new int[,] 
         {
-            {17, 14}, 
-            {18, 15},    
+            {17, 13}, 
+            {17, 14},    
+            {17, 15},
+            {18, 15},
             {19, 15},
             {20, 15},
             {20, 16},
@@ -23,6 +25,34 @@ class Ivaylo
             {17, 21},
             {18, 21},
             {19, 21},
+            {20, 21},
+            {21, 21},
+            {22, 21},
+            {23, 21},
+            {23, 20},
+            {23, 19},
+            {23, 18},
+            {24, 18},
+            {25, 18},
+            {26, 18},
+            {27, 18},
+            {28, 18},
+            {28, 19},
+            {28, 20},
+            {28, 21},
+            {27, 21},
+            {26, 21},
+            {26, 22},
+            {26, 23},
+            {26, 24},
+            {25, 24},
+            {24, 24},
+            {23, 24},
+            {23, 23},
+            {23, 22},
+            {23, 21},
+            {22, 21},
+            {21, 21},
             {20, 21},
             {20, 22},
             {20, 23},
@@ -49,23 +79,25 @@ class Ivaylo
             {28, 24},
             {27, 24},
             {26, 24},
-            {26, 23},
-            {26, 22},
-            {26, 21},
-            {27, 21},
-            {28, 21},
-            {28, 20},
-            {28, 19},
-            {28, 18},
-            {27, 18},
-            {26, 18},
-            {25, 18},
-            {24, 18},
+            {25, 24},
+            {24, 24},
+            {23, 24},
+            {23, 23},
+            {23, 22},
+            {23, 21},
+            {23, 20},
+            {23, 19},
             {23, 18},
-            {22, 18},
-            {21, 18},
-            {20, 18},
-            {19, 18},
+            {23, 17},
+            {23, 16},
+            {23, 15},
+            {23, 14},
+            {23, 13},
+            {22, 13},
+            {21, 13},
+            {20, 13},
+            {20, 14},
+            {20, 15},
         };
 
     public static void MonsterNMovingLevelOne()
@@ -74,7 +106,7 @@ class Ivaylo
         PackManHydra.badGuysCoordinates[1, 1] = PackManHydra.badGuysCoordinates[1, 3];
         PackManHydra.badGuysCoordinates[1, 2] = monsterNCoordinatesLevelOne[PackManHydra.GadOneCounter, 0];
         PackManHydra.badGuysCoordinates[1, 3] = monsterNCoordinatesLevelOne[PackManHydra.GadOneCounter, 1];
-        if (PackManHydra.GadOneCounter == 57)
+        if (PackManHydra.GadOneCounter == monsterNCoordinatesLevelOne.GetLength(0) - 1)
         {
             PackManHydra.GadOneCounter = 6;
         }
@@ -199,7 +231,7 @@ class Ivaylo
         PackManHydra.badGuysCoordinates[1, 1] = PackManHydra.badGuysCoordinates[1, 3];
         PackManHydra.badGuysCoordinates[1, 2] = monsterNCoordinatesLevelTwo[PackManHydra.GadOneCounter, 0];
         PackManHydra.badGuysCoordinates[1, 3] = monsterNCoordinatesLevelTwo[PackManHydra.GadOneCounter, 1];
-        if (PackManHydra.GadOneCounter == 102)
+        if (PackManHydra.GadOneCounter == monsterNCoordinatesLevelTwo.GetLength(0) - 1)
         {
             PackManHydra.GadOneCounter = 9;
         }
@@ -300,7 +332,7 @@ class Ivaylo
         PackManHydra.badGuysCoordinates[2, 1] = PackManHydra.badGuysCoordinates[2, 3];
         PackManHydra.badGuysCoordinates[2, 2] = monsterECoordinatesLevelTwo[PackManHydra.GadTwoCounter, 0];
         PackManHydra.badGuysCoordinates[2, 3] = monsterECoordinatesLevelTwo[PackManHydra.GadTwoCounter, 1];
-        if (PackManHydra.GadTwoCounter == 78)
+        if (PackManHydra.GadTwoCounter == monsterECoordinatesLevelTwo.GetLength(0) - 1)
         {
             PackManHydra.GadTwoCounter = 4;
         }
@@ -361,6 +393,5 @@ class Ivaylo
         Console.Write("********************");
         Console.WriteLine();
         Console.CursorVisible = false;
-
     }
 }
