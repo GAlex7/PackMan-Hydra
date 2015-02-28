@@ -123,7 +123,7 @@ class Mariyan
         PackManHydra.badGuysCoordinates[4, 3] = monsterDCoordinatesLevelOne[PackManHydra.GadFourCounter, 1];
         if (PackManHydra.GadFourCounter == 104)
         {
-            PackManHydra.GadFourCounter = 2;
+            PackManHydra.GadFourCounter = 3;
         }
         else
         {
