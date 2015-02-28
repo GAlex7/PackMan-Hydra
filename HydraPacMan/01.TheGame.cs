@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading;
-using System.Globalization;
-using System.Media;
-using System.IO;
 
 class PackManHydra
 {
-    public const int windowWidth = 31;
-    public const int windowHeight = 33;
+    private const int windowWidth = 31;
+    private const int windowHeight = 33;
     public static string ourGuy = "X<>^vx--::";
-    public static string badGuys = "xMQZW";
+    public static string badGuys = "xНЕИД";
 
     public static string[] colors = { "Yellow", "Green", "White", "Magenta", "Cyan" };
     public static int[,] badGuysCoordinates = new int[5, 4];
@@ -24,13 +24,81 @@ class PackManHydra
     public static int points = 0;
     public static int lives = 3;
     public static int direction; // by GA
-
+    // public static int[,] dots;   // GAlex
     public static int GadOneCounter = 0;
     public static int GadTwoCounter = 0;
     public static int GadThreeCounter = 0;
     public static int GadFourCounter = 0;
 
     //private static string gameSounds = Directory.GetCurrentDirectory();
+
+    //Антонина 
+     public static int[,] availablePositionsGuyQ = new int[,]
+    {           
+                {10,5},
+                {9,5},
+                {8,5},
+                {7,5},
+                {6,5},
+                {5,5},
+                {4,5},
+                {3,5},
+                {2,5},
+                {2,6},
+                {2,7},
+                {2,8},
+                {3,8}, 
+                {4,8},
+                {5,8},
+                {6,8},
+                {7,8},
+                {7,7},
+                {7,6}, 
+                {7,5},
+                {7,4},
+                {7,3},
+                {7,2},
+                {7,1},
+                {6,1},
+                {5,1},
+                {4,1},
+                {3,1},
+                {2,1},
+                {2,2},
+                {2,3},
+                {2,4},
+                {2,5},
+                {2,5},
+                {3,5},
+                {4,5},
+                {5,5},
+                {6,5},
+                {7,5},
+                {8,5},
+                {9,5},
+                {10,5},
+                {11,5},
+                {12,5},
+                {13,4},
+                {13,3},
+                {13,2},
+                {13,1},
+                {12,1},
+                {11,1},
+                {10,1},
+                {9,1},
+                {8,1},
+                {7,1},
+                {7,2},
+                {7,3},
+                {7,4},
+                {7,5},
+                {8,5},
+                {9,5},
+                {10,4},
+                
+    
+    };
 
     //Ивайло
     public static int[,] monsterArray = new int[57, 2] 
@@ -94,95 +162,112 @@ class PackManHydra
             {19, 18},
         };
 
-    // Димитър Стоянов
-    public static int[,] monsterZ = new int[86, 2] 
+  
+    //Мариян
+    public static int[,] monsterW = new int[102, 2] 
         {
-            {13, 15},    
-            {12, 15},
-            {11, 15},
-            {10, 15},
-            {10, 16},
-            {10, 17},
-            {10, 18},
-            {9, 18},
-            {8, 18},
-            {7, 18},
-            {6, 18},
-            {5, 18},
-            {4, 18},
-            {3, 18},
-            {2, 18},
-            {2, 19},
-            {2, 20},
-            {2, 21},
-            {3, 21},
-            {4, 21},
-            {4, 22},
-            {4, 23},
-            {4, 24},
-            {5, 24},
-            {6, 24},
-            {7, 24},
-            {7, 23},
-            {7, 22},
-            {7, 21},
-            {7, 20},
-            {7, 19},
-            {7, 18},
-            {8, 18},
-            {9, 18},
-            {10, 18},
-            {11, 18},
-            {12, 18},
-            {13, 18},
-            {13, 19},
-            {13, 20},
-            {13, 21},
-            {12, 21},
-            {11, 21},
-            {10, 21},
-            {10, 22},
-            {10, 23},
-            {10, 24},
-            {11, 24},
-            {12, 24},
-            {13, 24},
-            {13, 25},
-            {13, 26},
-            {13, 27},
-            {12, 27},
-            {11, 27},
-            {10, 27},
-            {9, 27},
-            {8, 27},
-            {7, 27},
-            {6, 27},
-            {5, 27},
-            {4, 27},
-            {3, 27},
-            {2, 27},
-            {2,26},
-            {2,25},
-            {2,24},
-            {3,24},
-            {4,24},
-            {5,24},
-            {6,24},
-            {7,24},
-            {7,23},
-            {7,22},
-            {7,21},
-            {8,21},
-            {9,21},
-            {10,21},
-            {11,21},
-            {12,21},
-            {13,21},
-            {13,20},
-            {13,19},
-            {13,18},
-            {12,18},
-            {11,18},
+            {20, 5},    
+            {19, 5},
+            {18, 5},
+            {17, 5},
+            {17, 4},
+            {17, 3},
+            {17, 2},
+            {17, 1},
+            {18, 1},
+            {19, 1},
+            {20, 1},
+            {21, 1},
+            {22, 1},
+            {23, 1},
+            {23, 2},
+            {23, 3},
+            {23, 4},
+            {23, 5},
+            {23, 5},
+            {24, 5},
+            {25, 5},
+            {26, 5},
+            {27, 5},
+            {28, 5},
+            {28, 6},
+            {28, 7},
+            {28, 8},
+            {27, 8},
+            {26, 8},
+            {25, 8},
+            {24, 8},
+            {23, 8},
+            {23, 7},
+            {23, 6},
+            {23, 5},
+            {22, 5},
+            {21, 5},
+            {20, 5},
+            {20, 6},
+            {20, 7},
+            {20, 8},
+            {19, 8},
+            {18, 8},
+            {17, 8},
+            {17, 9},
+            {17, 10},
+            {17, 11},
+            {16, 11},
+            {15, 11},
+            {14, 11},
+            {13, 11},
+            {12, 11},
+            {11, 11},
+            {10, 11},
+            {10, 11},
+            {10, 12},
+            {10, 13},
+            {09, 13},
+            {08, 13},
+            {07, 13},
+            {06, 13},
+            {05, 13},
+            {04, 13},
+            {03, 13},
+            {02, 13},
+            {01, 13},
+            {00, 13},
+            {29, 13},
+            {28, 13},
+            {27, 13},
+            {26, 13},
+            {25, 13},
+            {24, 13},
+            {23, 13},
+            {23, 12},
+            {23, 11},
+            {23, 10},
+            {23, 09},
+            {23, 08},
+            {24, 08},
+            {25, 08},
+            {26, 08},
+            {27, 08},
+            {28, 08},
+            {28, 07},
+            {28, 06},
+            {28, 05},
+            {28, 04},
+            {28, 03},
+            {28, 02},
+            {28, 01},
+            {27, 01},
+            {26, 01},
+            {25, 01},
+            {24, 01},
+            {23, 01},
+            {23, 02},
+            {23, 03},
+            {23, 04},
+            {23, 05},
+            {22, 05},
+            {21, 05},
         };
 
     private static string gameSounds = Directory.GetCurrentDirectory();
@@ -190,28 +275,34 @@ class PackManHydra
     static void Main()
     {
         // Заглавие на конзолата
-        Console.Title = "PacMan";
-
+        Console.Title = "EatSharp";
+        InitDotsArray();                               //GAlex
         // Задаваме encoding за гадовете
         Console.OutputEncoding = Encoding.UTF8;
 
         // Задаваме размер на конзолата
-        badGuysCoordinates[0, 0] = 15; //Console.WindowHeight = windowHeight;
-        badGuysCoordinates[0, 1] = 21; //Console.WindowWidth = windowWidth;
-        //Console.BufferHeight = Console.WindowHeight;
-        //Console.BufferWidth = Console.WindowWidth;
+        badGuysCoordinates[0, 0] = 15; 
+        badGuysCoordinates[0, 1] = 21;
+        Console.WindowHeight = windowHeight;
+        Console.WindowWidth = windowWidth;
+        Console.BufferHeight = Console.WindowHeight;
+        Console.BufferWidth = Console.WindowWidth;
 
         // Фонова музика
         //SoundPlayer player = new SoundPlayer();
-        SoundPlayer player = new SoundPlayer();
+       // SoundPlayer player = new SoundPlayer();
 
         // Принтиране на логото, изчакване за натискане на клавиш преди преминаване напред
 
         DrawLogo(20);
+
+        DimitarPiskov.PrintGameName();
         Console.ReadKey();
         Console.Clear();
 
-
+        DimitarPiskov.Introduction();
+        Console.ReadKey();
+        Console.Clear();
         // Меню: 1.New Game, 2.Load Game, 3.Score, 4.Exit
 
         Ivaylo.PrintingMenuGame();
@@ -259,12 +350,14 @@ class PackManHydra
             while (true)
             {
                 Thread.Sleep(200);
-            // Викане на нашето човече
+                // Викане на нашето човече
                 // Викане на гадовете от класове
 
                 // Викане на нашето човече
                 Ivaylo.MonsterM();
-                Dimitar.MonsterZ();
+                Dimitar.MonsterIMoving();
+                Marian.MonsterW();
+                Antonina.BadGuyQ();
                 // Обновяване на екрана
 
                 Georgi.RefreshScreen(badGuysCoordinates);
@@ -282,7 +375,7 @@ class PackManHydra
         Console.WriteLine(" │............│ │............│");
         Console.WriteLine(" │.┌──┐.┌───┐.│ │.┌───┐.┌──┐.│");
         Console.WriteLine(" │.│  │.│ Q │.│ │.│ W │.│  │.│");
-        Console.WriteLine(" │о└──┘.└┘─└┘.└─┘.└┘─└┘.└──┘о│");
+        Console.WriteLine(" │#└──┘.└┘─└┘.└─┘.└┘─└┘.└──┘#│");
         Console.WriteLine(" │...........................│");
         Console.WriteLine(" │.┌──┐.┌┐.┌───────┐.┌┐.┌──┐.│");
         Console.WriteLine(" │.└──┘.││.└──┐ ┌──┘.││.└──┘.│");
@@ -299,7 +392,7 @@ class PackManHydra
         Console.WriteLine(" │............│ │............│");
         Console.WriteLine(" │.┌──┐.┌───┐.│ │.┌───┐.┌──┐.│");
         Console.WriteLine(" │.└─┐│.└───┘.└─┘.└───┘.│┌─┘.│");
-        Console.WriteLine(" │о..││....... X .......││..о│");
+        Console.WriteLine(" │#..││....... X .......││..#│");
         Console.WriteLine(" └─┐.││.┌┐.┌───────┐.┌┐.││.┌─┘");
         Console.WriteLine(" ┌─┘.└┘.││.└──┐ ┌──┘.││.└┘.└─┐");
         Console.WriteLine(" │......││....│ │....││......│");
@@ -401,5 +494,22 @@ class PackManHydra
         };
         Console.WriteLine();
     }
-
+    private static void InitDotsArray()
+    {
+        string fileName = @"..\..\Dots.txt";
+        int row = -1;
+        using (StreamReader streamReader = new StreamReader(fileName))
+        {
+            string textRow = streamReader.ReadLine();
+            while (textRow != null)
+            {
+                row++;
+                for (int i = 0; i < textRow.Length; i++)
+                {
+                    smallAndBigDots[row, i] = int.Parse(textRow[i].ToString());
+                }
+                textRow = streamReader.ReadLine();
+            }
+        }
+    }
 }
