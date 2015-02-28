@@ -83,8 +83,8 @@ class PackManHydra
         ConsoleKeyInfo choice = Console.ReadKey();
 
         StringBuilder userNickname = new StringBuilder();
-        
-        
+
+
 
         if (choice.Key == ConsoleKey.D1)
         {
@@ -128,13 +128,7 @@ class PackManHydra
                             user.Append(nickname[i].KeyChar);
                         }
                         user.Append(" - ");
-                        //highScores.Add(user.ToString());
-                        //
-                        //for (int i = 0; i < highScores.Count; i++)
-                        //{
-                        //    user.Append(highScores[i]);
-                        //}
-                        userScores.Write(user);
+                        userScores.WriteLine(user);
                     }
                     inputSuccess = false;
                 }
@@ -180,7 +174,7 @@ class PackManHydra
             //player.Load();
             //player.Play();
 
-            while (true)
+            while (endGame)
             {
                 // Забавяне на конзолата
                 Thread.Sleep(200);
@@ -195,6 +189,29 @@ class PackManHydra
                 Georgi.RefreshScreen(badGuysCoordinates);
 
                 // Проверка за сблъсък и проверка за изяден бонус
+            }
+
+
+
+            if (endGame == false)
+            {
+                StreamReader userScoresRead = new StreamReader(@"..\..\HighScores.txt");
+                using (userScoresRead)
+                {
+                    string line = userScoresRead.ReadLine();
+
+                    while (line != null)
+                    {
+                        user.Append(line);
+                        line = userScoresRead.ReadLine();
+                    }
+                }
+                StreamWriter userScores = new StreamWriter(@"..\..\HighScores.txt");
+                using (userScores)
+                {
+                    user.Append(points);
+                    userScores.WriteLine(user);
+                }
             }
         }
         else if (choice.Key == ConsoleKey.D2)
@@ -221,6 +238,7 @@ class PackManHydra
                 Main();
             }
         }
+
         else if (choice.Key == ConsoleKey.D3)
         {
             StreamReader userScoresRead = new StreamReader(@"..\..\HighScores.txt");
@@ -229,7 +247,7 @@ class PackManHydra
             Console.Write("HIGH SCORES");
             Console.SetCursorPosition(3, 5);
             // Извикване на файла, който държи High scores
-            Console.WriteLine(userScoresRead.ReadToEnd());
+            Console.WriteLine();
             Console.SetCursorPosition(5, 30);
             Console.Write("Press enter to return");
             Console.SetCursorPosition(10, 31);
@@ -254,8 +272,9 @@ class PackManHydra
             Console.Clear();
             Environment.Exit(-1);
         }
-        Console.CursorVisible = false;
+            Console.CursorVisible = false;
 
+        
     }
 
     private static void DrawLogo(int n)
