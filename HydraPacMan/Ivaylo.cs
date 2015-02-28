@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 class Ivaylo
 {
     // Гад 1 -> M row 13 col 17 GadOneCounter = 0; -> +1
-    public static void MonsterM()
+    public static void MonsterNMoving()
     {
         PackManHydra.badGuysCoordinates[1, 0] = PackManHydra.badGuysCoordinates[1, 2];
         PackManHydra.badGuysCoordinates[1, 1] = PackManHydra.badGuysCoordinates[1, 3];
@@ -25,7 +25,7 @@ class Ivaylo
         PackManHydra.badGuysCoordinates[1, 3] = PackManHydra.monsterArray[PackManHydra.GadOneCounter, 1];
     }
 
-    public static int[,] monsterArray2 = new int[103, 2] 
+    public static int[,] monsterNCoordinatesLevelTwo = new int[103, 2] 
         {
             {17, 13},    
             {17, 14},
@@ -132,12 +132,12 @@ class Ivaylo
             {20, 18},
         };
 
-    public static void MonsterM2()
+    public static void MonsterNMovingLevelTwo()
     {
         PackManHydra.badGuysCoordinates[1, 0] = PackManHydra.badGuysCoordinates[1, 2];
         PackManHydra.badGuysCoordinates[1, 1] = PackManHydra.badGuysCoordinates[1, 3];
-        PackManHydra.badGuysCoordinates[1, 2] = PackManHydra.monsterArray2[PackManHydra.GadOneCounter, 0];
-        PackManHydra.badGuysCoordinates[1, 3] = PackManHydra.monsterArray2[PackManHydra.GadOneCounter, 1];
+        PackManHydra.badGuysCoordinates[1, 2] = monsterNCoordinatesLevelTwo[PackManHydra.GadOneCounter, 0];
+        PackManHydra.badGuysCoordinates[1, 3] = monsterNCoordinatesLevelTwo[PackManHydra.GadOneCounter, 1];
         if (PackManHydra.GadOneCounter == 102)
         {
             PackManHydra.GadOneCounter = 9;
@@ -146,11 +146,11 @@ class Ivaylo
         {
             PackManHydra.GadOneCounter++;
         }
-        PackManHydra.badGuysCoordinates[1, 2] = PackManHydra.monsterArray2[PackManHydra.GadOneCounter, 0];
-        PackManHydra.badGuysCoordinates[1, 3] = PackManHydra.monsterArray2[PackManHydra.GadOneCounter, 1];
+        PackManHydra.badGuysCoordinates[1, 2] = monsterNCoordinatesLevelTwo[PackManHydra.GadOneCounter, 0];
+        PackManHydra.badGuysCoordinates[1, 3] = monsterNCoordinatesLevelTwo[PackManHydra.GadOneCounter, 1];
     }
 
-    public static int[,] monsterArrayQ2 = new int[79, 2] 
+    public static int[,] monsterECoordinatesLevelTwo = new int[79, 2] 
         {
             {10, 3},    
             {10, 4},
@@ -233,12 +233,12 @@ class Ivaylo
             {10, 6},
         };
 
-    public static void MonsterQ2()
+    public static void MonsterEMovingLevelTwo()
     {
         PackManHydra.badGuysCoordinates[2, 0] = PackManHydra.badGuysCoordinates[2, 2];
         PackManHydra.badGuysCoordinates[2, 1] = PackManHydra.badGuysCoordinates[2, 3];
-        PackManHydra.badGuysCoordinates[2, 2] = PackManHydra.monsterArrayQ2[PackManHydra.GadTwoCounter, 0];
-        PackManHydra.badGuysCoordinates[2, 3] = PackManHydra.monsterArrayQ2[PackManHydra.GadTwoCounter, 1];
+        PackManHydra.badGuysCoordinates[2, 2] = monsterECoordinatesLevelTwo[PackManHydra.GadTwoCounter, 0];
+        PackManHydra.badGuysCoordinates[2, 3] = monsterECoordinatesLevelTwo[PackManHydra.GadTwoCounter, 1];
         if (PackManHydra.GadTwoCounter == 78)
         {
             PackManHydra.GadTwoCounter = 4;
@@ -247,8 +247,8 @@ class Ivaylo
         {
             PackManHydra.GadTwoCounter++;
         }
-        PackManHydra.badGuysCoordinates[2, 2] = PackManHydra.monsterArrayQ2[PackManHydra.GadTwoCounter, 0];
-        PackManHydra.badGuysCoordinates[2, 3] = PackManHydra.monsterArrayQ2[PackManHydra.GadTwoCounter, 1];
+        PackManHydra.badGuysCoordinates[2, 2] = monsterECoordinatesLevelTwo[PackManHydra.GadTwoCounter, 0];
+        PackManHydra.badGuysCoordinates[2, 3] = monsterECoordinatesLevelTwo[PackManHydra.GadTwoCounter, 1];
     }
 
     public static void PrintingMenuGame()

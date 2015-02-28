@@ -30,7 +30,7 @@ class PackManHydra
     public static int GadThreeCounter = 0;
     public static int GadFourCounter = 0;
 
-
+    private const int numberOfMovingObjects = 5;
     //private static string gameSounds = Directory.GetCurrentDirectory();
 
     //Антонина 
@@ -291,7 +291,7 @@ class PackManHydra
         // SoundPlayer player = new SoundPlayer();
         // SoundPlayer player = new SoundPlayer();
 
-        // Принтиране на логото, изчакване за натискане на клавиш преди преминаване напред
+        // Принтиране на логото и заглавието, изчакване за натискане на клавиш преди преминаване напред
 
         DrawLogo(20);
 
@@ -303,7 +303,7 @@ class PackManHydra
         Console.ReadKey();
         Console.Clear();
 
-        // Меню: 1.New Game, 2.Instruction, 3.Hight Score, 4.Exit game
+        // Меню: 1.New Game, 2.Instruction, 3.High Score, 4.Exit game
 
         Ivaylo.PrintingMenuGame();
 
@@ -412,7 +412,7 @@ class PackManHydra
                 Thread.Sleep(200);
 
                 // Викане на нашето човече
-                Ivaylo.MonsterM();
+                Ivaylo.MonsterNMoving();
                 Dimitar.MonsterIMoving();
                 Marian.MonsterW();
                 Antonina.BadGuyQ();
@@ -590,6 +590,24 @@ class PackManHydra
     private static void InitDotsArray()
     {
         string fileName = @"..\..\Dots.txt";
+        int row = -1;
+        using (StreamReader streamReader = new StreamReader(fileName))
+        {
+            string textRow = streamReader.ReadLine();
+            while (textRow != null)
+            {
+                row++;
+                for (int i = 0; i < textRow.Length; i++)
+                {
+                    smallAndBigDots[row, i] = int.Parse(textRow[i].ToString());
+                }
+                textRow = streamReader.ReadLine();
+            }
+        }
+    }
+    private static void InitDotsArray()
+    {
+        string fileName = @"..\..\LevelOneInit.txt";
         int row = -1;
         using (StreamReader streamReader = new StreamReader(fileName))
         {
