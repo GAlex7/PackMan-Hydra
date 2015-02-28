@@ -6,7 +6,7 @@ using System.Threading;
 
 class Georgi
 {
-      // Изчертаване на екрана
+    // Изчертаване на екрана
     static public void RefreshScreen(int[,] crawliesPos)
     {
         Type type = typeof(ConsoleColor);
@@ -18,22 +18,26 @@ class Georgi
 
             if (Marian.wallsLevelOne[crawliesPos[i, 3], crawliesPos[i, 2]] == 0)
             {
-                
+
                 if (i == 0)
                 {
                     Console.SetCursorPosition(crawliesPos[i, 0], crawliesPos[i, 1]);
                     PackManHydra.points += PackManHydra.smallAndBigDots[crawliesPos[i, 1], crawliesPos[i, 0]] * 10;
-                    Console.Write(" "); PackManHydra.smallAndBigDots[crawliesPos[i, 1],crawliesPos[i, 0]] = 0;
+                    Console.Write(" "); PackManHydra.smallAndBigDots[crawliesPos[i, 1], crawliesPos[i, 0]] = 0;
+
                     Console.SetCursorPosition(crawliesPos[i, 2], crawliesPos[i, 3]);
                     Console.Write(PackManHydra.ourGuy[PackManHydra.direction + 5]);
                     Thread.Sleep(50); Console.SetCursorPosition(crawliesPos[i, 2], crawliesPos[i, 3]);
                     Console.ForegroundColor = (ConsoleColor)Enum.Parse(type, PackManHydra.colors[i]);
                     Console.Write(PackManHydra.ourGuy[PackManHydra.direction]);
+
+
+
                 }
                 else
                 {
                     Console.SetCursorPosition(crawliesPos[i, 0], crawliesPos[i, 1]);
-                    switch (PackManHydra.smallAndBigDots[crawliesPos[i, 1],crawliesPos[i, 0]])
+                    switch (PackManHydra.smallAndBigDots[crawliesPos[i, 1], crawliesPos[i, 0]])
                     {
                         case 1:
                             {
@@ -64,6 +68,17 @@ class Georgi
                 Console.Write(new String(PackManHydra.badGuys[0], PackManHydra.lives));
                 Console.SetCursorPosition(7, 30);
                 Console.WriteLine("Level: {0}  Score: {1,6}", 1, PackManHydra.points);
+
+                for (int k = 1; k < 5; k++)
+                {
+                    if (crawliesPos[0, 0] == crawliesPos[k, 0] && crawliesPos[0, 1] == crawliesPos[k, 1])
+                    {
+                        Console.SetCursorPosition(5, 15);
+                        Console.WriteLine("YOU HAVE BEEN EATEN!!!");
+                        PackManHydra.endLevelOne = false;
+                        return;
+                    }
+                }
 
             }
         }
@@ -121,6 +136,7 @@ class Georgi
         else coordinates[0, 2] = x + directions[posoka][1];
         coordinates[0, 3] = y + directions[posoka][0];
         PackManHydra.direction = posoka;
+
     }
 }
 
