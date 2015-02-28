@@ -8,6 +8,8 @@ class Mariyan
 {
     public static int[,] monsterDCoordinatesLevelOne = new int[,] 
         {
+            {20, 2},    
+            {20, 3},
             {20, 4},
             {20, 5},    
             {19, 5},
@@ -119,9 +121,9 @@ class Mariyan
         PackManHydra.badGuysCoordinates[4, 1] = PackManHydra.badGuysCoordinates[4, 3];
         PackManHydra.badGuysCoordinates[4, 2] = monsterDCoordinatesLevelOne[PackManHydra.GadFourCounter, 0];
         PackManHydra.badGuysCoordinates[4, 3] = monsterDCoordinatesLevelOne[PackManHydra.GadFourCounter, 1];
-        if (PackManHydra.GadFourCounter == 102)
+        if (PackManHydra.GadFourCounter == 104)
         {
-            PackManHydra.GadFourCounter = 0;
+            PackManHydra.GadFourCounter = 3;
         }
         else
         {
