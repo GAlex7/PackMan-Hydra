@@ -25,6 +25,130 @@ class Ivaylo
         PackManHydra.badGuysCoordinates[1, 3] = PackManHydra.monsterArray[PackManHydra.GadOneCounter, 1];
     }
 
+    public static int[,] monsterArray = new int[103, 2] 
+        {
+            {17, 13},    
+            {17, 14},
+            {17, 15},
+            {18, 15},
+            {19, 15},
+            {20, 15},
+            {20, 16},
+            {20, 17},
+            {20, 18},
+            {19, 18},
+            {18, 18},
+            {17, 18},
+            {17, 19},
+            {17, 20},
+            {17, 21},
+            {18, 21},
+            {19, 21},
+            {20, 21},
+            {20, 22},
+            {20, 23},
+            {20, 24},
+            {19, 24},
+            {18, 24},
+            {17, 24},
+            {17, 25},
+            {17, 26},
+            {17, 27},
+            {18, 27},
+            {19, 27},
+            {20, 27},
+            {21, 27},
+            {22, 27},
+            {23, 27},
+            {24, 27},
+            {25, 27},
+            {26, 27},
+            {27, 27},
+            {28, 27},
+            {28, 26},
+            {28, 25},
+            {28, 24},
+            {27, 24},
+            {26, 24},
+            {25, 24},
+            {24, 24},
+            {23, 24},
+            {24, 24},
+            {25, 24},
+            {26, 24},
+            {26, 23},
+            {26, 22},
+            {26, 21},
+            {27, 21},
+            {28, 21},
+            {28, 20},
+            {28, 19},
+            {28, 18},
+            {27, 18},
+            {26, 18},
+            {27, 18},
+            {28, 18},
+            {28, 19},
+            {28, 20},
+            {28, 21},
+            {27, 21},
+            {26, 21},
+            {26, 22},
+            {26, 23},
+            {26, 24},
+            {27, 24},
+            {28, 24},
+            {28, 25},
+            {28, 26},
+            {28, 27},
+            {27, 27},
+            {26, 27},
+            {25, 27},
+            {24, 27},
+            {23, 27},
+            {22, 27},
+            {21, 27},
+            {20, 27},
+            {19, 27},
+            {18, 27},
+            {17, 27},
+            {17, 26},
+            {17, 25},
+            {17, 24},
+            {18, 24},
+            {19, 24},
+            {20, 24},
+            {20, 23},
+            {20, 22},
+            {20, 21},
+            {21, 21},
+            {22, 21},
+            {23, 21},
+            {23, 20},
+            {23, 19},
+            {23, 18},
+            {22, 18},
+            {21, 18},
+            {20, 18},
+        };
+
+    public static void MonsterM2()
+    {
+        PackManHydra.badGuysCoordinates[1, 0] = PackManHydra.badGuysCoordinates[1, 2];
+        PackManHydra.badGuysCoordinates[1, 1] = PackManHydra.badGuysCoordinates[1, 3];
+        PackManHydra.badGuysCoordinates[1, 2] = PackManHydra.monsterArray[PackManHydra.GadOneCounter, 0];
+        PackManHydra.badGuysCoordinates[1, 3] = PackManHydra.monsterArray[PackManHydra.GadOneCounter, 1];
+        if (PackManHydra.GadOneCounter == 102)
+        {
+            PackManHydra.GadOneCounter = 9;
+        }
+        else
+        {
+            PackManHydra.GadOneCounter++;
+        }
+        PackManHydra.badGuysCoordinates[1, 2] = PackManHydra.monsterArray[PackManHydra.GadOneCounter, 0];
+        PackManHydra.badGuysCoordinates[1, 3] = PackManHydra.monsterArray[PackManHydra.GadOneCounter, 1];
+    }
 
     public static void PrintingMenuGame()
     {
