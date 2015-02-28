@@ -13,7 +13,7 @@ class Ivaylo
         PackManHydra.badGuysCoordinates[1, 1] = PackManHydra.badGuysCoordinates[1, 3];
         PackManHydra.badGuysCoordinates[1, 2] = PackManHydra.monsterArray[PackManHydra.GadOneCounter, 0];
         PackManHydra.badGuysCoordinates[1, 3] = PackManHydra.monsterArray[PackManHydra.GadOneCounter, 1];
-        if (PackManHydra.GadOneCounter == 56)
+        if (PackManHydra.GadOneCounter == 57)
         {
             PackManHydra.GadOneCounter = 6;
         }

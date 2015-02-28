@@ -16,7 +16,7 @@ class Georgi
         for (int i = 0; i < 5; i++)
         {
 
-            if (PackManHydra.walls[crawliesPos[i, 3], crawliesPos[i, 2]] == 0)
+            if (Marian.wallsLevelOne[crawliesPos[i, 3], crawliesPos[i, 2]] == 0)
             {
                 
                 if (i == 0)
@@ -90,25 +90,25 @@ class Georgi
             ConsoleKeyInfo userInput = Console.ReadKey();
             if (userInput.Key == ConsoleKey.LeftArrow)
             {
-                if (PackManHydra.walls[y, x - 1] != 1)
+                if (Marian.wallsLevelOne[y, x - 1] != 1)
                     posoka = left;
                 else posoka = stop;
             }
             if (userInput.Key == ConsoleKey.RightArrow)
             {
-                if (PackManHydra.walls[y, x + 1] != 1)
+                if (Marian.wallsLevelOne[y, x + 1] != 1)
                     posoka = right;
                 else posoka = stop;
             }
             if (userInput.Key == ConsoleKey.UpArrow)
             {
-                if (PackManHydra.walls[y - 1, x] != 1)
+                if (Marian.wallsLevelOne[y - 1, x] != 1)
                     posoka = up;
                 else posoka = stop;
             }
             if (userInput.Key == ConsoleKey.DownArrow)
             {
-                if (PackManHydra.walls[y + 1, x] != 1)
+                if (Marian.wallsLevelOne[y + 1, x] != 1)
                     posoka = down;
                 else posoka = stop;
             }
