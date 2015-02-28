@@ -30,11 +30,11 @@ class PackManHydra
     public static int GadThreeCounter = 0;
     public static int GadFourCounter = 0;
 
-
+    private const int numberOfMovingObjects = 5;
     //private static string gameSounds = Directory.GetCurrentDirectory();
 
     //Антонина 
-     public static int[,] availablePositionsGuyQ = new int[,]
+    public static int[,] availablePositionsGuyQ = new int[,]
     {           
                 {10,5},
                 {9,5},
@@ -163,7 +163,7 @@ class PackManHydra
             {19, 18},
         };
 
-  
+
     //Мариян
     public static int[,] monsterW = new int[102, 2] 
         {
@@ -286,12 +286,12 @@ class PackManHydra
 
         // Бонус точки
         InitDotsArray();
-        
+
         // Фонова музика
         // SoundPlayer player = new SoundPlayer();
         // SoundPlayer player = new SoundPlayer();
 
-        // Принтиране на логото, изчакване за натискане на клавиш преди преминаване напред
+        // Принтиране на логото и заглавието, изчакване за натискане на клавиш преди преминаване напред
 
         DrawLogo(20);
 
@@ -302,83 +302,149 @@ class PackManHydra
         DimitarPiskov.Introduction();
         Console.ReadKey();
         Console.Clear();
-        // Меню: 1.New Game, 2.Load Game, 3.Score, 4.Exit
+
+        // Меню: 1.New Game, 2.Instruction, 3.High Score, 4.Exit game
 
         Ivaylo.PrintingMenuGame();
 
         // Начална позиция на нашето човече
-        badGuysCoordinates[0, 0] = 15;
-        badGuysCoordinates[0, 1] = 21;
+        //badGuysCoordinates[0, 0] = 15;
+        //badGuysCoordinates[0, 1] = 21;
 
-        try
+        ConsoleKeyInfo choice = Console.ReadKey();
+
+        StringBuilder userNickname = new StringBuilder();
+
+        if (choice.Key == ConsoleKey.D1)
         {
-            int choice = int.Parse(Console.ReadLine());
+            Console.Clear();
 
-            if (choice == 1) // New game
+            int currentColumn = 15;
+            bool inputSuccess = true;
+            var nickname = new List<ConsoleKeyInfo>();
+            StreamWriter userScores = new StreamWriter(@"..\..\HighScores.txt");
+
+            while (inputSuccess)
             {
-                DrawGameBoard();
-        Thread.Sleep(1000);
-        Console.ForegroundColor = ConsoleColor.Green;
-        for (int i = 3; i >= 0; i--)
-        {
-            Console.SetCursorPosition(13, 15);
-            Console.Beep(1300, 100);
-            Console.Write("- {0} - ", i);
-            Thread.Sleep(900);
+                Console.SetCursorPosition(5, 15);
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Please enter nickname:");
+                Console.SetCursorPosition(currentColumn, 17);
 
-        }
-        Console.SetCursorPosition(13, 15);
-        Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.Write("-GO!-");
-        Console.Beep(1500, 1000);
-        Console.SetCursorPosition(13, 15);
-        Console.Write("     ");
-        Console.SetCursorPosition(0, 30);
-
-        //player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
-        //player.Load();
-        //player.Play();
-
-                while (true)
+                for (int i = 0; i < nickname.Count; i++)
                 {
-                    // Забавяне на конзолата
-                    Thread.Sleep(200);
-
-                    // Викане на нашето човече
-                    Ivaylo.MonsterM();
-                    Dimitar.MonsterIMoving();
-                    Marian.MonsterW();
-                    Antonina.BadGuyQ();
-
-                    // Обновяване на екрана
-                    Georgi.RefreshScreen(badGuysCoordinates);
-
-                    // Проверка за сблъсък и проверка за изяден бонус
+                    Console.Write(nickname[i].KeyChar);
                 }
+
+                ConsoleKeyInfo inputLetter = Console.ReadKey();
+                if (inputLetter.Key == ConsoleKey.Enter && nickname.Count >= 1)
+                {
+                    using (userScores)
+                    {
+                        for (int i = 0; i < nickname.Count; i++)
+                        {
+                            userScores.Write(nickname[i].KeyChar);
+                        }
+                        userScores.Write(" - ");
+                    }
+                    inputSuccess = false;
+                }
+                else if (inputLetter.Key == ConsoleKey.Enter && nickname.Count == 0)
+                {
+                    Console.Clear();
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.SetCursorPosition(2, 17);
+                    Console.WriteLine("Enter at least 1 character!");
+                    continue;
+                }
+
+                if (inputLetter.Key != ConsoleKey.Backspace)
+                {
+                    nickname.Add(inputLetter);
+                    if (nickname.Count % 2 == 0)
+                    {
+                        currentColumn--;
+                    }
+                }
+                else if (inputLetter.Key == ConsoleKey.Backspace)
+                {
+                    if (nickname.Count == 0)
+                    {
+                        continue;
+                    }
+
+                    nickname.RemoveAt(nickname.Count - 1);
+                    if (nickname.Count % 2 == 0)
+                    {
+                        currentColumn++;
+                    }
+                }
+
+                Console.Clear();
             }
-            else if (choice == 2) // Instructions
+
+            DrawGameBoard();
+            Thread.Sleep(1000);
+            Console.ForegroundColor = ConsoleColor.Green;
+            for (int i = 3; i >= 0; i--)
             {
-                DimitarPiskov.Instructions();
+                Console.SetCursorPosition(13, 15);
+                Console.Beep(1300, 100);
+                Console.Write("- {0} - ", i);
+                Thread.Sleep(900);
+
             }
-            else if (choice == 3) // High scores
+            Console.SetCursorPosition(13, 15);
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.Write("-GO!-");
+            Console.Beep(1500, 1000);
+            Console.SetCursorPosition(13, 15);
+            Console.Write("     ");
+            Console.SetCursorPosition(0, 30);
+
+            //player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
+            //player.Load();
+            //player.Play();
+
+            while (true)
             {
-                // Извикване на файла, който държи High scores
-            }
-            else if (choice == 4)
-            {
-                return;
+                // Забавяне на конзолата
+                Thread.Sleep(200);
+
+                // Викане на нашето човече
+                Ivaylo.MonsterNMoving();
+                Dimitar.MonsterIMoving();
+                Marian.MonsterW();
+                Antonina.BadGuyQ();
+
+                // Обновяване на екрана
+                Georgi.RefreshScreen(badGuysCoordinates);
+
+                // Проверка за сблъсък и проверка за изяден бонус
             }
         }
-        catch (FormatException)
+        else if (choice.Key == ConsoleKey.D2)
         {
-            Console.WriteLine("Invalid input!");
+            Console.Clear();
+            DimitarPiskov.Instructions();
+            Console.ReadKey(true);
+        }
+        else if (choice.Key == ConsoleKey.D3)
+        {
+            Console.Clear();
+            Console.WriteLine("Hight scores");
+
+            // Извикване на файла, който държи High scores
+            Console.ReadKey(true);
+
+        }
+        else if (choice.Key == ConsoleKey.D4)
+        {
+            Console.Clear();
+            Environment.Exit(-1);
         }
 
-        
 
-
-
-        Console.Clear();
 
 
         // Изчистваме конзолата
@@ -388,29 +454,11 @@ class PackManHydra
         // Принтиране на логото, изчакване за натискане на клавиш преди преминаване напред
         // Ако е натиснато 1 -> чертаем лабиринта и на мястото на  READY да има брояч -> 3, 2, 1 (сменят се) -> GO
 
-        DrawGameBoard();
-        Thread.Sleep(1000);
-        Console.ForegroundColor = ConsoleColor.Green;
-        for (int i = 3; i >= 0; i--)
-        {
-            Console.SetCursorPosition(13, 15);
-            Console.Beep(1300, 100);
-            Console.Write("- {0} - ", i);
-            Thread.Sleep(900);
-
-        }
-        Console.SetCursorPosition(13, 15);
-        Console.ForegroundColor = ConsoleColor.Magenta;
-        Console.Write("-GO!-");
-        Console.Beep(1500, 1000);
-        Console.SetCursorPosition(13, 15);
-        Console.Write("     ");
-        Console.SetCursorPosition(0, 30);
 
         //player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
         //player.Load();
         //player.Play();
-        
+
     }
 
 
@@ -542,6 +590,38 @@ class PackManHydra
     private static void InitDotsArray()
     {
         string fileName = @"..\..\Dots.txt";
+        int row = -1;
+        using (StreamReader streamReader = new StreamReader(fileName))
+        {
+            string textRow = streamReader.ReadLine();
+            while (textRow != null)
+            {
+                row++;
+                for (int i = 0; i < textRow.Length; i++)
+                {
+                    smallAndBigDots[row, i] = int.Parse(textRow[i].ToString());
+                }
+                textRow = streamReader.ReadLine();
+            }
+        }
+        fileName = @"..\..\LevelOneInit.txt";
+        row = -1;
+        using (StreamReader streamReader = new StreamReader(fileName))
+        {
+            string textRow = streamReader.ReadLine();
+            while (textRow != null)
+            {
+                row++;
+                string[] xy = textRow.Split(' ');
+                badGuysCoordinates[row, 0] = int.Parse(xy[0]);
+                badGuysCoordinates[row, 1] = int.Parse(xy[1]);
+                textRow = streamReader.ReadLine();
+            }
+        }
+    }
+    private static void InitDotsArray()
+    {
+        string fileName = @"..\..\LevelOneInit.txt";
         int row = -1;
         using (StreamReader streamReader = new StreamReader(fileName))
         {
