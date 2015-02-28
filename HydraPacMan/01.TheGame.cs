@@ -14,7 +14,7 @@ class PackManHydra
     public static string ourGuy = "X<>^vx--::";
     public static string badGuys = "xНЕИД";
 
-    public static string[] colors = { "Yellow", "Green", "White", "Magenta", "Cyan" };
+    public static string[] colors = { "Yellow", "Green", "White", "DarkMagenta", "Blue" };
     public static int[,] badGuysCoordinates = new int[5, 4];
     public static int[,] smallAndBigDots = new int[29, 30];
 
@@ -31,250 +31,12 @@ class PackManHydra
     public static int GadFourCounter = 0;
 
     private const int numberOfMovingObjects = 5;
+    private static bool returnFromHighScores = true;
     //private static string gameSounds = Directory.GetCurrentDirectory();
-
-    //Антонина 
-    public static int[,] availablePositionsGuyQ = new int[,]
-    {           
-                {10,4},
-                {10,5},
-                {9,5},
-                {8,5},
-                {7,5},
-                {6,5},
-                {5,5},
-                {4,5},
-                {3,5},
-                {2,5},
-                {2,6},
-                {2,7},
-                {2,8},
-                {3,8}, 
-                {4,8},
-                {5,8},
-                {6,8},
-                {7,8},
-                {7,7},
-                {7,6}, 
-                {7,5},
-                {7,4},
-                {7,3},
-                {7,2},
-                {7,1},
-                {6,1},
-                {5,1},
-                {4,1},
-                {3,1},
-                {2,1},
-                {2,2},
-                {2,3},
-                {2,4},
-                {2,5},
-                {2,5},
-                {3,5},
-                {4,5},
-                {5,5},
-                {6,5},
-                {7,5},
-                {8,5},
-                {9,5},
-                {10,5},
-                {11,5},
-                {12,5},
-                {13,4},
-                {13,3},
-                {13,2},
-                {13,1},
-                {12,1},
-                {11,1},
-                {10,1},
-                {9,1},
-                {8,1},
-                {7,1},
-                {7,2},
-                {7,3},
-                {7,4},
-                {7,5},
-                {8,5},
-                {9,5},
-                {10,4},
-                
-    
-    };
-
-    //Ивайло
-    public static int[,] monsterArray = new int[,] 
-        {
-            {17, 14}, 
-            {18, 15},    
-            {19, 15},
-            {20, 15},
-            {20, 16},
-            {20, 17},
-            {20, 18},
-            {19, 18},
-            {18, 18},
-            {17, 18},
-            {17, 19},
-            {17, 20},
-            {17, 21},
-            {18, 21},
-            {19, 21},
-            {20, 21},
-            {20, 22},
-            {20, 23},
-            {20, 24},
-            {19, 24},
-            {18, 24},
-            {17, 24},
-            {17, 25},
-            {17, 26},
-            {17, 27},
-            {18, 27},
-            {19, 27},
-            {20, 27},
-            {21, 27},
-            {22, 27},
-            {23, 27},
-            {24, 27},
-            {25, 27},
-            {26, 27},
-            {27, 27},
-            {28, 27},
-            {28, 26},
-            {28, 25},
-            {28, 24},
-            {27, 24},
-            {26, 24},
-            {26, 23},
-            {26, 22},
-            {26, 21},
-            {27, 21},
-            {28, 21},
-            {28, 20},
-            {28, 19},
-            {28, 18},
-            {27, 18},
-            {26, 18},
-            {25, 18},
-            {24, 18},
-            {23, 18},
-            {22, 18},
-            {21, 18},
-            {20, 18},
-            {19, 18},
-        };
-
-
-    //Мариян
-    public static int[,] monsterW = new int[,] 
-        {
-            {20, 4},
-            {20, 5},    
-            {19, 5},
-            {18, 5},
-            {17, 5},
-            {17, 4},
-            {17, 3},
-            {17, 2},
-            {17, 1},
-            {18, 1},
-            {19, 1},
-            {20, 1},
-            {21, 1},
-            {22, 1},
-            {23, 1},
-            {23, 2},
-            {23, 3},
-            {23, 4},
-            {23, 5},
-            {23, 5},
-            {24, 5},
-            {25, 5},
-            {26, 5},
-            {27, 5},
-            {28, 5},
-            {28, 6},
-            {28, 7},
-            {28, 8},
-            {27, 8},
-            {26, 8},
-            {25, 8},
-            {24, 8},
-            {23, 8},
-            {23, 7},
-            {23, 6},
-            {23, 5},
-            {22, 5},
-            {21, 5},
-            {20, 5},
-            {20, 6},
-            {20, 7},
-            {20, 8},
-            {19, 8},
-            {18, 8},
-            {17, 8},
-            {17, 9},
-            {17, 10},
-            {17, 11},
-            {16, 11},
-            {15, 11},
-            {14, 11},
-            {13, 11},
-            {12, 11},
-            {11, 11},
-            {10, 11},
-            {10, 11},
-            {10, 12},
-            {10, 13},
-            {09, 13},
-            {08, 13},
-            {07, 13},
-            {06, 13},
-            {05, 13},
-            {04, 13},
-            {03, 13},
-            {02, 13},
-            {01, 13},
-            {00, 13},
-            {29, 13},
-            {28, 13},
-            {27, 13},
-            {26, 13},
-            {25, 13},
-            {24, 13},
-            {23, 13},
-            {23, 12},
-            {23, 11},
-            {23, 10},
-            {23, 09},
-            {23, 08},
-            {24, 08},
-            {25, 08},
-            {26, 08},
-            {27, 08},
-            {28, 08},
-            {28, 07},
-            {28, 06},
-            {28, 05},
-            {28, 04},
-            {28, 03},
-            {28, 02},
-            {28, 01},
-            {27, 01},
-            {26, 01},
-            {25, 01},
-            {24, 01},
-            {23, 01},
-            {23, 02},
-            {23, 03},
-            {23, 04},
-            {23, 05},
-            {22, 05},
-            {21, 05},
-        };
-
     private static string gameSounds = Directory.GetCurrentDirectory();
+    public static List<string> highScores = new List<string>();
+    public static StringBuilder user = new StringBuilder();
+
 
     static void Main()
     {
@@ -296,15 +58,18 @@ class PackManHydra
 
         // Принтиране на логото и заглавието, изчакване за натискане на клавиш преди преминаване напред
 
-        DrawLogo(20);
+        if (returnFromHighScores)
+        {
+            DrawLogo(20);
 
-        DimitarPiskov.PrintGameName();
-        Console.ReadKey();
-        Console.Clear();
+            DimitarPiskov.PrintGameName();
+            Console.ReadKey();
+            Console.Clear();
 
-        DimitarPiskov.Introduction();
-        Console.ReadKey();
-        Console.Clear();
+            DimitarPiskov.Introduction();
+            Console.ReadKey();
+            Console.Clear();
+        }
 
         // Меню: 1.New Game, 2.Instruction, 3.High Score, 4.Exit game
 
@@ -317,6 +82,8 @@ class PackManHydra
         ConsoleKeyInfo choice = Console.ReadKey();
 
         StringBuilder userNickname = new StringBuilder();
+        StreamReader userScoresRead = new StreamReader(@"..\..\HighScores.txt");
+        StreamWriter userScores = new StreamWriter(@"HighScores.txt");
 
         if (choice.Key == ConsoleKey.D1)
         {
@@ -325,7 +92,6 @@ class PackManHydra
             int currentColumn = 15;
             bool inputSuccess = true;
             var nickname = new List<ConsoleKeyInfo>();
-            StreamWriter userScores = new StreamWriter(@"..\..\HighScores.txt");
 
             while (inputSuccess)
             {
@@ -342,13 +108,25 @@ class PackManHydra
                 ConsoleKeyInfo inputLetter = Console.ReadKey();
                 if (inputLetter.Key == ConsoleKey.Enter && nickname.Count >= 1)
                 {
+                    using (userScoresRead)
+                    {
+                        user.Append(userScoresRead.ReadToEnd());
+                        userScoresRead.Close();
+                    }
                     using (userScores)
                     {
                         for (int i = 0; i < nickname.Count; i++)
                         {
-                            userScores.Write(nickname[i].KeyChar);
+                            user.Append(nickname[i].KeyChar);
                         }
-                        userScores.Write(" - ");
+                        user.Append(" - ");
+                        highScores.Add(user.ToString());
+
+                        for (int i = 0; i < highScores.Count; i++)
+                        {
+                            user.Append(highScores[i]);
+                        }
+                        userScores.Write(user);
                     }
                     inputSuccess = false;
                 }
@@ -387,7 +165,7 @@ class PackManHydra
             }
 
             Console.ForegroundColor = ConsoleColor.Red;
-            Marian.DrawGameBoardLevelOne();
+            Mariyan.DrawGameBoardLevelOne();
             Dimitar.StartCounter();
 
             //player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
@@ -400,10 +178,10 @@ class PackManHydra
                 Thread.Sleep(200);
 
                 // Викане на нашето човече
-                Ivaylo.MonsterNMoving();
-                Dimitar.MonsterIMoving();
-                Marian.MonsterW();
-                Antonina.BadGuyQ();
+                Ivaylo.MonsterNMovingLevelOne();
+                Dimitar.MonsterIMovingLevelOne();
+                Mariyan.MonsterDLevelOne();
+                Antonina.monsterEMovingLevelOne();
 
                 // Обновяване на екрана
                 Georgi.RefreshScreen(badGuysCoordinates);
@@ -420,10 +198,28 @@ class PackManHydra
         else if (choice.Key == ConsoleKey.D3)
         {
             Console.Clear();
-            Console.WriteLine("Hight scores");
-
+            Console.SetCursorPosition(11, 2);
+            Console.Write("HIGH SCORES");
+            Console.SetCursorPosition(3, 5);
             // Извикване на файла, който държи High scores
-            Console.ReadKey(true);
+            Console.WriteLine(userScoresRead.ReadToEnd());
+            Console.SetCursorPosition(5, 30);
+            Console.Write("Press enter to return");
+            Console.SetCursorPosition(10, 31);
+            Console.Write("to the MENU");
+
+            if (Console.ReadKey().Key == ConsoleKey.Enter)
+            {
+                returnFromHighScores = false;
+                Console.Clear();
+                Main();
+            }
+            else
+            {
+                returnFromHighScores = false;
+                Console.Clear();
+                Main();
+            }
 
         }
         else if (choice.Key == ConsoleKey.D4)

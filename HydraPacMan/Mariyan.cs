@@ -4,29 +4,154 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-class Marian
+class Mariyan
 {
-    // Гад 4 - > W
+    public static int[,] monsterDCoordinatesLevelOne = new int[,] 
+        {
+            {20, 2},    
+            {20, 3},
+            {20, 4},
+            {20, 5},    
+            {19, 5},
+            {18, 5},
+            {17, 5},
+            {17, 4},
+            {17, 3},
+            {17, 2},
+            {17, 1},
+            {18, 1},
+            {19, 1},
+            {20, 1},
+            {21, 1},
+            {22, 1},
+            {23, 1},
+            {23, 2},
+            {23, 3},
+            {23, 4},
+            {23, 5},
+            {23, 5},
+            {24, 5},
+            {25, 5},
+            {26, 5},
+            {27, 5},
+            {28, 5},
+            {28, 6},
+            {28, 7},
+            {28, 8},
+            {27, 8},
+            {26, 8},
+            {25, 8},
+            {24, 8},
+            {23, 8},
+            {23, 7},
+            {23, 6},
+            {23, 5},
+            {22, 5},
+            {21, 5},
+            {20, 5},
+            {20, 6},
+            {20, 7},
+            {20, 8},
+            {19, 8},
+            {18, 8},
+            {17, 8},
+            {17, 9},
+            {17, 10},
+            {17, 11},
+            {16, 11},
+            {15, 11},
+            {14, 11},
+            {13, 11},
+            {12, 11},
+            {11, 11},
+            {10, 11},
+            {10, 11},
+            {10, 12},
+            {10, 13},
+            {09, 13},
+            {08, 13},
+            {07, 13},
+            {06, 13},
+            {05, 13},
+            {04, 13},
+            {03, 13},
+            {02, 13},
+            {01, 13},
+            {00, 13},
+            {29, 13},
+            {28, 13},
+            {27, 13},
+            {26, 13},
+            {25, 13},
+            {24, 13},
+            {23, 13},
+            {23, 12},
+            {23, 11},
+            {23, 10},
+            {23, 09},
+            {23, 08},
+            {24, 08},
+            {25, 08},
+            {26, 08},
+            {27, 08},
+            {28, 08},
+            {28, 07},
+            {28, 06},
+            {28, 05},
+            {28, 04},
+            {28, 03},
+            {28, 02},
+            {28, 01},
+            {27, 01},
+            {26, 01},
+            {25, 01},
+            {24, 01},
+            {23, 01},
+            {23, 02},
+            {23, 03},
+            {23, 04},
+            {23, 05},
+            {22, 05},
+            {21, 05},
+        };
 
-    public static void MonsterW()
+    public static void MonsterDLevelOne()
     {
         PackManHydra.badGuysCoordinates[4, 0] = PackManHydra.badGuysCoordinates[4, 2];
         PackManHydra.badGuysCoordinates[4, 1] = PackManHydra.badGuysCoordinates[4, 3];
-        PackManHydra.badGuysCoordinates[4, 2] = PackManHydra.monsterW[PackManHydra.GadFourCounter, 0];
-        PackManHydra.badGuysCoordinates[4, 3] = PackManHydra.monsterW[PackManHydra.GadFourCounter, 1];
-        if (PackManHydra.GadFourCounter == 102)
+        PackManHydra.badGuysCoordinates[4, 2] = monsterDCoordinatesLevelOne[PackManHydra.GadFourCounter, 0];
+        PackManHydra.badGuysCoordinates[4, 3] = monsterDCoordinatesLevelOne[PackManHydra.GadFourCounter, 1];
+        if (PackManHydra.GadFourCounter == 104)
         {
-            PackManHydra.GadFourCounter = 0;
+            PackManHydra.GadFourCounter = 3;
         }
         else
         {
             PackManHydra.GadFourCounter++;
         }
-        PackManHydra.badGuysCoordinates[4, 2] = PackManHydra.monsterW[PackManHydra.GadFourCounter, 0];
-        PackManHydra.badGuysCoordinates[4, 3] = PackManHydra.monsterW[PackManHydra.GadFourCounter, 1];
+        PackManHydra.badGuysCoordinates[4, 2] = monsterDCoordinatesLevelOne[PackManHydra.GadFourCounter, 0];
+        PackManHydra.badGuysCoordinates[4, 3] = monsterDCoordinatesLevelOne[PackManHydra.GadFourCounter, 1];
     }
 
-    public static int[,] monsterWLevelII = new int[86, 2] 
+    public static void MonsterILevelTwo()
+    {
+        PackManHydra.badGuysCoordinates[3, 0] = PackManHydra.badGuysCoordinates[3, 2];
+        PackManHydra.badGuysCoordinates[3, 1] = PackManHydra.badGuysCoordinates[3, 3];
+        PackManHydra.badGuysCoordinates[3, 2] = monsterICoordinatesLevelTwo[PackManHydra.GadThreeCounter, 0];
+        PackManHydra.badGuysCoordinates[3, 3] = monsterICoordinatesLevelTwo[PackManHydra.GadThreeCounter, 1];
+        if (PackManHydra.GadThreeCounter == 117)
+        {
+            PackManHydra.GadThreeCounter = 5;
+        }
+        else
+        {
+            PackManHydra.GadThreeCounter++;
+        }
+        PackManHydra.badGuysCoordinates[3, 2] = monsterICoordinatesLevelTwo[PackManHydra.GadThreeCounter, 0];
+        PackManHydra.badGuysCoordinates[3, 3] = monsterICoordinatesLevelTwo[PackManHydra.GadThreeCounter, 1];
+    }
+
+    public static int[,] monsterICoordinatesLevelTwo = new int[118, 2] 
         {
             {13, 13},    
             {13, 14},
@@ -93,27 +218,59 @@ class Marian
             {2, 18},
             {2, 18},
             {2, 19},
-            {2, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
-            {0, 1},
+            {2, 20},
+            {2, 21},
+            {3, 21},
+            {4, 21},
+            {4, 22},
+            {4, 23},
+            {4, 24},
+            {3, 24},
+            {2, 24},
+            {2, 25},
+            {2, 26},
+            {2, 27},
+            {3, 27},
+            {4, 27},
+            {5, 27},
+            {6, 27},
+            {7, 27},
+            {8, 27},
+            {9, 27},
+            {10, 27},
+            {11, 27},
+            {12, 27},
+            {13, 27},
+            {13, 26},
+            {13, 25},
+            {13, 24},
+            {12, 24},
+            {11, 24},
+            {10, 24},
+            {10, 23},
+            {10, 22},
+            {10, 21},
+            {11, 21},
+            {12, 21},
+            {13, 21},
+            {13, 20},
+            {13, 19},
+            {13, 18},
+            {12, 18},
+            {11, 18},
+            {10, 18},
+            {09, 18},
+            {08, 18},
+            {07, 18},
+            {07, 17},
+            {07, 16},
+            {07, 15},
+            {07, 14},
+            {07, 13},
+            {08, 13},
+            {09, 13},
+            {10, 13},
+            {10, 14}
         };
 
     public static void DrawGameBoardLevelOne()
