@@ -68,7 +68,7 @@ class Ivaylo
             {19, 18},
         };
 
-    public static void MonsterNMoving()
+    public static void MonsterNMovingLevelOne()
     {
         PackManHydra.badGuysCoordinates[1, 0] = PackManHydra.badGuysCoordinates[1, 2];
         PackManHydra.badGuysCoordinates[1, 1] = PackManHydra.badGuysCoordinates[1, 3];

@@ -292,7 +292,6 @@ class PackManHydra
                             userScores.Write(nickname[i].KeyChar);
                         }
                         userScores.Write(" - ");
-                        userScores.Flush();
                     }
                     inputSuccess = false;
                 }
@@ -344,9 +343,9 @@ class PackManHydra
                 Thread.Sleep(200);
 
                 // Викане на нашето човече
-                Ivaylo.MonsterNMoving();
+                Ivaylo.MonsterNMovingLevelOne();
                 Dimitar.MonsterIMoving();
-                Marian.MonsterW();
+                Marian.MonsterDLevelOne();
                 Antonina.BadGuyQ();
 
                 // Обновяване на екрана

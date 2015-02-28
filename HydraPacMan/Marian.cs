@@ -8,7 +8,7 @@ class Marian
 {
     // Гад 4 - > W
 
-    public static void MonsterDlevelOne()
+    public static void MonsterDLevelOne()
     {
         PackManHydra.badGuysCoordinates[4, 0] = PackManHydra.badGuysCoordinates[4, 2];
         PackManHydra.badGuysCoordinates[4, 1] = PackManHydra.badGuysCoordinates[4, 3];
