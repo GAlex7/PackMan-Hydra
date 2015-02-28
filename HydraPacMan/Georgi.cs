@@ -10,15 +10,41 @@ class Georgi
     static public void RefreshScreen(int[,] crawliesPos)
     {
         Type type = typeof(ConsoleColor);
+        int x = 0;
+        int y = 0;
+        switch (PackManHydra.direction)
+        {
+
+            case 1:
+                {
+                    x = 1;
+                    break;
+                }
+            case 2:
+                {
+                    x = -1;
+                    break;
+                }
+            case 3:
+                {
+                    y = 1;
+                    break;
+                }
+            case 4:
+                {
+                    y = -1;
+                    break;
+                }
+        }
 
         char dotsChar;
         for (int i = 0; i < 5; i++)
         {
             // дали не е изяден
             if ((i != 0) &&
-                (crawliesPos[0, 0] == crawliesPos[i, 0]
+                (crawliesPos[0, 0] == crawliesPos[i, 0] || crawliesPos[0, 0] + x == crawliesPos[i, 0])
                 &&
-                 crawliesPos[0, 1] == crawliesPos[i, 1]))
+                (crawliesPos[0, 1] == crawliesPos[i, 1] || crawliesPos[0, 1] + y == crawliesPos[i, 1]))
             {
                 Console.SetCursorPosition(crawliesPos[i, 0], crawliesPos[i, 1]);
                 Console.Write(" ");
@@ -45,7 +71,7 @@ class Georgi
                     PackManHydra.lives--;
                 }
             }
-            else if (Marian.wallsLevelOne[crawliesPos[i, 3], crawliesPos[i, 2]] == 0)
+            else if (Mariyan.wallsLevelOne[crawliesPos[i, 3], crawliesPos[i, 2]] == 0)
             {
 
                 if (i == 0)
@@ -131,25 +157,25 @@ class Georgi
             ConsoleKeyInfo userInput = Console.ReadKey();
             if (userInput.Key == ConsoleKey.LeftArrow)
             {
-                if (Marian.wallsLevelOne[y, x - 1] != 1)
+                if (Mariyan.wallsLevelOne[y, x - 1] != 1)
                     posoka = left;
                 else posoka = stop;
             }
             if (userInput.Key == ConsoleKey.RightArrow)
             {
-                if (Marian.wallsLevelOne[y, x + 1] != 1)
+                if (Mariyan.wallsLevelOne[y, x + 1] != 1)
                     posoka = right;
                 else posoka = stop;
             }
             if (userInput.Key == ConsoleKey.UpArrow)
             {
-                if (Marian.wallsLevelOne[y - 1, x] != 1)
+                if (Mariyan.wallsLevelOne[y - 1, x] != 1)
                     posoka = up;
                 else posoka = stop;
             }
             if (userInput.Key == ConsoleKey.DownArrow)
             {
-                if (Marian.wallsLevelOne[y + 1, x] != 1)
+                if (Mariyan.wallsLevelOne[y + 1, x] != 1)
                     posoka = down;
                 else posoka = stop;
             }
