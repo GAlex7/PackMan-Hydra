@@ -133,7 +133,7 @@ class Georgi
 
             }
         }
-        PackMan(crawliesPos);
+
     }
 
     static public void PackMan(int[,] coordinates)
