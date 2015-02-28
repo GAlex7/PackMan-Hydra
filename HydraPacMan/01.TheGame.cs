@@ -58,209 +58,222 @@ class PackManHydra
         // SoundPlayer player = new SoundPlayer();
 
         // Принтиране на логото и заглавието, изчакване за натискане на клавиш преди преминаване напред
-
-        if (returnFromHighScores && returnFromInstructions)
+        try
         {
-            DrawLogo(20);
-
-            DimitarPiskov.PrintGameName();
-            Console.ReadKey();
-            Console.Clear();
-
-            DimitarPiskov.Introduction();
-            Console.ReadKey();
-            Console.Clear();
-        }
-
-        // Меню: 1.New Game, 2.Instruction, 3.High Score, 4.Exit game
-
-        Ivaylo.PrintingMenuGame();
-
-        // Начална позиция на нашето човече
-        //badGuysCoordinates[0, 0] = 15;
-        //badGuysCoordinates[0, 1] = 21;
-
-        ConsoleKeyInfo choice = Console.ReadKey();
-
-        StringBuilder userNickname = new StringBuilder();
-
-
-
-        if (choice.Key == ConsoleKey.D1)
-        {
-            Console.Clear();
-
-            int currentColumn = 15;
-            bool inputSuccess = true;
-            var nickname = new List<ConsoleKeyInfo>();
-
-            while (inputSuccess)
+            if (returnFromHighScores && returnFromInstructions)
             {
-                Console.SetCursorPosition(5, 15);
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Please enter nickname:");
-                Console.SetCursorPosition(currentColumn, 17);
+                DrawLogo(20);
 
-                for (int i = 0; i < nickname.Count; i++)
-                {
-                    Console.Write(nickname[i].KeyChar);
-                }
+                DimitarPiskov.PrintGameName();
+                Console.ReadKey();
+                Console.Clear();
 
-                ConsoleKeyInfo inputLetter = Console.ReadKey();
-                if (inputLetter.Key == ConsoleKey.Enter && nickname.Count >= 3)
+                DimitarPiskov.Introduction();
+                Console.ReadKey();
+                Console.Clear();
+            }
+
+            // Меню: 1.New Game, 2.Instruction, 3.High Score, 4.Exit game
+
+            Ivaylo.PrintingMenuGame();
+
+            // Начална позиция на нашето човече
+            //badGuysCoordinates[0, 0] = 15;
+            //badGuysCoordinates[0, 1] = 21;
+
+            ConsoleKeyInfo choice = Console.ReadKey();
+
+            StringBuilder userNickname = new StringBuilder();
+
+
+
+            if (choice.Key == ConsoleKey.D1)
+            {
+                Console.Clear();
+
+                int currentColumn = 15;
+                bool inputSuccess = true;
+                var nickname = new List<ConsoleKeyInfo>();
+
+                while (inputSuccess)
                 {
-                    StreamReader userScoresRead = new StreamReader(@"..\..\HighScores.txt");
-                    using (userScoresRead)
+                    Console.SetCursorPosition(5, 15);
+                    Console.ForegroundColor = ConsoleColor.White;
+                    Console.WriteLine("Please enter nickname:");
+                    Console.SetCursorPosition(currentColumn, 17);
+
+                    for (int i = 0; i < nickname.Count; i++)
                     {
-                        user.Append(userScoresRead.ReadToEnd());
-                        user.Append("\n");
+                        Console.Write(nickname[i].KeyChar);
                     }
-                    StreamWriter userScores = new StreamWriter(@"..\..\HighScores.txt");
-                    using (userScores)
+
+                    ConsoleKeyInfo inputLetter = Console.ReadKey();
+                    if (inputLetter.Key == ConsoleKey.Enter && nickname.Count >= 3)
                     {
-                        user.Append("         ");
-                        for (int i = 0; i < nickname.Count; i++)
+                        StreamReader userScoresRead = new StreamReader(@"..\..\HighScores.txt");
+                        using (userScoresRead)
                         {
-                            user.Append(nickname[i].KeyChar);
+                            user.Append(userScoresRead.ReadToEnd());
+                            user.Append("\n");
                         }
-                        user.Append(" - ");
-                        userScores.Write(user);
+                        StreamWriter userScores = new StreamWriter(@"..\..\HighScores.txt");
+                        using (userScores)
+                        {
+                            user.Append("         ");
+                            for (int i = 0; i < nickname.Count; i++)
+                            {
+                                user.Append(nickname[i].KeyChar);
+                            }
+                            user.Append(" - ");
+                            userScores.Write(user);
+                        }
+                        inputSuccess = false;
                     }
-                    inputSuccess = false;
-                }
-                else if (inputLetter.Key == ConsoleKey.Enter && nickname.Count < 3)
-                {
-                    Console.Clear();
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.SetCursorPosition(2, 19);
-                    Console.WriteLine("Enter at least 3 characters!");
-                    continue;
-                }
-
-                if (inputLetter.Key != ConsoleKey.Backspace)
-                {
-                    nickname.Add(inputLetter);
-                    if (nickname.Count % 2 == 0)
+                    else if (inputLetter.Key == ConsoleKey.Enter && nickname.Count < 3)
                     {
-                        currentColumn--;
-                    }
-                }
-                else if (inputLetter.Key == ConsoleKey.Backspace)
-                {
-                    if (nickname.Count == 0)
-                    {
+                        Console.Clear();
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.SetCursorPosition(2, 19);
+                        Console.WriteLine("Enter at least 3 characters!");
                         continue;
                     }
 
-                    nickname.RemoveAt(nickname.Count - 1);
-                    if (nickname.Count % 2 == 0)
+                    if (inputLetter.Key != ConsoleKey.Backspace)
                     {
-                        currentColumn++;
+                        nickname.Add(inputLetter);
+                        if (nickname.Count % 2 == 0)
+                        {
+                            currentColumn--;
+                        }
+                    }
+                    else if (inputLetter.Key == ConsoleKey.Backspace)
+                    {
+                        if (nickname.Count == 0)
+                        {
+                            continue;
+                        }
+
+                        nickname.RemoveAt(nickname.Count - 1);
+                        if (nickname.Count % 2 == 0)
+                        {
+                            currentColumn++;
+                        }
+                    }
+
+                    Console.Clear();
+                }
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Mariyan.DrawGameBoardLevelOne();
+                Dimitar.StartCounter();
+
+                //player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
+                //player.Load();
+                //player.Play();
+
+                while (endGame)
+                {
+                    // Забавяне на конзолата
+                    Thread.Sleep(200);
+
+                    // Викане на нашето човече
+                    Ivaylo.MonsterNMovingLevelOne();
+                    Dimitar.MonsterIMovingLevelOne();
+                    Mariyan.MonsterDLevelOne();
+                    Antonina.monsterEMovingLevelOne();
+
+                    // Обновяване на екрана
+                    Georgi.RefreshScreen(badGuysCoordinates);
+
+                    // Проверка за сблъсък и проверка за изяден бонус
+                }
+
+
+
+                if (endGame == false)
+                {
+                    StreamWriter userScores = new StreamWriter(@"..\..\HighScores.txt");
+                    using (userScores)
+                    {
+                        user.Append(points);
+                        userScores.WriteLine(user);
                     }
                 }
-
+            }
+            else if (choice.Key == ConsoleKey.D2)
+            {
                 Console.Clear();
-            }
+                DimitarPiskov.Instructions();
 
-            Console.ForegroundColor = ConsoleColor.Red;
-            Mariyan.DrawGameBoardLevelOne();
-            Dimitar.StartCounter();
+                Console.SetCursorPosition(5, 30);
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write("Press ENTER to return");
+                Console.SetCursorPosition(10, 31);
+                Console.Write("to the MENU");
 
-            //player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
-            //player.Load();
-            //player.Play();
-
-            while (endGame)
-            {
-                // Забавяне на конзолата
-                Thread.Sleep(200);
-
-                // Викане на нашето човече
-                Ivaylo.MonsterNMovingLevelOne();
-                Dimitar.MonsterIMovingLevelOne();
-                Mariyan.MonsterDLevelOne();
-                Antonina.monsterEMovingLevelOne();
-
-                // Обновяване на екрана
-                Georgi.RefreshScreen(badGuysCoordinates);
-
-                // Проверка за сблъсък и проверка за изяден бонус
-            }
-
-
-
-            if (endGame == false)
-            {
-                StreamWriter userScores = new StreamWriter(@"..\..\HighScores.txt");
-                using (userScores)
+                if (Console.ReadKey().Key == ConsoleKey.Enter)
                 {
-                    user.Append(points);
-                    userScores.WriteLine(user);
+                    returnFromInstructions = false;
+                    Console.Clear();
+                    Main();
+                }
+                else
+                {
+                    returnFromInstructions = false;
+                    Console.Clear();
+                    Main();
                 }
             }
-        }
-        else if (choice.Key == ConsoleKey.D2)
-        {
-            Console.Clear();
-            DimitarPiskov.Instructions();
 
-            Console.SetCursorPosition(5, 30);
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.Write("Press ENTER to return");
-            Console.SetCursorPosition(10, 31);
-            Console.Write("to the MENU");
-
-            if (Console.ReadKey().Key == ConsoleKey.Enter)
+            else if (choice.Key == ConsoleKey.D3)
             {
-                returnFromInstructions = false;
+                StreamReader userScoresRead = new StreamReader(@"..\..\HighScores.txt");
                 Console.Clear();
-                Main();
-            }
-            else
-            {
-                returnFromInstructions = false;
-                Console.Clear();
-                Main();
-            }
-        }
+                Console.SetCursorPosition(10, 2);
+                Console.Write("HIGH SCORES");
 
-        else if (choice.Key == ConsoleKey.D3)
-        {
-            StreamReader userScoresRead = new StreamReader(@"..\..\HighScores.txt");
-            Console.Clear();
-            Console.SetCursorPosition(10, 2);
-            Console.Write("HIGH SCORES");
-            
-            // Извикване на файла, който държи High scores
-            Console.SetCursorPosition(3, 5);
-            Console.WriteLine(userScoresRead.ReadToEnd());
-            Console.SetCursorPosition(5, 30);
-            Console.Write("Press enter to return");
-            Console.SetCursorPosition(10, 31);
-            Console.Write("to the MENU");
+                // Извикване на файла, който държи High scores
+                Console.SetCursorPosition(3, 5);
+                Console.WriteLine(userScoresRead.ReadToEnd());
+                Console.SetCursorPosition(5, 30);
+                Console.Write("Press enter to return");
+                Console.SetCursorPosition(10, 31);
+                Console.Write("to the MENU");
 
-            if (Console.ReadKey().Key == ConsoleKey.Enter)
-            {
-                returnFromHighScores = false;
-                Console.Clear();
-                Main();
-            }
-            else
-            {
-                returnFromHighScores = false;
-                Console.Clear();
-                Main();
-            }
+                if (Console.ReadKey().Key == ConsoleKey.Enter)
+                {
+                    returnFromHighScores = false;
+                    Console.Clear();
+                    Main();
+                }
+                else
+                {
+                    returnFromHighScores = false;
+                    Console.Clear();
+                    Main();
+                }
 
-        }
-        else if (choice.Key == ConsoleKey.D4)
-        {
-            Console.Clear();
-            Environment.Exit(-1);
-        }
+            }
+            else if (choice.Key == ConsoleKey.D4)
+            {
+                Console.Clear();
+                Environment.Exit(-1);
+            }
             Console.CursorVisible = false;
 
-        
+
+        }
+        catch (Exception)
+        {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.SetCursorPosition(8, 15);
+            Console.WriteLine("Unexpected error");
+            Console.SetCursorPosition(8, 16);
+            Console.WriteLine("durring loading\n");
+            Console.ReadKey();
+            Environment.Exit(-1);
+        }
     }
 
     private static void DrawLogo(int n)
