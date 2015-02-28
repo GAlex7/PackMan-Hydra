@@ -9,8 +9,8 @@ using System.Threading;
 
 class PackManHydra
 {
-    public const int windowWidth = 31;
-    public const int windowHeight = 33;
+    private const int windowWidth = 31;
+    private const int windowHeight = 33;
     public static string ourGuy = "X<>^vx--::";
     public static string badGuys = "xНЕИД";
 
@@ -233,7 +233,7 @@ class PackManHydra
             {02, 13},
             {01, 13},
             {00, 13},
-            {29, 13}, //
+            {29, 13},
             {28, 13},
             {27, 13},
             {26, 13},
@@ -375,7 +375,7 @@ class PackManHydra
         Console.WriteLine(" │............│ │............│");
         Console.WriteLine(" │.┌──┐.┌───┐.│ │.┌───┐.┌──┐.│");
         Console.WriteLine(" │.│  │.│ Q │.│ │.│ W │.│  │.│");
-        Console.WriteLine(" │о└──┘.└┘─└┘.└─┘.└┘─└┘.└──┘о│");
+        Console.WriteLine(" │#└──┘.└┘─└┘.└─┘.└┘─└┘.└──┘#│");
         Console.WriteLine(" │...........................│");
         Console.WriteLine(" │.┌──┐.┌┐.┌───────┐.┌┐.┌──┐.│");
         Console.WriteLine(" │.└──┘.││.└──┐ ┌──┘.││.└──┘.│");
@@ -392,7 +392,7 @@ class PackManHydra
         Console.WriteLine(" │............│ │............│");
         Console.WriteLine(" │.┌──┐.┌───┐.│ │.┌───┐.┌──┐.│");
         Console.WriteLine(" │.└─┐│.└───┘.└─┘.└───┘.│┌─┘.│");
-        Console.WriteLine(" │о..││....... X .......││..о│");
+        Console.WriteLine(" │#..││....... X .......││..#│");
         Console.WriteLine(" └─┐.││.┌┐.┌───────┐.┌┐.││.┌─┘");
         Console.WriteLine(" ┌─┘.└┘.││.└──┐ ┌──┘.││.└┘.└─┐");
         Console.WriteLine(" │......││....│ │....││......│");
