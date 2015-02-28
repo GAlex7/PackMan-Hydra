@@ -86,6 +86,5 @@ class Evgeni
         PackManHydra.badGuysCoordinates[4, 2] = PackManHydra.monsterArray[PackManHydra.GadFourCounter, 0];
         PackManHydra.badGuysCoordinates[4, 3] = PackManHydra.monsterArray[PackManHydra.GadFourCounter, 1];
     }
-
 }
 
