@@ -34,6 +34,9 @@ class PackManHydra
     private static bool returnFromHighScores = true;
     //private static string gameSounds = Directory.GetCurrentDirectory();
     private static string gameSounds = Directory.GetCurrentDirectory();
+    public static List<string> highScores = new List<string>();
+    public static StringBuilder user = new StringBuilder();
+
 
     static void Main()
     {
@@ -79,6 +82,7 @@ class PackManHydra
         ConsoleKeyInfo choice = Console.ReadKey();
 
         StringBuilder userNickname = new StringBuilder();
+        StreamReader userScoresRead = new StreamReader(@"..\..\HighScores.txt");
 
         if (choice.Key == ConsoleKey.D1)
         {
@@ -87,7 +91,8 @@ class PackManHydra
             int currentColumn = 15;
             bool inputSuccess = true;
             var nickname = new List<ConsoleKeyInfo>();
-            StreamWriter userScores = new StreamWriter(@"..\..\HighScores.txt");
+            StreamWriter userScores = new StreamWriter(@"HighScores.txt");
+
 
             while (inputSuccess)
             {
@@ -104,13 +109,25 @@ class PackManHydra
                 ConsoleKeyInfo inputLetter = Console.ReadKey();
                 if (inputLetter.Key == ConsoleKey.Enter && nickname.Count >= 1)
                 {
+                    using (userScoresRead)
+                    {
+                        user.Append(userScoresRead.ReadToEnd());
+                        userScoresRead.Close();
+                    }
                     using (userScores)
                     {
                         for (int i = 0; i < nickname.Count; i++)
                         {
-                            userScores.Write(nickname[i].KeyChar);
+                            user.Append(nickname[i].KeyChar);
                         }
-                        userScores.Write(" - ");
+                        user.Append(" - ");
+                        highScores.Add(user.ToString());
+
+                        for (int i = 0; i < highScores.Count; i++)
+                        {
+                            user.Append(highScores[i]);
+                        }
+                        userScores.Write(user);
                     }
                     inputSuccess = false;
                 }
@@ -186,7 +203,6 @@ class PackManHydra
             Console.Write("HIGH SCORES");
             Console.SetCursorPosition(3, 5);
             // Извикване на файла, който държи High scores
-            StreamReader userScoresRead = new StreamReader(@"..\..\HighScores.txt");
             Console.WriteLine(userScoresRead.ReadToEnd());
             Console.SetCursorPosition(5, 30);
             Console.Write("Press enter to return");
