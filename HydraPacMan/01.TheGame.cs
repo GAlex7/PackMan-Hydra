@@ -83,6 +83,7 @@ class PackManHydra
 
         StringBuilder userNickname = new StringBuilder();
         StreamReader userScoresRead = new StreamReader(@"..\..\HighScores.txt");
+        StreamWriter userScores = new StreamWriter(@"HighScores.txt");
 
         if (choice.Key == ConsoleKey.D1)
         {
@@ -91,8 +92,6 @@ class PackManHydra
             int currentColumn = 15;
             bool inputSuccess = true;
             var nickname = new List<ConsoleKeyInfo>();
-            StreamWriter userScores = new StreamWriter(@"HighScores.txt");
-
 
             while (inputSuccess)
             {
