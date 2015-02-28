@@ -31,189 +31,8 @@ class PackManHydra
     public static int GadFourCounter = 0;
 
     private const int numberOfMovingObjects = 5;
-
     private static bool returnFromHighScores = true;
     //private static string gameSounds = Directory.GetCurrentDirectory();
-
-    //Антонина 
-    public static int[,] availablePositionsGuyQ = new int[,]
-    {           
-                {10,4},
-                {10,5},
-                {9,5},
-                {8,5},
-                {7,5},
-                {6,5},
-                {5,5},
-                {4,5},
-                {3,5},
-                {2,5},
-                {2,6},
-                {2,7},
-                {2,8},
-                {3,8}, 
-                {4,8},
-                {5,8},
-                {6,8},
-                {7,8},
-                {7,7},
-                {7,6}, 
-                {7,5},
-                {7,4},
-                {7,3},
-                {7,2},
-                {7,1},
-                {6,1},
-                {5,1},
-                {4,1},
-                {3,1},
-                {2,1},
-                {2,2},
-                {2,3},
-                {2,4},
-                {2,5},
-                {2,5},
-                {3,5},
-                {4,5},
-                {5,5},
-                {6,5},
-                {7,5},
-                {8,5},
-                {9,5},
-                {10,5},
-                {11,5},
-                {12,5},
-                {13,4},
-                {13,3},
-                {13,2},
-                {13,1},
-                {12,1},
-                {11,1},
-                {10,1},
-                {9,1},
-                {8,1},
-                {7,1},
-                {7,2},
-                {7,3},
-                {7,4},
-                {7,5},
-                {8,5},
-                {9,5},
-                {10,4},
-                
-    
-    };
-
-    //Ивайло
-    
-    //Мариян
-    public static int[,] monsterW = new int[,] 
-        {
-            {20, 4},
-            {20, 5},    
-            {19, 5},
-            {18, 5},
-            {17, 5},
-            {17, 4},
-            {17, 3},
-            {17, 2},
-            {17, 1},
-            {18, 1},
-            {19, 1},
-            {20, 1},
-            {21, 1},
-            {22, 1},
-            {23, 1},
-            {23, 2},
-            {23, 3},
-            {23, 4},
-            {23, 5},
-            {23, 5},
-            {24, 5},
-            {25, 5},
-            {26, 5},
-            {27, 5},
-            {28, 5},
-            {28, 6},
-            {28, 7},
-            {28, 8},
-            {27, 8},
-            {26, 8},
-            {25, 8},
-            {24, 8},
-            {23, 8},
-            {23, 7},
-            {23, 6},
-            {23, 5},
-            {22, 5},
-            {21, 5},
-            {20, 5},
-            {20, 6},
-            {20, 7},
-            {20, 8},
-            {19, 8},
-            {18, 8},
-            {17, 8},
-            {17, 9},
-            {17, 10},
-            {17, 11},
-            {16, 11},
-            {15, 11},
-            {14, 11},
-            {13, 11},
-            {12, 11},
-            {11, 11},
-            {10, 11},
-            {10, 11},
-            {10, 12},
-            {10, 13},
-            {09, 13},
-            {08, 13},
-            {07, 13},
-            {06, 13},
-            {05, 13},
-            {04, 13},
-            {03, 13},
-            {02, 13},
-            {01, 13},
-            {00, 13},
-            {29, 13},
-            {28, 13},
-            {27, 13},
-            {26, 13},
-            {25, 13},
-            {24, 13},
-            {23, 13},
-            {23, 12},
-            {23, 11},
-            {23, 10},
-            {23, 09},
-            {23, 08},
-            {24, 08},
-            {25, 08},
-            {26, 08},
-            {27, 08},
-            {28, 08},
-            {28, 07},
-            {28, 06},
-            {28, 05},
-            {28, 04},
-            {28, 03},
-            {28, 02},
-            {28, 01},
-            {27, 01},
-            {26, 01},
-            {25, 01},
-            {24, 01},
-            {23, 01},
-            {23, 02},
-            {23, 03},
-            {23, 04},
-            {23, 05},
-            {22, 05},
-            {21, 05},
-        };
-
     private static string gameSounds = Directory.GetCurrentDirectory();
 
     static void Main()
@@ -330,7 +149,7 @@ class PackManHydra
             }
 
             Console.ForegroundColor = ConsoleColor.Red;
-            Marian.DrawGameBoardLevelOne();
+            Mariyan.DrawGameBoardLevelOne();
             Dimitar.StartCounter();
 
             //player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
@@ -344,9 +163,9 @@ class PackManHydra
 
                 // Викане на нашето човече
                 Ivaylo.MonsterNMovingLevelOne();
-                Dimitar.MonsterIMoving();
-                Marian.MonsterDLevelOne();
-                Antonina.BadGuyQ();
+                Dimitar.MonsterIMovingLevelOne();
+                Mariyan.MonsterDLevelOne();
+                Antonina.monsterEMovingLevelOne();
 
                 // Обновяване на екрана
                 Georgi.RefreshScreen(badGuysCoordinates);
