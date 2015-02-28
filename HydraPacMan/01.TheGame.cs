@@ -9,8 +9,8 @@ using System.Threading;
 
 class PackManHydra
 {
-    private const int windowWidth = 31;
-    private const int windowHeight = 33;
+    public const int windowWidth = 31;
+    public const int windowHeight = 33;
     public static string ourGuy = "X<>^vx--::";
     public static string badGuys = "xНЕИД";
 
@@ -29,6 +29,7 @@ class PackManHydra
     public static int GadTwoCounter = 0;
     public static int GadThreeCounter = 0;
     public static int GadFourCounter = 0;
+
 
     //private static string gameSounds = Directory.GetCurrentDirectory();
 
@@ -276,21 +277,19 @@ class PackManHydra
     {
         // Заглавие на конзолата
         Console.Title = "EatSharp";
-        InitDotsArray();                               //GAlex
-        // Задаваме encoding за гадовете
-        Console.OutputEncoding = Encoding.UTF8;
 
         // Задаваме размер на конзолата
-        badGuysCoordinates[0, 0] = 15; 
-        badGuysCoordinates[0, 1] = 21;
-        Console.WindowHeight = windowHeight;
-        Console.WindowWidth = windowWidth;
-        Console.BufferHeight = Console.WindowHeight;
-        Console.BufferWidth = Console.WindowWidth;
+        Dimitar.SetConsoleWidthAndHeight();
 
+        // Encoding
+        Console.OutputEncoding = Encoding.UTF8;
+
+        // Бонус точки
+        InitDotsArray();
+        
         // Фонова музика
-        //SoundPlayer player = new SoundPlayer();
-       // SoundPlayer player = new SoundPlayer();
+        // SoundPlayer player = new SoundPlayer();
+        // SoundPlayer player = new SoundPlayer();
 
         // Принтиране на логото, изчакване за натискане на клавиш преди преминаване напред
 
@@ -306,7 +305,79 @@ class PackManHydra
         // Меню: 1.New Game, 2.Load Game, 3.Score, 4.Exit
 
         Ivaylo.PrintingMenuGame();
-        Console.ReadKey();
+
+        // Начална позиция на нашето човече
+        badGuysCoordinates[0, 0] = 15;
+        badGuysCoordinates[0, 1] = 21;
+
+        try
+        {
+            int choice = int.Parse(Console.ReadLine());
+
+            if (choice == 1) // New game
+            {
+                DrawGameBoard();
+        Thread.Sleep(1000);
+        Console.ForegroundColor = ConsoleColor.Green;
+        for (int i = 3; i >= 0; i--)
+        {
+            Console.SetCursorPosition(13, 15);
+            Console.Beep(1300, 100);
+            Console.Write("- {0} - ", i);
+            Thread.Sleep(900);
+
+        }
+        Console.SetCursorPosition(13, 15);
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.Write("-GO!-");
+        Console.Beep(1500, 1000);
+        Console.SetCursorPosition(13, 15);
+        Console.Write("     ");
+        Console.SetCursorPosition(0, 30);
+
+        //player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
+        //player.Load();
+        //player.Play();
+
+                while (true)
+                {
+                    // Забавяне на конзолата
+                    Thread.Sleep(200);
+
+                    // Викане на нашето човече
+                    Ivaylo.MonsterM();
+                    Dimitar.MonsterIMoving();
+                    Marian.MonsterW();
+                    Antonina.BadGuyQ();
+
+                    // Обновяване на екрана
+                    Georgi.RefreshScreen(badGuysCoordinates);
+
+                    // Проверка за сблъсък и проверка за изяден бонус
+                }
+            }
+            else if (choice == 2) // Instructions
+            {
+                DimitarPiskov.Instructions();
+            }
+            else if (choice == 3) // High scores
+            {
+                // Извикване на файла, който държи High scores
+            }
+            else if (choice == 4)
+            {
+                return;
+            }
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Invalid input!");
+        }
+
+        
+
+
+
         Console.Clear();
 
 
@@ -339,33 +410,7 @@ class PackManHydra
         //player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
         //player.Load();
         //player.Play();
-
-        while (true)
-        {
-            Thread.Sleep(150);
-            //player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
-            //player.Load();
-            //player.Play();
-
-            while (true)
-            {
-                Thread.Sleep(200);
-                // Викане на нашето човече
-                // Викане на гадовете от класове
-
-                // Викане на нашето човече
-                Ivaylo.MonsterM();
-                Dimitar.MonsterIMoving();
-                Marian.MonsterW();
-                Antonina.BadGuyQ();
-                // Обновяване на екрана
-
-                Georgi.RefreshScreen(badGuysCoordinates);
-
-                // 
-
-            }
-        }
+        
     }
 
 
@@ -374,7 +419,7 @@ class PackManHydra
         Console.WriteLine(" ┌────────────┐ ┌────────────┐");
         Console.WriteLine(" │............│ │............│");
         Console.WriteLine(" │.┌──┐.┌───┐.│ │.┌───┐.┌──┐.│");
-        Console.WriteLine(" │.│  │.│ Q │.│ │.│ W │.│  │.│");
+        Console.WriteLine(" │.│  │.│ Е │.│ │.│ Д │.│  │.│");
         Console.WriteLine(" │#└──┘.└┘─└┘.└─┘.└┘─└┘.└──┘#│");
         Console.WriteLine(" │...........................│");
         Console.WriteLine(" │.┌──┐.┌┐.┌───────┐.┌┐.┌──┐.│");
@@ -384,7 +429,7 @@ class PackManHydra
         Console.WriteLine("      │.│┌──┘ └─┘ └──┐│.│     ");
         Console.WriteLine("      │.││           ││.│     ");
         Console.WriteLine("──────┘.└┘ ┌───────┐ └┘.└─────");
-        Console.WriteLine("       .   │ Z   M │   .      ");
+        Console.WriteLine("       .   │ И   Н │   .      ");//13
         Console.WriteLine("──────┐.┌┐ └┘─└─┘─└┘ ┌┐.┌─────");
         Console.WriteLine("      │.││   READY!  ││.│     ");
         Console.WriteLine("      │.││ ┌───────┐ ││.│     ");
@@ -407,8 +452,8 @@ class PackManHydra
             {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
             {1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1},
             {1,1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1},
-            {1,1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1},
-            {1,1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1},
+            {1,1,0,1,1,1,1,0,1,0,0,0,1,0,1,1,1,0,1,0,0,0,1,0,1,1,1,1,0,1},
+            {1,1,0,1,1,1,1,0,1,1,0,1,1,0,1,1,1,0,1,1,0,1,1,0,1,1,1,1,0,1},
             {1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
             {1,1,0,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,0,1},
             {1,1,0,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,0,1},
@@ -417,15 +462,15 @@ class PackManHydra
             {1,1,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,1},
             {1,1,1,1,1,1,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,1,1,1,1},
             {1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1},
-            {0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0},
-            {1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1},
-            {1,1,1,1,1,1,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,1,1,1,1},//15
+            {0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0},
+            {1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1},
+            {1,1,1,1,1,1,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,1,1,1,1},
             {1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1},
             {1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1},
             {1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1},
             {1,1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1},
             {1,1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1},
-            {1,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,1},//21
+            {1,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,1},
             {1,1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1},
             {1,1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1},
             {1,1,0,0,0,0,0,0,1,1,0,0,0,0,1,1,1,0,0,0,0,1,1,0,0,0,0,0,0,1},
