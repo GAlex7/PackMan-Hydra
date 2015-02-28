@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 class Dimitar
@@ -124,6 +125,25 @@ class Dimitar
         Console.BufferWidth = Console.WindowWidth;
     }
     
+    public static void StartCounter()
+    {
+        Thread.Sleep(1000);
+        Console.ForegroundColor = ConsoleColor.Green;
+        for (int i = 3; i >= 0; i--)
+        {
+            Console.SetCursorPosition(13, 15);
+            Console.Beep(1300, 100);
+            Console.Write("- {0} - ", i);
+            Thread.Sleep(900);
 
+        }
+        Console.SetCursorPosition(13, 15);
+        Console.ForegroundColor = ConsoleColor.Magenta;
+        Console.Write("-GO!-");
+        Console.Beep(1500, 1000);
+        Console.SetCursorPosition(13, 15);
+        Console.Write("     ");
+        Console.SetCursorPosition(0, 30);
+    }
 }
 

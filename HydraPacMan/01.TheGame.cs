@@ -36,6 +36,7 @@ class PackManHydra
     //Антонина 
     public static int[,] availablePositionsGuyQ = new int[,]
     {           
+                {10,4},
                 {10,5},
                 {9,5},
                 {8,5},
@@ -102,8 +103,9 @@ class PackManHydra
     };
 
     //Ивайло
-    public static int[,] monsterArray = new int[57, 2] 
+    public static int[,] monsterArray = new int[,] 
         {
+            {17, 14}, 
             {18, 15},    
             {19, 15},
             {20, 15},
@@ -165,8 +167,9 @@ class PackManHydra
 
 
     //Мариян
-    public static int[,] monsterW = new int[102, 2] 
+    public static int[,] monsterW = new int[,] 
         {
+            {20, 4},
             {20, 5},    
             {19, 5},
             {18, 5},
@@ -383,24 +386,8 @@ class PackManHydra
                 Console.Clear();
             }
 
-            DrawGameBoard();
-            Thread.Sleep(1000);
-            Console.ForegroundColor = ConsoleColor.Green;
-            for (int i = 3; i >= 0; i--)
-            {
-                Console.SetCursorPosition(13, 15);
-                Console.Beep(1300, 100);
-                Console.Write("- {0} - ", i);
-                Thread.Sleep(900);
-
-            }
-            Console.SetCursorPosition(13, 15);
-            Console.ForegroundColor = ConsoleColor.Magenta;
-            Console.Write("-GO!-");
-            Console.Beep(1500, 1000);
-            Console.SetCursorPosition(13, 15);
-            Console.Write("     ");
-            Console.SetCursorPosition(0, 30);
+            DrawGameBoardLevelOne();
+            Dimitar.StartCounter();
 
             //player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
             //player.Load();
@@ -443,90 +430,9 @@ class PackManHydra
             Console.Clear();
             Environment.Exit(-1);
         }
-
-
-
-
-        // Изчистваме конзолата
-        //Console.Clear();
-        Console.CursorVisible = false; // и скриваме курсора да не ни мига...    
-
-        // Принтиране на логото, изчакване за натискане на клавиш преди преминаване напред
-        // Ако е натиснато 1 -> чертаем лабиринта и на мястото на  READY да има брояч -> 3, 2, 1 (сменят се) -> GO
-
-
-        //player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
-        //player.Load();
-        //player.Play();
+        Console.CursorVisible = false; 
 
     }
-
-
-    private static void DrawGameBoard()
-    {
-        Console.WriteLine(" ┌────────────┐ ┌────────────┐");
-        Console.WriteLine(" │............│ │............│");
-        Console.WriteLine(" │.┌──┐.┌───┐.│ │.┌───┐.┌──┐.│");
-        Console.WriteLine(" │.│  │.│ Е │.│ │.│ Д │.│  │.│");
-        Console.WriteLine(" │#└──┘.└┘─└┘.└─┘.└┘─└┘.└──┘#│");
-        Console.WriteLine(" │...........................│");
-        Console.WriteLine(" │.┌──┐.┌┐.┌───────┐.┌┐.┌──┐.│");
-        Console.WriteLine(" │.└──┘.││.└──┐ ┌──┘.││.└──┘.│");
-        Console.WriteLine(" │......││....│ │....││......│");
-        Console.WriteLine(" └────┐.│└──┐ │ │ ┌──┘│.┌────┘");
-        Console.WriteLine("      │.│┌──┘ └─┘ └──┐│.│     ");
-        Console.WriteLine("      │.││           ││.│     ");
-        Console.WriteLine("──────┘.└┘ ┌───────┐ └┘.└─────");
-        Console.WriteLine("       .   │ И   Н │   .      ");//13
-        Console.WriteLine("──────┐.┌┐ └┘─└─┘─└┘ ┌┐.┌─────");
-        Console.WriteLine("      │.││   READY!  ││.│     ");
-        Console.WriteLine("      │.││ ┌───────┐ ││.│     ");
-        Console.WriteLine(" ┌────┘.└┘ └──┐ ┌──┘ └┘.└────┐");
-        Console.WriteLine(" │............│ │............│");
-        Console.WriteLine(" │.┌──┐.┌───┐.│ │.┌───┐.┌──┐.│");
-        Console.WriteLine(" │.└─┐│.└───┘.└─┘.└───┘.│┌─┘.│");
-        Console.WriteLine(" │#..││....... X .......││..#│");
-        Console.WriteLine(" └─┐.││.┌┐.┌───────┐.┌┐.││.┌─┘");
-        Console.WriteLine(" ┌─┘.└┘.││.└──┐ ┌──┘.││.└┘.└─┐");
-        Console.WriteLine(" │......││....│ │....││......│");
-        Console.WriteLine(" │.┌────┘└──┐.│ │.┌──┘└────┐.│");
-        Console.WriteLine(" │.└────────┘.└─┘.└────────┘.│");
-        Console.WriteLine(" │...........................│");
-        Console.WriteLine(" └───────────────────────────┘");
-    }
-
-    public static int[,] walls =
-    {
-            {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-            {1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1},
-            {1,1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1},
-            {1,1,0,1,1,1,1,0,1,0,0,0,1,0,1,1,1,0,1,0,0,0,1,0,1,1,1,1,0,1},
-            {1,1,0,1,1,1,1,0,1,1,0,1,1,0,1,1,1,0,1,1,0,1,1,0,1,1,1,1,0,1},
-            {1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-            {1,1,0,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,0,1},
-            {1,1,0,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,0,1},
-            {1,1,0,0,0,0,0,0,1,1,0,0,0,0,1,1,1,0,0,0,0,1,1,0,0,0,0,0,0,1},
-            {1,1,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,1},
-            {1,1,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,1},
-            {1,1,1,1,1,1,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,1,1,1,1},
-            {1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1},
-            {0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0},
-            {1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1},
-            {1,1,1,1,1,1,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,1,1,1,1},
-            {1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1},
-            {1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1},
-            {1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1},
-            {1,1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1},
-            {1,1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1},
-            {1,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,1},
-            {1,1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1},
-            {1,1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1},
-            {1,1,0,0,0,0,0,0,1,1,0,0,0,0,1,1,1,0,0,0,0,1,1,0,0,0,0,0,0,1},
-            {1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1},
-            {1,1,0,1,1,1,1,1,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,1,1,1,1,1,0,1},
-            {1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-            {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-    };
 
     private static void DrawLogo(int n)
     {
@@ -619,22 +525,5 @@ class PackManHydra
             }
         }
     }
-    private static void InitDotsArray()
-    {
-        string fileName = @"..\..\LevelOneInit.txt";
-        int row = -1;
-        using (StreamReader streamReader = new StreamReader(fileName))
-        {
-            string textRow = streamReader.ReadLine();
-            while (textRow != null)
-            {
-                row++;
-                for (int i = 0; i < textRow.Length; i++)
-                {
-                    smallAndBigDots[row, i] = int.Parse(textRow[i].ToString());
-                }
-                textRow = streamReader.ReadLine();
-            }
-        }
-    }
+    
 }
