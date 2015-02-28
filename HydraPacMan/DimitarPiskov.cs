@@ -77,14 +77,42 @@ class DimitarPiskov
     }
     public static void Instructions()
     {
-        int a = 1;
-        for (int i = a; i < a + 16; i++)
+        for (int i = 8; i < 24; i++)
         {
-            Console.ForegroundColor = ConsoleColor.DarkGreen;
-            Console.SetCursorPosition(0, i);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.SetCursorPosition(6, i);
             Console.Write("#");
-            Console.SetCursorPosition(30, i);
+            Console.SetCursorPosition(25, i);
             Console.Write("#");
         }
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.SetCursorPosition(8, 10);
+            Console.Write("  INSTRUCTIONS");
+            Console.SetCursorPosition(8, 12);
+            Console.Write("   Directions ");
+            Console.SetCursorPosition(8, 14);
+            Console.Write("   → go right");
+            Console.SetCursorPosition(8, 15);
+            Console.Write("   ↑ go up");
+            Console.SetCursorPosition(8, 16);
+            Console.Write("   ← go left");
+            Console.SetCursorPosition(8, 17);
+            Console.Write("   ↓ go down");
+            Console.SetCursorPosition(8, 19);
+            Console.Write("     Points:");
+            Console.SetCursorPosition(8, 21);
+            Console.Write(" . - 10 points");
+            Console.SetCursorPosition(8, 22);
+            Console.Write(" # - 50 points");
+            for (int i = 6; i < 26; i++)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.SetCursorPosition(i, 8);
+                Console.Write("#");
+                Console.SetCursorPosition(i, 24);
+                Console.Write("#");
+            }
+            Console.WriteLine();
+        }
     }
-}
+    

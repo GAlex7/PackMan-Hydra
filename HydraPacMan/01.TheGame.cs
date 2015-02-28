@@ -32,6 +32,7 @@ class PackManHydra
 
     private const int numberOfMovingObjects = 5;
     private static bool returnFromHighScores = true;
+    private static bool returnFromInstructions = true;
     //private static string gameSounds = Directory.GetCurrentDirectory();
     private static string gameSounds = Directory.GetCurrentDirectory();
     public static List<string> highScores = new List<string>();
@@ -58,7 +59,7 @@ class PackManHydra
 
         // Принтиране на логото и заглавието, изчакване за натискане на клавиш преди преминаване напред
 
-        if (returnFromHighScores)
+        if (returnFromHighScores && returnFromInstructions)
         {
             DrawLogo(20);
 
@@ -82,8 +83,8 @@ class PackManHydra
         ConsoleKeyInfo choice = Console.ReadKey();
 
         StringBuilder userNickname = new StringBuilder();
-        StreamReader userScoresRead = new StreamReader(@"..\..\HighScores.txt");
-        StreamWriter userScores = new StreamWriter(@"HighScores.txt");
+        
+        
 
         if (choice.Key == ConsoleKey.D1)
         {
@@ -108,11 +109,18 @@ class PackManHydra
                 ConsoleKeyInfo inputLetter = Console.ReadKey();
                 if (inputLetter.Key == ConsoleKey.Enter && nickname.Count >= 1)
                 {
+                    StreamReader userScoresRead = new StreamReader(@"..\..\HighScores.txt");
                     using (userScoresRead)
                     {
-                        user.Append(userScoresRead.ReadToEnd());
-                        userScoresRead.Close();
+                        string line = userScoresRead.ReadLine();
+
+                        while (line != null)
+                        {
+                            user.Append(line);
+                            line = userScoresRead.ReadLine();
+                        }
                     }
+                    StreamWriter userScores = new StreamWriter(@"..\..\HighScores.txt");
                     using (userScores)
                     {
                         for (int i = 0; i < nickname.Count; i++)
@@ -120,12 +128,12 @@ class PackManHydra
                             user.Append(nickname[i].KeyChar);
                         }
                         user.Append(" - ");
-                        highScores.Add(user.ToString());
-
-                        for (int i = 0; i < highScores.Count; i++)
-                        {
-                            user.Append(highScores[i]);
-                        }
+                        //highScores.Add(user.ToString());
+                        //
+                        //for (int i = 0; i < highScores.Count; i++)
+                        //{
+                        //    user.Append(highScores[i]);
+                        //}
                         userScores.Write(user);
                     }
                     inputSuccess = false;
@@ -193,10 +201,29 @@ class PackManHydra
         {
             Console.Clear();
             DimitarPiskov.Instructions();
-            Console.ReadKey(true);
+
+            Console.SetCursorPosition(5, 30);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write("Press ENTER to return");
+            Console.SetCursorPosition(10, 31);
+            Console.Write("to the MENU");
+
+            if (Console.ReadKey().Key == ConsoleKey.Enter)
+            {
+                returnFromInstructions = false;
+                Console.Clear();
+                Main();
+            }
+            else
+            {
+                returnFromInstructions = false;
+                Console.Clear();
+                Main();
+            }
         }
         else if (choice.Key == ConsoleKey.D3)
         {
+            StreamReader userScoresRead = new StreamReader(@"..\..\HighScores.txt");
             Console.Clear();
             Console.SetCursorPosition(11, 2);
             Console.Write("HIGH SCORES");
