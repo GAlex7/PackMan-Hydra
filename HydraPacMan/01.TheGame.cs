@@ -34,8 +34,9 @@ class PackManHydra
     //private static string gameSounds = Directory.GetCurrentDirectory();
 
     //Антонина 
-     public static int[,] availablePositionsGuyQ = new int[,]
+    public static int[,] availablePositionsGuyQ = new int[,]
     {           
+                {10,4},
                 {10,5},
                 {9,5},
                 {8,5},
@@ -102,8 +103,9 @@ class PackManHydra
     };
 
     //Ивайло
-    public static int[,] monsterArray = new int[57, 2] 
+    public static int[,] monsterArray = new int[,] 
         {
+            {17, 14}, 
             {18, 15},    
             {19, 15},
             {20, 15},
@@ -163,10 +165,11 @@ class PackManHydra
             {19, 18},
         };
 
-  
+
     //Мариян
-    public static int[,] monsterW = new int[102, 2] 
+    public static int[,] monsterW = new int[,] 
         {
+            {20, 4},
             {20, 5},    
             {19, 5},
             {18, 5},
@@ -286,7 +289,7 @@ class PackManHydra
 
         // Бонус точки
         InitDotsArray();
-        
+
         // Фонова музика
         // SoundPlayer player = new SoundPlayer();
         // SoundPlayer player = new SoundPlayer();
@@ -308,8 +311,8 @@ class PackManHydra
         Ivaylo.PrintingMenuGame();
 
         // Начална позиция на нашето човече
-        badGuysCoordinates[0, 0] = 15;
-        badGuysCoordinates[0, 1] = 21;
+        //badGuysCoordinates[0, 0] = 15;
+        //badGuysCoordinates[0, 1] = 21;
 
         ConsoleKeyInfo choice = Console.ReadKey();
 
@@ -318,7 +321,7 @@ class PackManHydra
         if (choice.Key == ConsoleKey.D1)
         {
             Console.Clear();
-            
+
             int currentColumn = 15;
             bool inputSuccess = true;
             var nickname = new List<ConsoleKeyInfo>();
@@ -378,8 +381,8 @@ class PackManHydra
                     {
                         currentColumn++;
                     }
-                }               
-                
+                }
+
                 Console.Clear();
             }
 
@@ -420,15 +423,15 @@ class PackManHydra
 
             // Извикване на файла, който държи High scores
             Console.ReadKey(true);
-            
+
         }
         else if (choice.Key == ConsoleKey.D4)
         {
             Console.Clear();
             Environment.Exit(-1);
         }
-            
         Console.CursorVisible = false; 
+
     }
 
     private static void DrawLogo(int n)
@@ -504,6 +507,20 @@ class PackManHydra
                 {
                     smallAndBigDots[row, i] = int.Parse(textRow[i].ToString());
                 }
+                textRow = streamReader.ReadLine();
+            }
+        }
+        fileName = @"..\..\LevelOneInit.txt";
+        row = -1;
+        using (StreamReader streamReader = new StreamReader(fileName))
+        {
+            string textRow = streamReader.ReadLine();
+            while (textRow != null)
+            {
+                row++;
+                string[] xy = textRow.Split(' ');
+                badGuysCoordinates[row, 0] = int.Parse(xy[0]);
+                badGuysCoordinates[row, 1] = int.Parse(xy[1]);
                 textRow = streamReader.ReadLine();
             }
         }

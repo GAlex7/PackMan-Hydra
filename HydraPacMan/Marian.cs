@@ -14,7 +14,7 @@ class Marian
         PackManHydra.badGuysCoordinates[4, 1] = PackManHydra.badGuysCoordinates[4, 3];
         PackManHydra.badGuysCoordinates[4, 2] = PackManHydra.monsterW[PackManHydra.GadFourCounter, 0];
         PackManHydra.badGuysCoordinates[4, 3] = PackManHydra.monsterW[PackManHydra.GadFourCounter, 1];
-        if (PackManHydra.GadFourCounter == 101)
+        if (PackManHydra.GadFourCounter == 102)
         {
             PackManHydra.GadFourCounter = 0;
         }

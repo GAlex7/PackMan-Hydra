@@ -6,8 +6,7 @@ using System.Threading;
 
 class Georgi
 {
-
-    // Изчертаване на екрана
+      // Изчертаване на екрана
     static public void RefreshScreen(int[,] crawliesPos)
     {
         Type type = typeof(ConsoleColor);
