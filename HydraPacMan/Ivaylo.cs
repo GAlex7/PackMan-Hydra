@@ -25,7 +25,7 @@ class Ivaylo
         PackManHydra.badGuysCoordinates[1, 3] = PackManHydra.monsterArray[PackManHydra.GadOneCounter, 1];
     }
 
-    public static int[,] monsterArray = new int[103, 2] 
+    public static int[,] monsterArray2 = new int[103, 2] 
         {
             {17, 13},    
             {17, 14},
@@ -136,8 +136,8 @@ class Ivaylo
     {
         PackManHydra.badGuysCoordinates[1, 0] = PackManHydra.badGuysCoordinates[1, 2];
         PackManHydra.badGuysCoordinates[1, 1] = PackManHydra.badGuysCoordinates[1, 3];
-        PackManHydra.badGuysCoordinates[1, 2] = PackManHydra.monsterArray[PackManHydra.GadOneCounter, 0];
-        PackManHydra.badGuysCoordinates[1, 3] = PackManHydra.monsterArray[PackManHydra.GadOneCounter, 1];
+        PackManHydra.badGuysCoordinates[1, 2] = PackManHydra.monsterArray2[PackManHydra.GadOneCounter, 0];
+        PackManHydra.badGuysCoordinates[1, 3] = PackManHydra.monsterArray2[PackManHydra.GadOneCounter, 1];
         if (PackManHydra.GadOneCounter == 102)
         {
             PackManHydra.GadOneCounter = 9;
@@ -146,8 +146,109 @@ class Ivaylo
         {
             PackManHydra.GadOneCounter++;
         }
-        PackManHydra.badGuysCoordinates[1, 2] = PackManHydra.monsterArray[PackManHydra.GadOneCounter, 0];
-        PackManHydra.badGuysCoordinates[1, 3] = PackManHydra.monsterArray[PackManHydra.GadOneCounter, 1];
+        PackManHydra.badGuysCoordinates[1, 2] = PackManHydra.monsterArray2[PackManHydra.GadOneCounter, 0];
+        PackManHydra.badGuysCoordinates[1, 3] = PackManHydra.monsterArray2[PackManHydra.GadOneCounter, 1];
+    }
+
+    public static int[,] monsterArrayQ2 = new int[79, 2] 
+        {
+            {10, 3},    
+            {10, 4},
+            {10, 5},
+            {10, 6},
+            {10, 7},
+            {10, 8},
+            {11, 8},
+            {12, 8},
+            {13, 8},
+            {13, 9},
+            {13, 10},
+            {13, 11},
+            {12, 11},
+            {11, 11},
+            {10, 11},
+            {10, 12},
+            {10, 13},
+            {9, 13},
+            {8, 13},
+            {7, 13},
+            {7, 12},
+            {7, 11},
+            {7, 10},
+            {7, 9},
+            {7, 8},
+            {7, 7},
+            {7, 6},
+            {7, 5},
+            {6, 5},
+            {5, 5},
+            {4, 5},
+            {3, 5},
+            {2, 5},
+            {2, 6},
+            {2, 7},
+            {2, 8},
+            {3, 8},
+            {4, 8},
+            {5, 8},
+            {6, 8},
+            {7, 8},
+            {7, 7},
+            {7, 6},
+            {7, 5},
+            {8, 5},
+            {9, 5},
+            {10, 5},
+            {11, 5},
+            {12, 5},
+            {13, 5},
+            {13, 4},
+            {13, 3},
+            {13, 2},
+            {13, 1},
+            {12, 1},
+            {11, 1},
+            {10, 1},
+            {9, 1},
+            {8, 1},
+            {7, 1},
+            {6, 1},
+            {5, 1},
+            {4, 1},
+            {3, 1},
+            {2, 1},
+            {2, 1},
+            {2, 2},
+            {2, 3},
+            {2, 4},
+            {2, 5},
+            {3, 5},
+            {4, 5},
+            {5, 5},
+            {6, 5},
+            {7, 5},
+            {8, 5},
+            {9, 5},
+            {10, 5},
+            {10, 6},
+        };
+
+    public static void MonsterQ2()
+    {
+        PackManHydra.badGuysCoordinates[2, 0] = PackManHydra.badGuysCoordinates[2, 2];
+        PackManHydra.badGuysCoordinates[2, 1] = PackManHydra.badGuysCoordinates[2, 3];
+        PackManHydra.badGuysCoordinates[2, 2] = PackManHydra.monsterArrayQ2[PackManHydra.GadTwoCounter, 0];
+        PackManHydra.badGuysCoordinates[2, 3] = PackManHydra.monsterArrayQ2[PackManHydra.GadTwoCounter, 1];
+        if (PackManHydra.GadTwoCounter == 78)
+        {
+            PackManHydra.GadTwoCounter = 4;
+        }
+        else
+        {
+            PackManHydra.GadTwoCounter++;
+        }
+        PackManHydra.badGuysCoordinates[2, 2] = PackManHydra.monsterArrayQ2[PackManHydra.GadTwoCounter, 0];
+        PackManHydra.badGuysCoordinates[2, 3] = PackManHydra.monsterArrayQ2[PackManHydra.GadTwoCounter, 1];
     }
 
     public static void PrintingMenuGame()
