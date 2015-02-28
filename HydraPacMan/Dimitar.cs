@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 class Dimitar
 {
-    // Гад 3 - > Z
-
-
-    public static int[,] monsterZ = new int[86, 2] 
+    public static int[,] monsterICoordinates = new int[86, 2] 
         {
             {13, 15},    
             {12, 15},
@@ -98,12 +95,12 @@ class Dimitar
             {12,18},
             {11,18},
         };
-    public static void MonsterZ()
+    public static void MonsterIMoving()
     {
         PackManHydra.badGuysCoordinates[3, 0] = PackManHydra.badGuysCoordinates[3, 2];
         PackManHydra.badGuysCoordinates[3, 1] = PackManHydra.badGuysCoordinates[3, 3];
-        PackManHydra.badGuysCoordinates[3, 2] = monsterZ[PackManHydra.GadThreeCounter, 0];
-        PackManHydra.badGuysCoordinates[3, 3] = monsterZ[PackManHydra.GadThreeCounter, 1];
+        PackManHydra.badGuysCoordinates[3, 2] = monsterICoordinates[PackManHydra.GadThreeCounter, 0];
+        PackManHydra.badGuysCoordinates[3, 3] = monsterICoordinates[PackManHydra.GadThreeCounter, 1];
         if (PackManHydra.GadThreeCounter == 85)
         {
             PackManHydra.GadThreeCounter = 6;
@@ -112,8 +109,8 @@ class Dimitar
         {
             PackManHydra.GadThreeCounter++;
         }
-        PackManHydra.badGuysCoordinates[3, 2] = monsterZ[PackManHydra.GadThreeCounter, 0];
-        PackManHydra.badGuysCoordinates[3, 3] = monsterZ[PackManHydra.GadThreeCounter, 1];
+        PackManHydra.badGuysCoordinates[3, 2] = monsterICoordinates[PackManHydra.GadThreeCounter, 0];
+        PackManHydra.badGuysCoordinates[3, 3] = monsterICoordinates[PackManHydra.GadThreeCounter, 1];
 
     }
 

@@ -9,8 +9,8 @@ using System.Threading;
 
 class PackManHydra
 {
-    public const int windowWidth = 31;
-    public const int windowHeight = 33;
+    private const int windowWidth = 31;
+    private const int windowHeight = 33;
     public static string ourGuy = "X<>^vx--::";
     public static string badGuys = "xНЕИД";
 
@@ -162,9 +162,7 @@ class PackManHydra
             {19, 18},
         };
 
-    // Димитър Стоянов
-   
-
+  
     //Мариян
     public static int[,] monsterW = new int[102, 2] 
         {
@@ -235,7 +233,7 @@ class PackManHydra
             {02, 13},
             {01, 13},
             {00, 13},
-            {29, 13}, //
+            {29, 13},
             {28, 13},
             {27, 13},
             {26, 13},
@@ -277,16 +275,18 @@ class PackManHydra
     static void Main()
     {
         // Заглавие на конзолата
-        Console.Title = "PacMan";
+        Console.Title = "EatSharp";
         InitDotsArray();                               //GAlex
         // Задаваме encoding за гадовете
         Console.OutputEncoding = Encoding.UTF8;
 
         // Задаваме размер на конзолата
-        badGuysCoordinates[0, 0] = 15; //Console.WindowHeight = windowHeight;
-        badGuysCoordinates[0, 1] = 21; //Console.WindowWidth = windowWidth;
-        //Console.BufferHeight = Console.WindowHeight;
-        //Console.BufferWidth = Console.WindowWidth;
+        badGuysCoordinates[0, 0] = 15; 
+        badGuysCoordinates[0, 1] = 21;
+        Console.WindowHeight = windowHeight;
+        Console.WindowWidth = windowWidth;
+        Console.BufferHeight = Console.WindowHeight;
+        Console.BufferWidth = Console.WindowWidth;
 
         // Фонова музика
         //SoundPlayer player = new SoundPlayer();
@@ -355,7 +355,7 @@ class PackManHydra
 
                 // Викане на нашето човече
                 Ivaylo.MonsterM();
-                Dimitar.MonsterZ();
+                Dimitar.MonsterIMoving();
                 Marian.MonsterW();
                 Antonina.BadGuyQ();
                 // Обновяване на екрана
@@ -375,7 +375,7 @@ class PackManHydra
         Console.WriteLine(" │............│ │............│");
         Console.WriteLine(" │.┌──┐.┌───┐.│ │.┌───┐.┌──┐.│");
         Console.WriteLine(" │.│  │.│ Q │.│ │.│ W │.│  │.│");
-        Console.WriteLine(" │о└──┘.└┘─└┘.└─┘.└┘─└┘.└──┘о│");
+        Console.WriteLine(" │#└──┘.└┘─└┘.└─┘.└┘─└┘.└──┘#│");
         Console.WriteLine(" │...........................│");
         Console.WriteLine(" │.┌──┐.┌┐.┌───────┐.┌┐.┌──┐.│");
         Console.WriteLine(" │.└──┘.││.└──┐ ┌──┘.││.└──┘.│");
@@ -392,7 +392,7 @@ class PackManHydra
         Console.WriteLine(" │............│ │............│");
         Console.WriteLine(" │.┌──┐.┌───┐.│ │.┌───┐.┌──┐.│");
         Console.WriteLine(" │.└─┐│.└───┘.└─┘.└───┘.│┌─┘.│");
-        Console.WriteLine(" │о..││....... X .......││..о│");
+        Console.WriteLine(" │#..││....... X .......││..#│");
         Console.WriteLine(" └─┐.││.┌┐.┌───────┐.┌┐.││.┌─┘");
         Console.WriteLine(" ┌─┘.└┘.││.└──┐ ┌──┘.││.└┘.└─┐");
         Console.WriteLine(" │......││....│ │....││......│");
