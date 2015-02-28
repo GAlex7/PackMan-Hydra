@@ -12,6 +12,7 @@ class Georgi
         Type type = typeof(ConsoleColor);
         int x = 0;
         int y = 0;
+        PackMan(crawliesPos);
         switch (PackManHydra.direction)
         {
 
@@ -159,25 +160,25 @@ class Georgi
             {
                 if (Mariyan.wallsLevelOne[y, x - 1] != 1)
                     posoka = left;
-                else posoka = stop;
+                //else posoka = stop;
             }
             if (userInput.Key == ConsoleKey.RightArrow)
             {
                 if (Mariyan.wallsLevelOne[y, x + 1] != 1)
                     posoka = right;
-                else posoka = stop;
+                //else posoka = stop;
             }
             if (userInput.Key == ConsoleKey.UpArrow)
             {
                 if (Mariyan.wallsLevelOne[y - 1, x] != 1)
                     posoka = up;
-                else posoka = stop;
+                //else posoka = stop;
             }
             if (userInput.Key == ConsoleKey.DownArrow)
             {
                 if (Mariyan.wallsLevelOne[y + 1, x] != 1)
                     posoka = down;
-                else posoka = stop;
+                //else posoka = stop;
             }
         }
         // moving...
