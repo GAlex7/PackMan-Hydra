@@ -43,7 +43,7 @@ class Georgi
                             }
                         case 5:
                             {
-                                dotsChar = 'o';
+                                dotsChar = '#';
                                 break;
                             }
                         default:
