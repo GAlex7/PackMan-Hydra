@@ -619,22 +619,4 @@ class PackManHydra
             }
         }
     }
-    private static void InitDotsArray()
-    {
-        string fileName = @"..\..\LevelOneInit.txt";
-        int row = -1;
-        using (StreamReader streamReader = new StreamReader(fileName))
-        {
-            string textRow = streamReader.ReadLine();
-            while (textRow != null)
-            {
-                row++;
-                for (int i = 0; i < textRow.Length; i++)
-                {
-                    smallAndBigDots[row, i] = int.Parse(textRow[i].ToString());
-                }
-                textRow = streamReader.ReadLine();
-            }
-        }
-    }
 }
