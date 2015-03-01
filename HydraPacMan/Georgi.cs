@@ -3,12 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Media;
+using NAudio;
+using NAudio.Wave;
 
 class Georgi
 {
     // Изчертаване на екрана
     static public void RefreshScreen(int[,] crawliesPos)
     {
+        ////Declarations required for audio out and the MP3 stream
+        //IWavePlayer waveOutDevice;
+        //public static AudioFileReader audioFileReader;
+        //waveOutDevice = new WaveOut();
+        //audioFileReader = new AudioFileReader(@"..\..\Sounds\Maid with the Flaxen Hair.mp3");
+        //waveOutDevice.Init(audioFileReader);
+        //waveOutDevice.Play();
+
         Type type = typeof(ConsoleColor);
         int x = 0;
         int y = 0;
@@ -43,9 +54,9 @@ class Georgi
         {
             // дали не е изяден
             if ((i != 0) &&
-                (crawliesPos[0, 0] == crawliesPos[i, 0] || crawliesPos[0, 0] + x == crawliesPos[i, 0] || crawliesPos[0, 0] - x == crawliesPos[i, 0])
+                (crawliesPos[0, 0] == crawliesPos[i, 0] || crawliesPos[0, 2] - x == crawliesPos[i, 0])
                 &&
-                (crawliesPos[0, 1] == crawliesPos[i, 1] || crawliesPos[0, 1] + y == crawliesPos[i, 1] || crawliesPos[0, 1] - y == crawliesPos[i, 1]))
+                (crawliesPos[0, 1] == crawliesPos[i, 1] || crawliesPos[0, 3] - y == crawliesPos[i, 1]))
             {
                 Console.SetCursorPosition(crawliesPos[i, 0], crawliesPos[i, 1]);
                 Console.Write(" ");
@@ -80,6 +91,11 @@ class Georgi
                     Console.SetCursorPosition(crawliesPos[i, 0], crawliesPos[i, 1]);
                     PackManHydra.points += PackManHydra.smallAndBigDots[crawliesPos[i, 1], crawliesPos[i, 0]] * 10;
                     Console.Write(" "); PackManHydra.smallAndBigDots[crawliesPos[i, 1], crawliesPos[i, 0]] = 0;
+
+                    //PackManHydra.
+                    //audioFileReader = new AudioFileReader(@"..\..\Sounds\Maid with the Flaxen Hair.mp3");
+                    //waveOutDevice.Init(audioFileReader);
+                    //waveOutDevice.Play();
 
                     Console.SetCursorPosition(crawliesPos[i, 2], crawliesPos[i, 3]);
                     Console.ForegroundColor = (ConsoleColor)Enum.Parse(type, PackManHydra.colors[i]);
@@ -160,25 +176,25 @@ class Georgi
             {
                 if (Mariyan.wallsLevelOne[y, x - 1] != 1)
                     posoka = left;
-                //else posoka = stop;
+                else posoka = stop;
             }
             if (userInput.Key == ConsoleKey.RightArrow)
             {
                 if (Mariyan.wallsLevelOne[y, x + 1] != 1)
                     posoka = right;
-                //else posoka = stop;
+                else posoka = stop;
             }
             if (userInput.Key == ConsoleKey.UpArrow)
             {
                 if (Mariyan.wallsLevelOne[y - 1, x] != 1)
                     posoka = up;
-                //else posoka = stop;
+                else posoka = stop;
             }
             if (userInput.Key == ConsoleKey.DownArrow)
             {
                 if (Mariyan.wallsLevelOne[y + 1, x] != 1)
                     posoka = down;
-                //else posoka = stop;
+                else posoka = stop;
             }
         }
         // moving...
