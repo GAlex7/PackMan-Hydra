@@ -33,7 +33,6 @@ class PackManHydra
     private const int numberOfMovingObjects = 5;
     private static bool returnFromHighScores = true;
     private static bool returnFromInstructions = true;
-    //private static string gameSounds = Directory.GetCurrentDirectory();
     private static string gameSounds = Directory.GetCurrentDirectory();
     public static List<string> highScores = new List<string>();
     public static StringBuilder user = new StringBuilder();
@@ -77,15 +76,12 @@ class PackManHydra
             Ivaylo.PrintingMenuGame();
 
             IWavePlayer waveOutDevice;
-            AudioFileReader audioFileReader;  //GAlex
+            AudioFileReader audioFileReader = new AudioFileReader(@"..\..\Sounds\ThemeSong.mp3");  //GAlex
             waveOutDevice = new WaveOut();
 
             ConsoleKeyInfo choice = Console.ReadKey();
 
             StringBuilder userNickname = new StringBuilder();
-
-            waveOutDevice.Init(new AudioFileReader(@"..\..\Sounds\ThemeSong.mp3"));
-            waveOutDevice.Play();
 
             if (choice.Key == ConsoleKey.D1)
             {
@@ -170,6 +166,9 @@ class PackManHydra
                 //player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
                 //player.Load();
                 //player.Play();
+
+                waveOutDevice.Init(audioFileReader);
+                waveOutDevice.Play();
 
                 while (endGame)
                 {

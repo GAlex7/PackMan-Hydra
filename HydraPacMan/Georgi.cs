@@ -63,7 +63,7 @@ class Georgi
             {
                 Console.SetCursorPosition(crawliesPos[i, 0], crawliesPos[i, 1]);
                 Console.Write(" ");
-                waveOutDevice.Init(new AudioFileReader(@"..\..\Sounds\Pacman Eating Ghost.mp3"));
+                waveOutDevice.Init(new AudioFileReader(@"..\..\Sounds\deadSoundShort.mp3"));
                 waveOutDevice.Play();
 
                 Console.SetCursorPosition(13, 15);
@@ -101,7 +101,7 @@ class Georgi
                     Console.SetCursorPosition(crawliesPos[i, 0], crawliesPos[i, 1]);
                     if (PackManHydra.smallAndBigDots[crawliesPos[i, 1], crawliesPos[i, 0]] ==5)
                     {
-                        waveOutDevice.Init(new AudioFileReader(@"..\..\Sounds\Pacman Eating Cherry.mp3"));
+                        waveOutDevice.Init(new AudioFileReader(@"..\..\Sounds\eatSharpShort.mp3"));
                         waveOutDevice.Play();
                        
                     }
