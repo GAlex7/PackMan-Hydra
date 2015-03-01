@@ -54,11 +54,11 @@ class PackManHydra
         InitDotsArray();
 
         // Фонова музика
-        SoundPlayer player = new SoundPlayer();
+        //SoundPlayer player = new SoundPlayer();
 
         // Принтиране на логото и заглавието, изчакване за натискане на клавиш преди преминаване напред
-        try
-        {
+        //try
+        //{
             if (returnFromHighScores && returnFromInstructions)
             {
                 DrawLogo(20);
@@ -166,9 +166,9 @@ class PackManHydra
                 Mariyan.DrawGameBoardLevelOne();
                 Dimitar.StartCounter();
 
-                player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
-                player.Load();
-                player.Play();
+                //player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
+                //player.Load();
+                //player.Play();
 
                 while (endGame)
                 {
@@ -261,18 +261,19 @@ class PackManHydra
             Console.CursorVisible = false;
 
 
-        }
-        catch (Exception)
-        {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.SetCursorPosition(8, 15);
-            Console.WriteLine("Unexpected error");
-            Console.SetCursorPosition(8, 16);
-            Console.WriteLine("durring loading\n");
-            Console.ReadKey();
-            Environment.Exit(-1);
-        }
+        //}
+        //catch (Exception ex)
+        //{
+        //    t
+        //    Console.Clear();
+        //    Console.ForegroundColor = ConsoleColor.Red;
+        //    Console.SetCursorPosition(8, 15);
+        //    Console.WriteLine("Unexpected error");
+        //    Console.SetCursorPosition(8, 16);
+        //    Console.WriteLine("durring loading\n");
+        //    Console.ReadKey();
+        //    Environment.Exit(-1);
+        //}
     }
 
     private static void DrawLogo(int n)

@@ -3,12 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using NAudio;
+using NAudio.Wave;
 
 class Georgi
 {
     // Изчертаване на екрана
     static public void RefreshScreen(int[,] crawliesPos)
     {
+        //Declarations required for audio out and the MP3 stream
+        IWavePlayer waveOutDevice;
+        AudioFileReader audioFileReader;
+        waveOutDevice = new WaveOut();
+
+
+
+
+
+
+
+
         Type type = typeof(ConsoleColor);
         int x = 0;
         int y = 0;
@@ -49,6 +63,8 @@ class Georgi
             {
                 Console.SetCursorPosition(crawliesPos[i, 0], crawliesPos[i, 1]);
                 Console.Write(" ");
+                waveOutDevice.Init(new AudioFileReader(@"..\..\Sounds\Pacman Eating Ghost.mp3"));
+                waveOutDevice.Play();
 
                 Console.SetCursorPosition(13, 15);
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -61,11 +77,16 @@ class Georgi
 
                 if (PackManHydra.lives < 1)
                 {
+                    waveOutDevice.Init(new AudioFileReader(@"..\..\Sounds\Pacman Dies.mp3"));
+                    waveOutDevice.Play();
+
                     Console.SetCursorPosition(0, 15);
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("---------GAME OVER!!!---------");
                     PackManHydra.endGame = false;
+                    Thread.Sleep(1500);
 
+                    
                 }
                 else
                 {
@@ -78,6 +99,16 @@ class Georgi
                 if (i == 0)
                 {
                     Console.SetCursorPosition(crawliesPos[i, 0], crawliesPos[i, 1]);
+                    if (PackManHydra.smallAndBigDots[crawliesPos[i, 1], crawliesPos[i, 0]] ==5)
+                    {
+                        waveOutDevice.Init(new AudioFileReader(@"..\..\Sounds\Pacman Eating Cherry.mp3"));
+                        waveOutDevice.Play();
+                    }
+                    else if (PackManHydra.smallAndBigDots[crawliesPos[i, 1], crawliesPos[i, 0]] == 1)
+                    {
+                        waveOutDevice.Init(new AudioFileReader(@"..\..\Sounds\Pacman Waka Waka.mp3"));
+                        waveOutDevice.Play();
+                    }
                     PackManHydra.points += PackManHydra.smallAndBigDots[crawliesPos[i, 1], crawliesPos[i, 0]] * 10;
                     Console.Write(" "); PackManHydra.smallAndBigDots[crawliesPos[i, 1], crawliesPos[i, 0]] = 0;
 
