@@ -103,11 +103,13 @@ class Georgi
                     {
                         waveOutDevice.Init(new AudioFileReader(@"..\..\Sounds\Pacman Eating Cherry.mp3"));
                         waveOutDevice.Play();
+                       
                     }
                     else if (PackManHydra.smallAndBigDots[crawliesPos[i, 1], crawliesPos[i, 0]] == 1)
                     {
-                        waveOutDevice.Init(new AudioFileReader(@"..\..\Sounds\Pacman Waka Waka.mp3"));
-                        waveOutDevice.Play();
+                        //waveOutDevice.Init(new AudioFileReader(@"..\..\Sounds\Pacman Eating Cherry.mp3"));
+                        //waveOutDevice.Play();
+                        Console.Beep(1000, 25);
                     }
                     PackManHydra.points += PackManHydra.smallAndBigDots[crawliesPos[i, 1], crawliesPos[i, 0]] * 10;
                     Console.Write(" "); PackManHydra.smallAndBigDots[crawliesPos[i, 1], crawliesPos[i, 0]] = 0;
