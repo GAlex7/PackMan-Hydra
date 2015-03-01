@@ -4,8 +4,8 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Media;
-using System.Text;
-using System.Threading;
+using System.Text; using NAudio;
+using System.Threading; using NAudio.Wave;
 
 class PackManHydra
 {
@@ -76,15 +76,16 @@ class PackManHydra
 
             Ivaylo.PrintingMenuGame();
 
-            // Начална позиция на нашето човече
-            //badGuysCoordinates[0, 0] = 15;
-            //badGuysCoordinates[0, 1] = 21;
+            IWavePlayer waveOutDevice;
+            AudioFileReader audioFileReader;  //GAlex
+            waveOutDevice = new WaveOut();
 
             ConsoleKeyInfo choice = Console.ReadKey();
 
             StringBuilder userNickname = new StringBuilder();
 
-
+            waveOutDevice.Init(new AudioFileReader(@"..\..\Sounds\ThemeSong.mp3"));
+            waveOutDevice.Play();
 
             if (choice.Key == ConsoleKey.D1)
             {
