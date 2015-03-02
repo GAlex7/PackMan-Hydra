@@ -50,7 +50,7 @@ class PackManHydra
         Console.OutputEncoding = Encoding.UTF8;
 
         // Бонус точки
-        InitDotsArray();
+        //InitDotsArray();
 
         // Фонова музика
         //SoundPlayer player = new SoundPlayer();
@@ -162,15 +162,14 @@ class PackManHydra
                 Console.ForegroundColor = ConsoleColor.Red;
                 Mariyan.DrawGameBoardLevelOne();
                 Dimitar.StartCounter();
-
+                InitDotsArray(1);
                 waveOutDevice.Init(audioFileReader);
                 waveOutDevice.Play();
 
                 while (endGame)
                 {
-                    // Забавяне на конзолата
-                    Thread.Sleep(300);
 
+                    Thread.Sleep(200);
                     // Викане на нашето човече
                     Ivaylo.MonsterNMovingLevelOne();
                     Dimitar.MonsterIMovingLevelOne();
@@ -178,10 +177,10 @@ class PackManHydra
                     Antonina.monsterEMovingLevelOne();
 
                     // Обновяване на екрана
-                    Georgi.RefreshScreen(badGuysCoordinates);
+                    Georgi.RefreshScreen(badGuysCoordinates,Mariyan.wallsLevelOne);
 
                     // Проверка за сблъсък и проверка за изяден бонус
-                    if (points == 20)
+                    if (points == 10) // 1280 - end
                     {
                         endLevelOne = true;
                         endLevelTwo = true;
@@ -191,24 +190,38 @@ class PackManHydra
                 }
 
                 waveOutDevice.Stop();
+
+                Dimitar.LevelTwoMessage();
+                Console.ReadKey();
+
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Red;
                 Mariyan.DrawGameBoardLevelTwo();
                 Dimitar.StartCounter();
-
+                InitDotsArray(2);
                 waveOutDevice.Init(audioFileReader);
                 waveOutDevice.Play();
 
+                GadOneCounter = 0;
+                GadTwoCounter = 0;
+                GadThreeCounter = 0;
+                GadFourCounter = 0;
+
                 while (endLevelTwo)
                 {
-                    Thread.Sleep(200);
+                    Thread.Sleep(150);
 
                     Ivaylo.MonsterNMovingLevelTwo();
                     Ivaylo.MonsterEMovingLevelTwo();
                     Mariyan.MonsterILevelTwo();
                     Evgeni.MonsterDMovingLevelTwo();
 
-                    Georgi.RefreshScreen(badGuysCoordinates);
+                    Georgi.RefreshScreen(badGuysCoordinates,Mariyan.wallsLevelTwo);
+                    
+                    if (points == 100)
+                    {
+                        // to do
+                    }
                 }
 
 
@@ -361,9 +374,9 @@ class PackManHydra
         };
         Console.WriteLine();
     }
-    private static void InitDotsArray()
+    private static void InitDotsArray(int level)
     {
-        string fileName = @"..\..\Dots.txt";
+        string fileName = @"..\..\Dots"+level+".txt";
         int row = -1;
         using (StreamReader streamReader = new StreamReader(fileName))
         {
@@ -378,7 +391,7 @@ class PackManHydra
                 textRow = streamReader.ReadLine();
             }
         }
-        fileName = @"..\..\LevelOneInit.txt";
+        fileName = @"..\..\Level"+level+"Init.txt";
         row = -1;
         using (StreamReader streamReader = new StreamReader(fileName))
         {
