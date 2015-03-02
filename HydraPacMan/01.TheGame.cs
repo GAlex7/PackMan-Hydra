@@ -169,7 +169,7 @@ class PackManHydra
                 while (endGame)
                 {
                     // Забавяне на конзолата
-                    Thread.Sleep(200);
+                    Thread.Sleep(300);
 
                     // Викане на нашето човече
                     Ivaylo.MonsterNMovingLevelOne();
