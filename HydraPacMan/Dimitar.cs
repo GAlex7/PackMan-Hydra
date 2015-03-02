@@ -145,5 +145,27 @@ class Dimitar
         Console.Write("     ");
         Console.SetCursorPosition(0, 30);
     }
+
+    public static void LevelTwoMessage()
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.SetCursorPosition(8, 11);
+        Console.Write("Congratulations!");
+        Console.SetCursorPosition(2, 13);
+        Console.Write("You passed C# 1 successfully");
+        Console.SetCursorPosition(4, 14);
+        Console.Write("but now the lectors are");
+        Console.SetCursorPosition(7, 15);
+        Console.Write("angrier than ever!");
+        Console.SetCursorPosition(4, 17);
+        Console.Write("They will do everything");
+        Console.SetCursorPosition(10, 18);
+        Console.Write("to stop you!");
+        Console.SetCursorPosition(11, 20);
+        Console.Write("Watch out...");
+
+
+    }
 }
 
