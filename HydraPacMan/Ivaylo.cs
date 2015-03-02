@@ -347,13 +347,13 @@ class Ivaylo
     public static void PrintingMenuGame()
     {
         Console.SetCursorPosition(5, 11);
-        Console.ForegroundColor = ConsoleColor.Red;
+        Console.ForegroundColor = ConsoleColor.White;
         Console.Write("********************\n");
         Console.SetCursorPosition(5, 12);
         Console.Write("*       ");
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.Write("MENU");
-        Console.ForegroundColor = ConsoleColor.Red;
+        Console.ForegroundColor = ConsoleColor.White;
         Console.Write("       *\n");
         Console.SetCursorPosition(5, 13);
         Console.Write("*                  *\n");
@@ -361,7 +361,7 @@ class Ivaylo
         Console.Write("*  ");
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.Write("1. NEW GAME   ");
-        Console.ForegroundColor = ConsoleColor.Red;
+        Console.ForegroundColor = ConsoleColor.White;
         Console.Write("  *\n");
         Console.SetCursorPosition(5, 15);
         Console.Write("*                  *\n");
@@ -369,7 +369,7 @@ class Ivaylo
         Console.Write("*  ");
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.Write("2. INSTRUCTION");
-        Console.ForegroundColor = ConsoleColor.Red;
+        Console.ForegroundColor = ConsoleColor.White;
         Console.Write("  *\n");
         Console.SetCursorPosition(5, 17);
         Console.Write("*                  *\n");
@@ -377,7 +377,7 @@ class Ivaylo
         Console.Write("*  ");
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.Write("3. HIGH SCORES");
-        Console.ForegroundColor = ConsoleColor.Red;
+        Console.ForegroundColor = ConsoleColor.White;
         Console.Write("  *\n");
         Console.SetCursorPosition(5, 19);
         Console.Write("*                  *\n");
@@ -385,7 +385,7 @@ class Ivaylo
         Console.Write("*  ");
         Console.ForegroundColor = ConsoleColor.Yellow;
         Console.Write("4. EXIT GAME  ");
-        Console.ForegroundColor = ConsoleColor.Red;
+        Console.ForegroundColor = ConsoleColor.White;
         Console.Write("  *\n");
         Console.SetCursorPosition(5, 21);
         Console.Write("*                  *\n");

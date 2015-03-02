@@ -14,13 +14,13 @@ class PackManHydra
     public static string ourGuy = "X<>^vx--::";
     public static string badGuys = "xНЕИД";
 
-    public static string[] colors = { "Yellow", "Green", "White", "DarkMagenta", "Blue" };
+    public static string[] colors = { "Yellow", "Green", "White", "DarkMagenta", "Cyan" };
     public static int[,] badGuysCoordinates = new int[5, 4];
     public static int[,] smallAndBigDots = new int[29, 30];
 
     public static bool endGame = true;
-    public static bool endLevelOne = true;
-    public static bool endLevelTwo = true;
+    public static bool endLevelOne = false;
+    public static bool endLevelTwo = false;
     public static int points = 0;
     public static int lives = 3;
     public static int direction; // by GA
@@ -128,7 +128,7 @@ class PackManHydra
                     else if (inputLetter.Key == ConsoleKey.Enter && nickname.Count < 3)
                     {
                         Console.Clear();
-                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.ForegroundColor = ConsoleColor.White;
                         Console.SetCursorPosition(2, 19);
                         Console.WriteLine("Enter at least 3 characters!");
                         continue;
@@ -163,10 +163,6 @@ class PackManHydra
                 Mariyan.DrawGameBoardLevelOne();
                 Dimitar.StartCounter();
 
-                //player.SoundLocation = gameSounds + @"\sounds\ThemeSong.wav";
-                //player.Load();
-                //player.Play();
-
                 waveOutDevice.Init(audioFileReader);
                 waveOutDevice.Play();
 
@@ -185,8 +181,35 @@ class PackManHydra
                     Georgi.RefreshScreen(badGuysCoordinates);
 
                     // Проверка за сблъсък и проверка за изяден бонус
+                    if (points == 20)
+                    {
+                        endLevelOne = true;
+                        endLevelTwo = true;
+                        break;
+
+                    }
                 }
 
+                waveOutDevice.Stop();
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Mariyan.DrawGameBoardLevelTwo();
+                Dimitar.StartCounter();
+
+                waveOutDevice.Init(audioFileReader);
+                waveOutDevice.Play();
+
+                while (endLevelTwo)
+                {
+                    Thread.Sleep(200);
+
+                    Ivaylo.MonsterNMovingLevelTwo();
+                    Ivaylo.MonsterEMovingLevelTwo();
+                    Mariyan.MonsterILevelTwo();
+                    Evgeni.MonsterDMovingLevelTwo();
+
+                    Georgi.RefreshScreen(badGuysCoordinates);
+                }
 
 
                 if (endGame == false)
@@ -205,7 +228,7 @@ class PackManHydra
                 DimitarPiskov.Instructions();
 
                 Console.SetCursorPosition(5, 30);
-                Console.ForegroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.Write("Press ENTER to return");
                 Console.SetCursorPosition(10, 31);
                 Console.Write("to the MENU");
@@ -229,12 +252,15 @@ class PackManHydra
                 StreamReader userScoresRead = new StreamReader(@"..\..\HighScores.txt");
                 Console.Clear();
                 Console.SetCursorPosition(10, 2);
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write("HIGH SCORES");
 
                 // Извикване на файла, който държи High scores
                 Console.SetCursorPosition(3, 5);
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine(userScoresRead.ReadToEnd());
                 Console.SetCursorPosition(5, 30);
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write("Press enter to return");
                 Console.SetCursorPosition(10, 31);
                 Console.Write("to the MENU");
@@ -287,17 +313,17 @@ class PackManHydra
             {
                 if ((c == radius + 2 && r == 5) || (c == radius + 2 && r == 6))
                 {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.Write("-");
                 }
                 else if ((c == radius + 1 && r == 5) || (c == radius + 3 && r == 6))
                 {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.Write("/");
                 }
                 else if ((c == radius + 3 && r == 5) || (c == radius + 1 && r == 6))
                 {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.Write("\\");
                 }
                 else if ((int)Math.Abs(radius - c) * (int)Math.Abs(radius - c) +
@@ -314,11 +340,11 @@ class PackManHydra
                     {
                         if (c % 2 != r % 2)
                         {
-                            Console.ForegroundColor = ConsoleColor.DarkRed;
+                            Console.ForegroundColor = ConsoleColor.White;
                         }
                         else
                         {
-                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.ForegroundColor = ConsoleColor.Green;
                         }
 
                         Console.Write("*");

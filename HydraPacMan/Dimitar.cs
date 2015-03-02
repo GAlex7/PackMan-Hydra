@@ -106,7 +106,7 @@ class Dimitar
         PackManHydra.badGuysCoordinates[3, 3] = monsterICoordinatesLevelOne[PackManHydra.GadThreeCounter, 1];
         if (PackManHydra.GadThreeCounter == 87)
         {
-            PackManHydra.GadThreeCounter = 6;
+            PackManHydra.GadThreeCounter = 8;
         }
         else
         {
