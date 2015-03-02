@@ -50,7 +50,7 @@ class PackManHydra
         Console.OutputEncoding = Encoding.UTF8;
 
         // Бонус точки
-        InitDotsArray();
+        //InitDotsArray();
 
         // Фонова музика
         //SoundPlayer player = new SoundPlayer();
@@ -162,7 +162,7 @@ class PackManHydra
                 Console.ForegroundColor = ConsoleColor.Red;
                 Mariyan.DrawGameBoardLevelOne();
                 Dimitar.StartCounter();
-
+                InitDotsArray(1);
                 waveOutDevice.Init(audioFileReader);
                 waveOutDevice.Play();
 
@@ -170,7 +170,7 @@ class PackManHydra
                 {
                     // Забавяне на конзолата
                     Thread.Sleep(200);
-
+                    
                     // Викане на нашето човече
                     Ivaylo.MonsterNMovingLevelOne();
                     Dimitar.MonsterIMovingLevelOne();
@@ -178,7 +178,7 @@ class PackManHydra
                     Antonina.monsterEMovingLevelOne();
 
                     // Обновяване на екрана
-                    Georgi.RefreshScreen(badGuysCoordinates);
+                    Georgi.RefreshScreen(badGuysCoordinates,Mariyan.wallsLevelOne);
 
                     // Проверка за сблъсък и проверка за изяден бонус
                     if (points == 20)
@@ -195,7 +195,7 @@ class PackManHydra
                 Console.ForegroundColor = ConsoleColor.Red;
                 Mariyan.DrawGameBoardLevelTwo();
                 Dimitar.StartCounter();
-
+                InitDotsArray(2);
                 waveOutDevice.Init(audioFileReader);
                 waveOutDevice.Play();
 
@@ -208,7 +208,7 @@ class PackManHydra
                     Mariyan.MonsterILevelTwo();
                     Evgeni.MonsterDMovingLevelTwo();
 
-                    Georgi.RefreshScreen(badGuysCoordinates);
+                    Georgi.RefreshScreen(badGuysCoordinates,Mariyan.wallsLevelTwo);
                 }
 
 
@@ -361,9 +361,9 @@ class PackManHydra
         };
         Console.WriteLine();
     }
-    private static void InitDotsArray()
+    private static void InitDotsArray(int level)
     {
-        string fileName = @"..\..\Dots.txt";
+        string fileName = @"..\..\Dots"+level+".txt";
         int row = -1;
         using (StreamReader streamReader = new StreamReader(fileName))
         {
@@ -378,7 +378,7 @@ class PackManHydra
                 textRow = streamReader.ReadLine();
             }
         }
-        fileName = @"..\..\LevelOneInit.txt";
+        fileName = @"..\..\Level"+level+"Init.txt";
         row = -1;
         using (StreamReader streamReader = new StreamReader(fileName))
         {

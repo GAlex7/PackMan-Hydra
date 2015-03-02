@@ -9,7 +9,7 @@ using NAudio.Wave;
 class Georgi
 {
     // Изчертаване на екрана
-    static public void RefreshScreen(int[,] crawliesPos)
+    static public void RefreshScreen(int[,] crawliesPos, int[,] walls)
     {
         //Declarations required for audio out and the MP3 stream
         IWavePlayer waveOutDevice;
@@ -26,7 +26,7 @@ class Georgi
         Type type = typeof(ConsoleColor);
         int x = 0;
         int y = 0;
-        PackMan(crawliesPos);
+        PackMan(crawliesPos, walls);
         switch (PackManHydra.direction)
         {
 
@@ -86,24 +86,24 @@ class Georgi
                     PackManHydra.endGame = false;
                     Thread.Sleep(1500);
 
-                    
+
                 }
                 else
                 {
                     PackManHydra.lives--;
                 }
             }
-            else if (Mariyan.wallsLevelOne[crawliesPos[i, 3], crawliesPos[i, 2]] == 0)
+            else if (walls[crawliesPos[i, 3], crawliesPos[i, 2]] == 0)
             {
 
                 if (i == 0)
                 {
                     Console.SetCursorPosition(crawliesPos[i, 0], crawliesPos[i, 1]);
-                    if (PackManHydra.smallAndBigDots[crawliesPos[i, 1], crawliesPos[i, 0]] ==5)
+                    if (PackManHydra.smallAndBigDots[crawliesPos[i, 1], crawliesPos[i, 0]] == 5)
                     {
                         waveOutDevice.Init(new AudioFileReader(@"..\..\Sounds\eatSharpShort.mp3"));
                         waveOutDevice.Play();
-                       
+
                     }
                     else if (PackManHydra.smallAndBigDots[crawliesPos[i, 1], crawliesPos[i, 0]] == 1)
                     {
@@ -111,7 +111,7 @@ class Georgi
                         //waveOutDevice.Play();
                         Console.Beep(1000, 25);
                     }
-                    PackManHydra.points += PackManHydra.smallAndBigDots[crawliesPos[i, 1], crawliesPos[i, 0]] * 10;
+                    PackManHydra.points += PackManHydra.smallAndBigDots[crawliesPos[i, 1], crawliesPos[i, 0]] * 5;
                     Console.Write(" "); PackManHydra.smallAndBigDots[crawliesPos[i, 1], crawliesPos[i, 0]] = 0;
 
                     Console.SetCursorPosition(crawliesPos[i, 2], crawliesPos[i, 3]);
@@ -169,7 +169,7 @@ class Georgi
 
     }
 
-    static public void PackMan(int[,] coordinates)
+    static public void PackMan(int[,] coordinates, int[,] walls)
     {
         byte stop = 0;
         byte right = 1;
@@ -191,36 +191,55 @@ class Georgi
             ConsoleKeyInfo userInput = Console.ReadKey();
             if (userInput.Key == ConsoleKey.LeftArrow)
             {
-                if (Mariyan.wallsLevelOne[y, x - 1] != 1)
+                if (walls[y, x - 1] != 1)
                     posoka = left;
                 //else posoka = stop;
             }
             if (userInput.Key == ConsoleKey.RightArrow)
             {
-                if (Mariyan.wallsLevelOne[y, x + 1] != 1)
+                if (walls[y, x + 1] != 1)
                     posoka = right;
                 //else posoka = stop;
             }
             if (userInput.Key == ConsoleKey.UpArrow)
             {
-                if (Mariyan.wallsLevelOne[y - 1, x] != 1)
+                if (walls[y - 1, x] != 1)
                     posoka = up;
                 //else posoka = stop;
             }
             if (userInput.Key == ConsoleKey.DownArrow)
             {
-                if (Mariyan.wallsLevelOne[y + 1, x] != 1)
+                if (walls[y + 1, x] != 1)
                     posoka = down;
                 //else posoka = stop;
             }
         }
         // moving...
         if (posoka == left && x == 0)
+        {
             coordinates[0, 2] = 29;
+            coordinates[0, 3] = y + directions[posoka][0];
+        }
         else if (posoka == right && x == 29)
+        {
             coordinates[0, 2] = 0;
-        else coordinates[0, 2] = x + directions[posoka][1];
-        coordinates[0, 3] = y + directions[posoka][0];
+            coordinates[0, 3] = y + directions[posoka][0];
+        }
+        else if (posoka == up && y == 0)
+        {
+            coordinates[0, 3] = 28;
+            coordinates[0, 2] = x + directions[posoka][1];
+        }
+        else if (posoka == down && y == 28)
+        {
+            coordinates[0, 3] = 0;
+            coordinates[0, 2] = x + directions[posoka][1];
+        }
+        else
+        {
+            coordinates[0, 2] = x + directions[posoka][1];
+            coordinates[0, 3] = y + directions[posoka][0];
+        }
         PackManHydra.direction = posoka;
 
     }
