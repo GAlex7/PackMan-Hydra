@@ -9,8 +9,8 @@ using System.Threading; using NAudio.Wave;
 
 class PackManHydra
 {
-    public const int windowWidth = 31;
-    public const int windowHeight = 33;
+    public const int windowWidth = 40;
+    public const int windowHeight = 40;
     public static string ourGuy = "X<>^vx--::";
     public static string badGuys = "xНЕИД";
 
@@ -180,11 +180,13 @@ class PackManHydra
                     Georgi.RefreshScreen(badGuysCoordinates,Mariyan.wallsLevelOne);
 
                     // Проверка за сблъсък и проверка за изяден бонус
-                    if (points == 10) // 1280 - end
+                    if (points == 1280) // 1280 - end
                     {
+                        Thread.Sleep(1500);
                         endLevelOne = true;
                         endLevelTwo = true;
                         break;
+                        
 
                     }
                 }
@@ -209,21 +211,26 @@ class PackManHydra
 
                 while (endLevelTwo)
                 {
-                    Thread.Sleep(150);
+                    Thread.Sleep(200);
 
                     Ivaylo.MonsterNMovingLevelTwo();
-                    Ivaylo.MonsterEMovingLevelTwo();
                     Mariyan.MonsterILevelTwo();
                     Evgeni.MonsterDMovingLevelTwo();
+                    Ivaylo.MonsterEMovingLevelTwo();
 
-                    Georgi.RefreshScreen(badGuysCoordinates,Mariyan.wallsLevelTwo);
+                    Georgi.RefreshScreen(badGuysCoordinates, Mariyan.wallsLevelTwo);
                     
-                    if (points == 100)
+                    if (points == 1340) //1335
                     {
-                        // to do
+                        Console.Clear();
+                        break;
                     }
+
                 }
 
+                Console.SetCursorPosition(5, 15);
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("Please enter nickname:");
 
                 if (endGame == false)
                 {

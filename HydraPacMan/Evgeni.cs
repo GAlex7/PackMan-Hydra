@@ -75,13 +75,13 @@ class Evgeni
         PackManHydra.badGuysCoordinates[4, 1] = PackManHydra.badGuysCoordinates[4, 3];
         PackManHydra.badGuysCoordinates[4, 2] = monsterDCoordinatesLevelTwo[PackManHydra.GadFourCounter, 0];
         PackManHydra.badGuysCoordinates[4, 3] = monsterDCoordinatesLevelTwo[PackManHydra.GadFourCounter, 1];
-        if (PackManHydra.GadOneCounter == 57)
+        if (PackManHydra.GadFourCounter == 57)
         {
-            PackManHydra.GadOneCounter = 2;
+            PackManHydra.GadFourCounter = 2;
         }
         else
         {
-            PackManHydra.GadOneCounter++;
+            PackManHydra.GadFourCounter++;
         }
         PackManHydra.badGuysCoordinates[4, 2] = monsterDCoordinatesLevelTwo[PackManHydra.GadFourCounter, 0];
         PackManHydra.badGuysCoordinates[4, 3] = monsterDCoordinatesLevelTwo[PackManHydra.GadFourCounter, 1];

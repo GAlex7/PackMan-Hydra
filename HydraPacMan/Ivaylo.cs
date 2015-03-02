@@ -118,7 +118,7 @@ class Ivaylo
         PackManHydra.badGuysCoordinates[1, 3] = monsterNCoordinatesLevelOne[PackManHydra.GadOneCounter, 1];
     }
 
-    public static int[,] monsterNCoordinatesLevelTwo = new int[103, 2] 
+    public static int[,] monsterNCoordinatesLevelTwo = new int[, ] 
         {
             {17, 13},    
             {17, 14},
@@ -243,7 +243,7 @@ class Ivaylo
         PackManHydra.badGuysCoordinates[1, 3] = monsterNCoordinatesLevelTwo[PackManHydra.GadOneCounter, 1];
     }
 
-    public static int[,] monsterECoordinatesLevelTwo = new int[79, 2] 
+    public static int[,] monsterECoordinatesLevelTwo = new int[, ] 
         {
             {10, 3},    
             {10, 4},
@@ -309,7 +309,6 @@ class Ivaylo
             {5, 1},
             {4, 1},
             {3, 1},
-            {2, 1},
             {2, 1},
             {2, 2},
             {2, 3},

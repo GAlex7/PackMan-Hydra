@@ -152,7 +152,7 @@ class Dimitar
         Console.ForegroundColor = ConsoleColor.White;
         Console.SetCursorPosition(8, 11);
         Console.Write("Congratulations!");
-        Console.SetCursorPosition(2, 13);
+        Console.SetCursorPosition(1, 13);
         Console.Write("You passed C# 1 successfully");
         Console.SetCursorPosition(4, 14);
         Console.Write("but now the lectors are");

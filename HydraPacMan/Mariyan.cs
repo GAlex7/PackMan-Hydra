@@ -29,7 +29,6 @@ class Mariyan
             {23, 3},
             {23, 4},
             {23, 5},
-            {23, 5},
             {24, 5},
             {25, 5},
             {26, 5},
@@ -64,7 +63,6 @@ class Mariyan
             {13, 11},
             {12, 11},
             {11, 11},
-            {10, 11},
             {10, 11},
             {10, 12},
             {10, 13},
@@ -121,7 +119,7 @@ class Mariyan
         PackManHydra.badGuysCoordinates[4, 1] = PackManHydra.badGuysCoordinates[4, 3];
         PackManHydra.badGuysCoordinates[4, 2] = monsterDCoordinatesLevelOne[PackManHydra.GadFourCounter, 0];
         PackManHydra.badGuysCoordinates[4, 3] = monsterDCoordinatesLevelOne[PackManHydra.GadFourCounter, 1];
-        if (PackManHydra.GadFourCounter == 104)
+        if (PackManHydra.GadFourCounter == monsterDCoordinatesLevelOne.GetLength(0) - 1)
         {
             PackManHydra.GadFourCounter = 3;
         }
@@ -139,7 +137,7 @@ class Mariyan
         PackManHydra.badGuysCoordinates[3, 1] = PackManHydra.badGuysCoordinates[3, 3];
         PackManHydra.badGuysCoordinates[3, 2] = monsterICoordinatesLevelTwo[PackManHydra.GadThreeCounter, 0];
         PackManHydra.badGuysCoordinates[3, 3] = monsterICoordinatesLevelTwo[PackManHydra.GadThreeCounter, 1];
-        if (PackManHydra.GadThreeCounter == 117)
+        if (PackManHydra.GadThreeCounter == monsterICoordinatesLevelTwo.GetLength(0) - 1)
         {
             PackManHydra.GadThreeCounter = 5;
         }
@@ -151,7 +149,7 @@ class Mariyan
         PackManHydra.badGuysCoordinates[3, 3] = monsterICoordinatesLevelTwo[PackManHydra.GadThreeCounter, 1];
     }
 
-    public static int[,] monsterICoordinatesLevelTwo = new int[118, 2] 
+    public static int[,] monsterICoordinatesLevelTwo = new int[, ] 
         {
             {13, 13},    
             {13, 14},
