@@ -33,6 +33,8 @@ class PackManHydra
     private const int numberOfMovingObjects = 5;
     private static bool returnFromHighScores = true;
     private static bool returnFromInstructions = true;
+    private static bool returnFromLevelOne = true;
+    private static bool returnFromLevelTwo = true;
     private static string gameSounds = Directory.GetCurrentDirectory();
     public static List<string> highScores = new List<string>();
     public static StringBuilder user = new StringBuilder();
@@ -58,7 +60,7 @@ class PackManHydra
         // Принтиране на логото и заглавието, изчакване за натискане на клавиш преди преминаване напред
         //try
         //{
-            if (returnFromHighScores && returnFromInstructions)
+            if (returnFromHighScores && returnFromInstructions && returnFromLevelOne && returnFromLevelTwo)
             {
                 DrawLogo(20);
 
@@ -166,7 +168,7 @@ class PackManHydra
                 waveOutDevice.Init(audioFileReader);
                 waveOutDevice.Play();
 
-                while (endGame)
+                while (!endLevelOne)
                 {
 
                     Thread.Sleep(200);
@@ -180,14 +182,59 @@ class PackManHydra
                     Georgi.RefreshScreen(badGuysCoordinates,Mariyan.wallsLevelOne);
 
                     // Проверка за сблъсък и проверка за изяден бонус
-                    if (points == 1280) // 1280 - end
+                    if (points == 0) // 1280 - end
                     {
                         Thread.Sleep(1500);
                         endLevelOne = true;
-                        endLevelTwo = true;
                         break;
-                        
+                    }
+                    else if (endGame == false)
+                    {
+                        waveOutDevice.Stop();
+                        Console.Clear();
+                        Console.SetCursorPosition(5, 15);
+                        Console.Write("Do you want to RESTART");
+                        Console.SetCursorPosition(13, 16);
+                        Console.WriteLine("Y/N");
 
+                        var check = Console.ReadKey();
+                        Console.Clear();
+                        if (check.Key.ToString().ToLower() == "y")
+                        {
+                            Console.Clear();
+                            points = 0;
+                            lives = 3;
+
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Mariyan.DrawGameBoardLevelOne();
+                            Dimitar.StartCounter();
+                            InitDotsArray(1);
+                            waveOutDevice.Init(audioFileReader);
+                            waveOutDevice.Play();
+                            endGame = true;
+
+                            GadOneCounter = 0;
+                            GadTwoCounter = 0;
+                            GadThreeCounter = 0;
+                            GadFourCounter = 0;
+
+                            Georgi.RefreshScreen(badGuysCoordinates, Mariyan.wallsLevelOne);
+                        }
+                        else if (check.Key.ToString().ToLower() == "n")
+                        {
+                            Console.Clear();
+                            GadOneCounter = 0;
+                            GadTwoCounter = 0;
+                            GadThreeCounter = 0;
+                            GadFourCounter = 0;
+
+                            returnFromLevelOne = false;
+                            endGame = true;
+                            Console.Clear();
+                            points = 0;
+                            lives = 3;
+                            Main();
+                        }
                     }
                 }
 
@@ -209,7 +256,7 @@ class PackManHydra
                 GadThreeCounter = 0;
                 GadFourCounter = 0;
 
-                while (endLevelTwo)
+                while (!endLevelTwo)
                 {
                     Thread.Sleep(200);
 
@@ -220,18 +267,72 @@ class PackManHydra
 
                     Georgi.RefreshScreen(badGuysCoordinates, Mariyan.wallsLevelTwo);
                     
-                    if (points == 1340) //1335
+                    if (points == 50) //2605
                     {
-                        Console.Clear();
+                        Thread.Sleep(1500);
+                        endLevelTwo = true;
                         break;
+                    }
+                    else if (endGame == false)
+                    {
+                        waveOutDevice.Stop();
+                        Console.Clear();
+                        Console.SetCursorPosition(5, 15);
+                        Console.Write("Do you want to RESTART");
+                        Console.SetCursorPosition(13, 16);
+                        Console.WriteLine("Y/N");
+
+                        var check = Console.ReadKey();
+                        Console.Clear();
+                        if (check.Key.ToString().ToLower() == "y")
+                        {
+                            Console.Clear();
+                            points = 0;
+                            lives = 3;
+
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Mariyan.DrawGameBoardLevelTwo();
+                            Dimitar.StartCounter();
+                            InitDotsArray(1);
+                            waveOutDevice.Init(audioFileReader);
+                            waveOutDevice.Play();
+                            endGame = true;
+
+                            GadOneCounter = 0;
+                            GadTwoCounter = 0;
+                            GadThreeCounter = 0;
+                            GadFourCounter = 0;
+
+                            Georgi.RefreshScreen(badGuysCoordinates, Mariyan.wallsLevelTwo);
+                        }
+                        else if (check.Key.ToString().ToLower() == "n")
+                        {
+                            Console.Clear();
+
+                            GadOneCounter = 0;
+                            GadTwoCounter = 0;
+                            GadThreeCounter = 0;
+                            GadFourCounter = 0;
+
+                            returnFromLevelTwo = false;
+                            endGame = true;
+                            endLevelOne = false;
+                            Console.Clear();
+                            points = 0;
+                            lives = 3;
+                            Main();
+                        }
                     }
 
                 }
-
-                Console.SetCursorPosition(5, 15);
+                // Място за краят...............................................
+                Console.Clear();
+                Console.SetCursorPosition(5, 14);
                 Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("Please enter nickname:");
+                Console.WriteLine("C# 2 finally passed...");
 
+
+                //..............................................................
                 if (endGame == false)
                 {
                     StreamWriter userScores = new StreamWriter(@"..\..\HighScores.txt");

@@ -71,8 +71,8 @@ class Georgi
                 Console.WriteLine("EATEN!");
                 Thread.Sleep(1500); Console.SetCursorPosition(13, 15);
                 Console.WriteLine("      ");
-                crawliesPos[0, 0] = 15; crawliesPos[0, 1] = 21;
-                crawliesPos[0, 2] = 15; crawliesPos[0, 3] = 21;
+                //crawliesPos[0, 0] = 15; crawliesPos[0, 1] = 21;
+                //crawliesPos[0, 2] = 15; crawliesPos[0, 3] = 21;
                 PackManHydra.direction = 0;
 
                 if (PackManHydra.lives < 1)
@@ -84,7 +84,8 @@ class Georgi
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("---------GAME OVER!!!---------");
                     PackManHydra.endGame = false;
-                    Thread.Sleep(1500);
+                    Console.Clear();
+                    //Thread.Sleep(1500);
 
 
                 }
