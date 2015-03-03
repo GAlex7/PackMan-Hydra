@@ -79,21 +79,21 @@ class Antonina
             PackManHydra.badGuysCoordinates[2, 0] = PackManHydra.badGuysCoordinates[2,2];
             PackManHydra.badGuysCoordinates[2, 1] = PackManHydra.badGuysCoordinates[2,3];
 
-            PackManHydra.badGuysCoordinates[2, 2] = monsterECoordinatesLevelOne[PackManHydra.GadTwoCounter, 0];
-            PackManHydra.badGuysCoordinates[2, 3] = monsterECoordinatesLevelOne[PackManHydra.GadTwoCounter, 1];
+            PackManHydra.badGuysCoordinates[2, 2] = monsterECoordinatesLevelOne[PackManHydra.monsterTwoCounter, 0];
+            PackManHydra.badGuysCoordinates[2, 3] = monsterECoordinatesLevelOne[PackManHydra.monsterTwoCounter, 1];
 
-            if (PackManHydra.GadTwoCounter == monsterECoordinatesLevelOne.GetLength(0) - 1)
+            if (PackManHydra.monsterTwoCounter == monsterECoordinatesLevelOne.GetLength(0) - 1)
             {
-                PackManHydra.GadTwoCounter = 7;
+                PackManHydra.monsterTwoCounter = 7;
             }
                 else
             {
 
-                PackManHydra.GadTwoCounter++;
+                PackManHydra.monsterTwoCounter++;
             }
 
-            PackManHydra.badGuysCoordinates[2, 2] = monsterECoordinatesLevelOne[PackManHydra.GadTwoCounter, 0];
-            PackManHydra.badGuysCoordinates[2, 3] = monsterECoordinatesLevelOne[PackManHydra.GadTwoCounter, 1];
+            PackManHydra.badGuysCoordinates[2, 2] = monsterECoordinatesLevelOne[PackManHydra.monsterTwoCounter, 0];
+            PackManHydra.badGuysCoordinates[2, 3] = monsterECoordinatesLevelOne[PackManHydra.monsterTwoCounter, 1];
          
         }
  

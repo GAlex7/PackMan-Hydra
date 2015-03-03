@@ -34,6 +34,7 @@ class DimitarPiskov
             Console.SetCursorPosition(i, 32);
             Console.Write("*");
         }
+
         Console.ForegroundColor = ConsoleColor.White;
         Console.SetCursorPosition(7, 1);
         Console.Write("Congratulations!");
@@ -66,6 +67,7 @@ class DimitarPiskov
         Console.SetCursorPosition(1, 29);
         Console.Write("      Ninja! Good luck!     ");
         Console.CursorVisible = false;
+
         for (int i = 1; i < 31; i++)
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -75,6 +77,7 @@ class DimitarPiskov
             Console.Write("*");
         }
     }
+
     public static void Instructions()
     {
         for (int i = 8; i < 24; i++)
@@ -104,6 +107,7 @@ class DimitarPiskov
             Console.Write(" . - 10 points");
             Console.SetCursorPosition(8, 22);
             Console.Write(" # - 50 points");
+
             for (int i = 6; i < 26; i++)
             {
                 Console.ForegroundColor = ConsoleColor.Green;
@@ -112,6 +116,7 @@ class DimitarPiskov
                 Console.SetCursorPosition(i, 24);
                 Console.Write("#");
             }
+
             Console.WriteLine();
         }
     }

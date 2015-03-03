@@ -19,15 +19,17 @@ class Mariyan
 
         int col = 5;
         int row = 14;
+
         bool right = true;
         bool down = false;
         bool left = false;
         bool up = false;
+
         int counter = 0;
 
         while (true)
         {
-            Thread.Sleep(400);
+            Thread.Sleep(200);
 
             if (col == 46 && row == 14)
             {
@@ -394,39 +396,46 @@ class Mariyan
     {
         PackManHydra.badGuysCoordinates[4, 0] = PackManHydra.badGuysCoordinates[4, 2];
         PackManHydra.badGuysCoordinates[4, 1] = PackManHydra.badGuysCoordinates[4, 3];
-        PackManHydra.badGuysCoordinates[4, 2] = monsterDCoordinatesLevelOne[PackManHydra.GadFourCounter, 0];
-        PackManHydra.badGuysCoordinates[4, 3] = monsterDCoordinatesLevelOne[PackManHydra.GadFourCounter, 1];
-        if (PackManHydra.GadFourCounter == monsterDCoordinatesLevelOne.GetLength(0) - 1)
+
+        PackManHydra.badGuysCoordinates[4, 2] = monsterDCoordinatesLevelOne[PackManHydra.monsterFourCounter, 0];
+        PackManHydra.badGuysCoordinates[4, 3] = monsterDCoordinatesLevelOne[PackManHydra.monsterFourCounter, 1];
+
+        if (PackManHydra.monsterFourCounter == monsterDCoordinatesLevelOne.GetLength(0) - 1)
         {
-            PackManHydra.GadFourCounter = 3;
+            PackManHydra.monsterFourCounter = 3;
         }
+
         else
         {
-            PackManHydra.GadFourCounter++;
+            PackManHydra.monsterFourCounter++;
         }
-        PackManHydra.badGuysCoordinates[4, 2] = monsterDCoordinatesLevelOne[PackManHydra.GadFourCounter, 0];
-        PackManHydra.badGuysCoordinates[4, 3] = monsterDCoordinatesLevelOne[PackManHydra.GadFourCounter, 1];
+        PackManHydra.badGuysCoordinates[4, 2] = monsterDCoordinatesLevelOne[PackManHydra.monsterFourCounter, 0];
+        PackManHydra.badGuysCoordinates[4, 3] = monsterDCoordinatesLevelOne[PackManHydra.monsterFourCounter, 1];
     }
 
     public static void MonsterILevelTwo()
     {
         PackManHydra.badGuysCoordinates[3, 0] = PackManHydra.badGuysCoordinates[3, 2];
         PackManHydra.badGuysCoordinates[3, 1] = PackManHydra.badGuysCoordinates[3, 3];
-        PackManHydra.badGuysCoordinates[3, 2] = monsterICoordinatesLevelTwo[PackManHydra.GadThreeCounter, 0];
-        PackManHydra.badGuysCoordinates[3, 3] = monsterICoordinatesLevelTwo[PackManHydra.GadThreeCounter, 1];
-        if (PackManHydra.GadThreeCounter == monsterICoordinatesLevelTwo.GetLength(0) - 1)
+
+        PackManHydra.badGuysCoordinates[3, 2] = monsterICoordinatesLevelTwo[PackManHydra.monsterThreeCounter, 0];
+        PackManHydra.badGuysCoordinates[3, 3] = monsterICoordinatesLevelTwo[PackManHydra.monsterThreeCounter, 1];
+
+        if (PackManHydra.monsterThreeCounter == monsterICoordinatesLevelTwo.GetLength(0) - 1)
         {
-            PackManHydra.GadThreeCounter = 5;
+            PackManHydra.monsterThreeCounter = 5;
         }
+
         else
         {
-            PackManHydra.GadThreeCounter++;
+            PackManHydra.monsterThreeCounter++;
         }
-        PackManHydra.badGuysCoordinates[3, 2] = monsterICoordinatesLevelTwo[PackManHydra.GadThreeCounter, 0];
-        PackManHydra.badGuysCoordinates[3, 3] = monsterICoordinatesLevelTwo[PackManHydra.GadThreeCounter, 1];
+
+        PackManHydra.badGuysCoordinates[3, 2] = monsterICoordinatesLevelTwo[PackManHydra.monsterThreeCounter, 0];
+        PackManHydra.badGuysCoordinates[3, 3] = monsterICoordinatesLevelTwo[PackManHydra.monsterThreeCounter, 1];
     }
 
-    public static int[,] monsterICoordinatesLevelTwo = new int[, ] 
+    public static int[,] monsterICoordinatesLevelTwo = new int[,] 
         {
             {13, 13},    
             {13, 14},
@@ -563,7 +572,7 @@ class Mariyan
         Console.WriteLine("      │.│┌──┘ └─┘ └──┐│.│     ");
         Console.WriteLine("      │.││           ││.│     ");
         Console.WriteLine("──────┘.└┘ ┌───────┐ └┘.└─────");
-        Console.WriteLine("       .   │ И   Н │   .      ");//13
+        Console.WriteLine("       .   │ И   Н │   .      ");
         Console.WriteLine("──────┐.┌┐ └┘─└─┘─└┘ ┌┐.┌─────");
         Console.WriteLine("      │.││   READY!  ││.│     ");
         Console.WriteLine("      │.││ ┌───────┐ ││.│     ");
@@ -664,13 +673,13 @@ class Mariyan
             {1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1},
             {0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0},
             {1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1},
-            {1,1,1,1,1,1,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,1,1,1,1},//15
+            {1,1,1,1,1,1,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,1,1,0,1,1,1,1,1,1},
             {1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1},
             {1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,1,1,1,1},
             {1,1,0,0,0,1,1,0,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,1,1,0,0,0,1},
             {1,1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1},
             {1,1,0,1,1,1,1,0,1,1,1,1,1,0,1,1,1,0,1,1,1,1,1,0,1,1,1,1,0,1},
-            {1,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,1},//21
+            {1,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,1},
             {1,1,1,1,0,1,1,1,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,1,1,1,0,1,1,1},
             {1,1,1,1,0,1,1,0,1,1,0,1,1,1,1,1,1,1,1,1,0,1,1,0,1,1,0,1,1,1},
             {1,1,0,0,0,0,0,0,1,1,0,0,0,0,1,1,1,0,0,0,0,1,1,0,0,0,0,0,0,1},
@@ -680,4 +689,3 @@ class Mariyan
             {1,1,1,1,1,1,1,1,1,1,1,1,1,1,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1}
     };
 }
-

@@ -4,15 +4,18 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Media;
-using System.Text; using NAudio;
-using System.Threading; using NAudio.Wave;
+using System.Text;
+using NAudio;
+using System.Threading;
+using NAudio.Wave;
 
 class PackManHydra
 {
-    public const int windowWidth = 40;
-    public const int windowHeight = 40;
+    public const int windowWidth = 31;
+    public const int windowHeight = 33;
+
     public static string ourGuy = "X<>^vx--::";
-    public static string badGuys = "xНЕИД";
+    public static string monsters = "xНЕИД";
 
     public static string[] colors = { "Yellow", "Green", "White", "DarkMagenta", "Cyan" };
     public static int[,] badGuysCoordinates = new int[5, 4];
@@ -23,404 +26,250 @@ class PackManHydra
     public static bool endLevelTwo = false;
     public static int points = 0;
     public static int lives = 3;
-    public static int direction; // by GA
-    // public static int[,] dots;   // GAlex
-    public static int GadOneCounter = 0;
-    public static int GadTwoCounter = 0;
-    public static int GadThreeCounter = 0;
-    public static int GadFourCounter = 0;
+    public static int currentLevel = 1;
+    public static int direction;
+
+    public static int monsterOneCounter = 0;
+    public static int monsterTwoCounter = 0;
+    public static int monsterThreeCounter = 0;
+    public static int monsterFourCounter = 0;
 
     private const int numberOfMovingObjects = 5;
-    private static bool returnFromHighScores = true;
-    private static bool returnFromInstructions = true;
-    private static bool returnFromLevelOne = true;
-    private static bool returnFromLevelTwo = true;
-    private static string gameSounds = Directory.GetCurrentDirectory();
+
+    public static bool returnFromHighScores = true;
+    public static bool returnFromInstructions = true;
+
+    public static bool returnFromLevelOne = true;
+    public static bool returnFromLevelTwo = true;
+
     public static List<string> highScores = new List<string>();
     public static StringBuilder user = new StringBuilder();
 
 
-    static void Main()
+    public static void Main()
     {
-        // Заглавие на конзолата
         Console.Title = "EatSharp";
 
-        // Задаваме размер на конзолата
         Dimitar.SetConsoleWidthAndHeight();
 
-        // Encoding
         Console.OutputEncoding = Encoding.UTF8;
 
-        // Бонус точки
-        //InitDotsArray();
+        if (returnFromHighScores && returnFromInstructions && returnFromLevelOne && returnFromLevelTwo)
+        {
+            DrawLogo(20);
 
-        // Фонова музика
-        //SoundPlayer player = new SoundPlayer();
+            DimitarPiskov.PrintGameName();
+            Console.ReadKey();
+            Console.Clear();
 
-        // Принтиране на логото и заглавието, изчакване за натискане на клавиш преди преминаване напред
-        //try
-        //{
-            if (returnFromHighScores && returnFromInstructions && returnFromLevelOne && returnFromLevelTwo)
+            DimitarPiskov.Introduction();
+            Console.ReadKey();
+            Console.Clear();
+        }
+
+        // Menu
+
+        Ivaylo.PrintingMenuGame();
+
+        IWavePlayer waveOutDevice;
+        AudioFileReader audioFileReader = new AudioFileReader(@"..\..\Sounds\ThemeSong.mp3");
+        waveOutDevice = new WaveOut();
+
+        ConsoleKeyInfo choice = Console.ReadKey();
+
+        StringBuilder userNickname = new StringBuilder();
+
+        if (choice.Key == ConsoleKey.D1)
+        {
+            Console.Clear();
+
+            int currentColumn = 15;
+            bool inputSuccess = true;
+            var nickname = new List<ConsoleKeyInfo>();
+
+            Dimitar.AskUserForNickname(ref currentColumn, ref inputSuccess, nickname);
+            
+            Console.ForegroundColor = ConsoleColor.Red;
+
+            Mariyan.DrawGameBoardLevelOne();
+            Dimitar.StartCounter();
+
+            InitDotsArray(1);
+
+            waveOutDevice.Init(audioFileReader);
+            waveOutDevice.Play();
+
+            while (!endLevelOne)
             {
-                DrawLogo(20);
 
-                DimitarPiskov.PrintGameName();
-                Console.ReadKey();
-                Console.Clear();
+                Thread.Sleep(200);
 
-                DimitarPiskov.Introduction();
-                Console.ReadKey();
-                Console.Clear();
-            }
+                Ivaylo.MonsterNMovingLevelOne();
+                Dimitar.MonsterIMovingLevelOne();
+                Mariyan.MonsterDLevelOne();
+                Antonina.monsterEMovingLevelOne();
 
-            // Меню: 1.New Game, 2.Instruction, 3.High Score, 4.Exit game
+                Georgi.RefreshScreen(badGuysCoordinates, Mariyan.wallsLevelOne);
 
-            Ivaylo.PrintingMenuGame();
-
-            IWavePlayer waveOutDevice;
-            AudioFileReader audioFileReader = new AudioFileReader(@"..\..\Sounds\ThemeSong.mp3");  //GAlex
-            waveOutDevice = new WaveOut();
-
-            ConsoleKeyInfo choice = Console.ReadKey();
-
-            StringBuilder userNickname = new StringBuilder();
-
-            if (choice.Key == ConsoleKey.D1)
-            {
-                Console.Clear();
-
-                int currentColumn = 15;
-                bool inputSuccess = true;
-                var nickname = new List<ConsoleKeyInfo>();
-
-                while (inputSuccess)
+                if (points == 0) // 1280 
                 {
-                    Console.SetCursorPosition(5, 15);
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.WriteLine("Please enter nickname:");
-                    Console.SetCursorPosition(currentColumn, 17);
+                    Thread.Sleep(1500);
 
-                    for (int i = 0; i < nickname.Count; i++)
-                    {
-                        Console.Write(nickname[i].KeyChar);
-                    }
-
-                    ConsoleKeyInfo inputLetter = Console.ReadKey();
-                    if (inputLetter.Key == ConsoleKey.Enter && nickname.Count >= 3)
-                    {
-                        StreamReader userScoresRead = new StreamReader(@"..\..\HighScores.txt");
-                        using (userScoresRead)
-                        {
-                            user.Append(userScoresRead.ReadToEnd());
-                            user.Append("\n");
-                        }
-                        StreamWriter userScores = new StreamWriter(@"..\..\HighScores.txt");
-                        using (userScores)
-                        {
-                            user.Append("         ");
-                            for (int i = 0; i < nickname.Count; i++)
-                            {
-                                user.Append(nickname[i].KeyChar);
-                            }
-                            user.Append(" - ");
-                            userScores.Write(user);
-                        }
-                        inputSuccess = false;
-                    }
-                    else if (inputLetter.Key == ConsoleKey.Enter && nickname.Count < 3)
-                    {
-                        Console.Clear();
-                        Console.ForegroundColor = ConsoleColor.White;
-                        Console.SetCursorPosition(2, 19);
-                        Console.WriteLine("Enter at least 3 characters!");
-                        continue;
-                    }
-
-                    if (inputLetter.Key != ConsoleKey.Backspace)
-                    {
-                        nickname.Add(inputLetter);
-                        if (nickname.Count % 2 == 0)
-                        {
-                            currentColumn--;
-                        }
-                    }
-                    else if (inputLetter.Key == ConsoleKey.Backspace)
-                    {
-                        if (nickname.Count == 0)
-                        {
-                            continue;
-                        }
-
-                        nickname.RemoveAt(nickname.Count - 1);
-                        if (nickname.Count % 2 == 0)
-                        {
-                            currentColumn++;
-                        }
-                    }
-
-                    Console.Clear();
+                    endLevelOne = true;
+                    currentLevel = 2;
+                    break;
                 }
-
-                Console.ForegroundColor = ConsoleColor.Red;
-                Mariyan.DrawGameBoardLevelOne();
-                Dimitar.StartCounter();
-                InitDotsArray(1);
-                waveOutDevice.Init(audioFileReader);
-                waveOutDevice.Play();
-
-                while (!endLevelOne)
+                else if (endGame == false)
                 {
-
-                    Thread.Sleep(200);
-                    // Викане на нашето човече
-                    Ivaylo.MonsterNMovingLevelOne();
-                    Dimitar.MonsterIMovingLevelOne();
-                    Mariyan.MonsterDLevelOne();
-                    Antonina.monsterEMovingLevelOne();
-
-                    // Обновяване на екрана
-                    Georgi.RefreshScreen(badGuysCoordinates,Mariyan.wallsLevelOne);
-
-                    // Проверка за сблъсък и проверка за изяден бонус
-                    if (points == 0) // 1280 - end
-                    {
-                        Thread.Sleep(1500);
-                        endLevelOne = true;
-                        break;
-                    }
-                    else if (endGame == false)
-                    {
-                        waveOutDevice.Stop();
-                        Console.Clear();
-                        Console.SetCursorPosition(5, 15);
-                        Console.Write("Do you want to RESTART");
-                        Console.SetCursorPosition(13, 16);
-                        Console.WriteLine("Y/N");
-
-                        var check = Console.ReadKey();
-                        Console.Clear();
-                        if (check.Key.ToString().ToLower() == "y")
-                        {
-                            Console.Clear();
-                            points = 0;
-                            lives = 3;
-
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Mariyan.DrawGameBoardLevelOne();
-                            Dimitar.StartCounter();
-                            InitDotsArray(1);
-                            waveOutDevice.Init(audioFileReader);
-                            waveOutDevice.Play();
-                            endGame = true;
-
-                            GadOneCounter = 0;
-                            GadTwoCounter = 0;
-                            GadThreeCounter = 0;
-                            GadFourCounter = 0;
-
-                            Georgi.RefreshScreen(badGuysCoordinates, Mariyan.wallsLevelOne);
-                        }
-                        else if (check.Key.ToString().ToLower() == "n")
-                        {
-                            Console.Clear();
-                            GadOneCounter = 0;
-                            GadTwoCounter = 0;
-                            GadThreeCounter = 0;
-                            GadFourCounter = 0;
-
-                            returnFromLevelOne = false;
-                            endGame = true;
-                            Console.Clear();
-                            points = 0;
-                            lives = 3;
-                            Main();
-                        }
-                    }
-                }
-
-                waveOutDevice.Stop();
-
-                Dimitar.LevelTwoMessage();
-                Console.ReadKey();
-
-                Console.Clear();
-                Console.ForegroundColor = ConsoleColor.Red;
-                Mariyan.DrawGameBoardLevelTwo();
-                Dimitar.StartCounter();
-                InitDotsArray(2);
-                waveOutDevice.Init(audioFileReader);
-                waveOutDevice.Play();
-
-                GadOneCounter = 0;
-                GadTwoCounter = 0;
-                GadThreeCounter = 0;
-                GadFourCounter = 0;
-
-                while (!endLevelTwo)
-                {
-                    Thread.Sleep(200);
-
-                    Ivaylo.MonsterNMovingLevelTwo();
-                    Mariyan.MonsterILevelTwo();
-                    Evgeni.MonsterDMovingLevelTwo();
-                    Ivaylo.MonsterEMovingLevelTwo();
-
-                    Georgi.RefreshScreen(badGuysCoordinates, Mariyan.wallsLevelTwo);
-                    
-                    if (points == 50) //2605
-                    {
-                        Thread.Sleep(1500);
-                        endLevelTwo = true;
-                        break;
-                    }
-                    else if (endGame == false)
-                    {
-                        waveOutDevice.Stop();
-                        Console.Clear();
-                        Console.SetCursorPosition(5, 15);
-                        Console.Write("Do you want to RESTART");
-                        Console.SetCursorPosition(13, 16);
-                        Console.WriteLine("Y/N");
-
-                        var check = Console.ReadKey();
-                        Console.Clear();
-                        if (check.Key.ToString().ToLower() == "y")
-                        {
-                            Console.Clear();
-                            points = 0;
-                            lives = 3;
-
-                            Console.ForegroundColor = ConsoleColor.Red;
-                            Mariyan.DrawGameBoardLevelTwo();
-                            Dimitar.StartCounter();
-                            InitDotsArray(1);
-                            waveOutDevice.Init(audioFileReader);
-                            waveOutDevice.Play();
-                            endGame = true;
-
-                            GadOneCounter = 0;
-                            GadTwoCounter = 0;
-                            GadThreeCounter = 0;
-                            GadFourCounter = 0;
-
-                            Georgi.RefreshScreen(badGuysCoordinates, Mariyan.wallsLevelTwo);
-                        }
-                        else if (check.Key.ToString().ToLower() == "n")
-                        {
-                            Console.Clear();
-
-                            GadOneCounter = 0;
-                            GadTwoCounter = 0;
-                            GadThreeCounter = 0;
-                            GadFourCounter = 0;
-
-                            returnFromLevelTwo = false;
-                            endGame = true;
-                            endLevelOne = false;
-                            Console.Clear();
-                            points = 0;
-                            lives = 3;
-                            Main();
-                        }
-                    }
-
-                }
-                // Място за краят...............................................
-                Console.Clear();
-                Console.SetCursorPosition(5, 14);
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine("C# 2 finally passed...");
-
-
-                //..............................................................
-                if (endGame == false)
-                {
-                    StreamWriter userScores = new StreamWriter(@"..\..\HighScores.txt");
-                    using (userScores)
-                    {
-                        user.Append(points);
-                        userScores.WriteLine(user);
-                    }
-                }
-            }
-            else if (choice.Key == ConsoleKey.D2)
-            {
-                Console.Clear();
-                DimitarPiskov.Instructions();
-
-                Console.SetCursorPosition(5, 30);
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.Write("Press ENTER to return");
-                Console.SetCursorPosition(10, 31);
-                Console.Write("to the MENU");
-
-                if (Console.ReadKey().Key == ConsoleKey.Enter)
-                {
-                    returnFromInstructions = false;
-                    Console.Clear();
-                    Main();
-                }
-                else
-                {
-                    returnFromInstructions = false;
-                    Console.Clear();
-                    Main();
+                    Dimitar.AskUserToRestartLevelOne(waveOutDevice, audioFileReader);
                 }
             }
 
-            else if (choice.Key == ConsoleKey.D3)
+            waveOutDevice.Stop();
+
+            Dimitar.LevelTwoMessage();
+            Console.ReadKey();
+
+            Console.Clear();
+
+            Console.ForegroundColor = ConsoleColor.Red;
+
+            Mariyan.DrawGameBoardLevelTwo();
+            Dimitar.StartCounter();
+
+            InitDotsArray(2);
+
+            waveOutDevice.Init(audioFileReader);
+            waveOutDevice.Play();
+
+            monsterOneCounter = 0;
+            monsterTwoCounter = 0;
+            monsterThreeCounter = 0;
+            monsterFourCounter = 0;
+
+            while (!endLevelTwo)
             {
-                StreamReader userScoresRead = new StreamReader(@"..\..\HighScores.txt");
-                Console.Clear();
-                Console.SetCursorPosition(10, 2);
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write("HIGH SCORES");
+                Thread.Sleep(200);
 
-                // Извикване на файла, който държи High scores
-                Console.SetCursorPosition(3, 5);
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine(userScoresRead.ReadToEnd());
-                Console.SetCursorPosition(5, 30);
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write("Press enter to return");
-                Console.SetCursorPosition(10, 31);
-                Console.Write("to the MENU");
+                Ivaylo.MonsterNMovingLevelTwo();
+                Mariyan.MonsterILevelTwo();
+                Evgeni.MonsterDMovingLevelTwo();
+                Ivaylo.MonsterEMovingLevelTwo();
 
-                if (Console.ReadKey().Key == ConsoleKey.Enter)
+                Georgi.RefreshScreen(badGuysCoordinates, Mariyan.wallsLevelTwo);
+
+                if (points == 0) //2605
                 {
-                    returnFromHighScores = false;
-                    Console.Clear();
-                    Main();
+                    Thread.Sleep(1500);
+                    endLevelTwo = true;
+                    break;
                 }
-                else
+
+                else if (endGame == false)
                 {
-                    returnFromHighScores = false;
-                    Console.Clear();
-                    Main();
+                    Dimitar.AskUserToRestartLevelTwo(waveOutDevice, audioFileReader);
                 }
 
             }
-            else if (choice.Key == ConsoleKey.D4)
+
+            // Край на второ ниво
+            Console.Clear();
+            Mariyan.GameOutro();
+            
+
+            if (endGame == false)
             {
-                Console.Clear();
-                Environment.Exit(-1);
+                StreamWriter userScores = new StreamWriter(@"..\..\HighScores.txt");
+
+                using (userScores)
+                {
+                    user.Append(points);
+                    userScores.WriteLine(user);
+                }
             }
-            Console.CursorVisible = false;
+        }
 
+        else if (choice.Key == ConsoleKey.D2)
+        {
+            UserChooseInstructionsMenu();
+        }
 
-        //}
-        //catch (Exception ex)
-        //{
-        //    t
-        //    Console.Clear();
-        //    Console.ForegroundColor = ConsoleColor.Red;
-        //    Console.SetCursorPosition(8, 15);
-        //    Console.WriteLine("Unexpected error");
-        //    Console.SetCursorPosition(8, 16);
-        //    Console.WriteLine("durring loading\n");
-        //    Console.ReadKey();
-        //    Environment.Exit(-1);
-        //}
+        else if (choice.Key == ConsoleKey.D3)
+        {
+            UserChooseHighScoresMenu();
+
+        }
+
+        else if (choice.Key == ConsoleKey.D4)
+        {
+            Console.Clear();
+            Environment.Exit(-1);
+        }
+
+        Console.CursorVisible = false;
+    }
+
+    private static void UserChooseHighScoresMenu()
+    {
+        Console.Clear();
+
+        Console.SetCursorPosition(10, 2);
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.Write("HIGH SCORES");
+
+        Console.SetCursorPosition(3, 5);
+        Console.ForegroundColor = ConsoleColor.White;
+
+        StreamReader userScoresRead = new StreamReader(@"..\..\HighScores.txt");
+
+        Console.WriteLine(userScoresRead.ReadToEnd());
+        userScoresRead.Close();
+
+        Console.SetCursorPosition(5, 30);
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.Write("Press enter to return");
+
+        Console.SetCursorPosition(10, 31);
+        Console.Write("to the MENU");
+
+        if (Console.ReadKey().Key == ConsoleKey.Enter)
+        {
+            returnFromHighScores = false;
+            Console.Clear();
+            Main();
+        }
+
+        else
+        {
+            returnFromHighScores = false;
+            Console.Clear();
+            Main();
+        }
+    }
+
+    private static void UserChooseInstructionsMenu()
+    {
+        Console.Clear();
+        DimitarPiskov.Instructions();
+
+        Console.SetCursorPosition(5, 30);
+        Console.ForegroundColor = ConsoleColor.White;
+        Console.Write("Press ENTER to return");
+        Console.SetCursorPosition(10, 31);
+        Console.Write("to the MENU");
+
+        if (Console.ReadKey().Key == ConsoleKey.Enter)
+        {
+            returnFromInstructions = false;
+            Console.Clear();
+            Main();
+        }
+        else
+        {
+            returnFromInstructions = false;
+            Console.Clear();
+            Main();
+        }
     }
 
     private static void DrawLogo(int n)
@@ -482,9 +331,10 @@ class PackManHydra
         };
         Console.WriteLine();
     }
-    private static void InitDotsArray(int level)
+
+    public static void InitDotsArray(int level)
     {
-        string fileName = @"..\..\Dots"+level+".txt";
+        string fileName = @"..\..\Dots" + level + ".txt";
         int row = -1;
         using (StreamReader streamReader = new StreamReader(fileName))
         {
@@ -499,7 +349,7 @@ class PackManHydra
                 textRow = streamReader.ReadLine();
             }
         }
-        fileName = @"..\..\Level"+level+"Init.txt";
+        fileName = @"..\..\Level" + level + "Init.txt";
         row = -1;
         using (StreamReader streamReader = new StreamReader(fileName))
         {

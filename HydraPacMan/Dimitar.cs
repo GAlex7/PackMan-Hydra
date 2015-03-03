@@ -1,13 +1,14 @@
-﻿using System;
+﻿using NAudio.Wave;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-
 class Dimitar
 {
-    public static int[,] monsterICoordinatesLevelOne = new int[88, 2] 
+    public static int[,] monsterICoordinatesLevelOne = new int[, ] 
         {
             {13, 13},
             {13, 14},
@@ -102,18 +103,22 @@ class Dimitar
     {
         PackManHydra.badGuysCoordinates[3, 0] = PackManHydra.badGuysCoordinates[3, 2];
         PackManHydra.badGuysCoordinates[3, 1] = PackManHydra.badGuysCoordinates[3, 3];
-        PackManHydra.badGuysCoordinates[3, 2] = monsterICoordinatesLevelOne[PackManHydra.GadThreeCounter, 0];
-        PackManHydra.badGuysCoordinates[3, 3] = monsterICoordinatesLevelOne[PackManHydra.GadThreeCounter, 1];
-        if (PackManHydra.GadThreeCounter == 87)
+
+        PackManHydra.badGuysCoordinates[3, 2] = monsterICoordinatesLevelOne[PackManHydra.monsterThreeCounter, 0];
+        PackManHydra.badGuysCoordinates[3, 3] = monsterICoordinatesLevelOne[PackManHydra.monsterThreeCounter, 1];
+
+        if (PackManHydra.monsterThreeCounter == monsterICoordinatesLevelOne.GetLength(0) - 1)
         {
-            PackManHydra.GadThreeCounter = 8;
+            PackManHydra.monsterThreeCounter = 8;
         }
+
         else
         {
-            PackManHydra.GadThreeCounter++;
+            PackManHydra.monsterThreeCounter++;
         }
-        PackManHydra.badGuysCoordinates[3, 2] = monsterICoordinatesLevelOne[PackManHydra.GadThreeCounter, 0];
-        PackManHydra.badGuysCoordinates[3, 3] = monsterICoordinatesLevelOne[PackManHydra.GadThreeCounter, 1];
+
+        PackManHydra.badGuysCoordinates[3, 2] = monsterICoordinatesLevelOne[PackManHydra.monsterThreeCounter, 0];
+        PackManHydra.badGuysCoordinates[3, 3] = monsterICoordinatesLevelOne[PackManHydra.monsterThreeCounter, 1];
 
     }
 
@@ -121,6 +126,7 @@ class Dimitar
     {
         Console.WindowHeight = PackManHydra.windowHeight;
         Console.WindowWidth = PackManHydra.windowWidth;
+
         Console.BufferHeight = Console.WindowHeight;
         Console.BufferWidth = Console.WindowWidth;
     }
@@ -128,7 +134,9 @@ class Dimitar
     public static void StartCounter()
     {
         Thread.Sleep(1000);
+
         Console.ForegroundColor = ConsoleColor.Green;
+
         for (int i = 3; i >= 0; i--)
         {
             Console.SetCursorPosition(13, 15);
@@ -137,6 +145,7 @@ class Dimitar
             Thread.Sleep(900);
 
         }
+
         Console.SetCursorPosition(13, 15);
         Console.ForegroundColor = ConsoleColor.Magenta;
         Console.Write("-GO!-");
@@ -168,6 +177,214 @@ class Dimitar
 
     }
 
+    public static void AskUserForNickname(ref int currentColumn, ref bool inputSuccess, List<ConsoleKeyInfo> nickname)
+    {
+        while (inputSuccess)
+        {
+            Console.SetCursorPosition(5, 15);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Please enter nickname:");
+            Console.SetCursorPosition(currentColumn, 17);
 
+            for (int i = 0; i < nickname.Count; i++)
+            {
+                Console.Write(nickname[i].KeyChar);
+            }
+
+            ConsoleKeyInfo inputLetter = Console.ReadKey();
+            if (inputLetter.Key == ConsoleKey.Enter && nickname.Count >= 3)
+            {
+                StreamReader userScoresRead = new StreamReader(@"..\..\HighScores.txt");
+
+                using (userScoresRead)
+                {
+                    PackManHydra.user.Append(userScoresRead.ReadToEnd());
+                    PackManHydra.user.Append("\n");
+                }
+
+
+                StreamWriter userScores = new StreamWriter(@"..\..\HighScores.txt");
+
+                using (userScores)
+                {
+                    PackManHydra.user.Append("         ");
+
+                    for (int i = 0; i < nickname.Count; i++)
+                    {
+                        PackManHydra.user.Append(nickname[i].KeyChar);
+                    }
+
+                    PackManHydra.user.Append(" - ");
+                    userScores.Write(PackManHydra.user);
+                }
+                userScores.Close();
+
+                inputSuccess = false;
+            }
+
+            else if (inputLetter.Key == ConsoleKey.Enter && nickname.Count < 3)
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.SetCursorPosition(2, 19);
+                Console.WriteLine("Enter at least 3 characters!");
+                continue;
+            }
+
+            if (inputLetter.Key != ConsoleKey.Backspace)
+            {
+                nickname.Add(inputLetter);
+
+                if (nickname.Count % 2 == 0)
+                {
+                    currentColumn--;
+                }
+            }
+
+            else if (inputLetter.Key == ConsoleKey.Backspace)
+            {
+                if (nickname.Count == 0)
+                {
+                    continue;
+                }
+
+                nickname.RemoveAt(nickname.Count - 1);
+
+                if (nickname.Count % 2 == 0)
+                {
+                    currentColumn++;
+                }
+            }
+
+            Console.Clear();
+        }
+    }
+
+    public static void AskUserToRestartLevelOne(IWavePlayer waveOutDevice, AudioFileReader audioFileReader)
+    {
+        waveOutDevice.Stop();
+        Console.Clear();
+
+        Console.SetCursorPosition(5, 15);
+        Console.Write("Do you want to RESTART?");
+        Console.SetCursorPosition(14, 16);
+        Console.WriteLine("Y/N");
+
+        ConsoleKeyInfo check = Console.ReadKey();
+
+        Console.Clear();
+
+        if (check.Key.ToString().ToLower() == "y")
+        {
+            Console.Clear();
+
+            PackManHydra.monsterOneCounter = 0;
+            PackManHydra.monsterTwoCounter = 0;
+            PackManHydra.monsterThreeCounter = 0;
+            PackManHydra.monsterFourCounter = 0;
+
+            PackManHydra.points = 0;
+            PackManHydra.lives = 3;
+            PackManHydra.currentLevel = 1;
+
+            Console.ForegroundColor = ConsoleColor.Red;
+
+            Mariyan.DrawGameBoardLevelOne();
+            Dimitar.StartCounter();
+
+            PackManHydra.InitDotsArray(1);
+
+            waveOutDevice.Init(audioFileReader);
+            waveOutDevice.Play();
+
+            PackManHydra.endGame = true;
+
+            Georgi.RefreshScreen(PackManHydra.badGuysCoordinates, Mariyan.wallsLevelOne);
+        }
+        else if (check.Key.ToString().ToLower() == "n")
+        {
+            Console.Clear();
+
+            PackManHydra.monsterOneCounter = 0;
+            PackManHydra.monsterTwoCounter = 0;
+            PackManHydra.monsterThreeCounter = 0;
+            PackManHydra.monsterFourCounter = 0;
+
+            PackManHydra.points = 0;
+            PackManHydra.lives = 3;
+            PackManHydra.currentLevel = 1;
+
+            PackManHydra.returnFromLevelOne = false;
+            PackManHydra.endGame = true;
+
+            PackManHydra.Main();
+        }
+    }
+
+    public static void AskUserToRestartLevelTwo(IWavePlayer waveOutDevice, AudioFileReader audioFileReader)
+    {
+        waveOutDevice.Stop();
+
+        Console.Clear();
+
+        Console.SetCursorPosition(5, 15);
+        Console.Write("Do you want to RESTART");
+        Console.SetCursorPosition(13, 16);
+        Console.WriteLine("Y/N");
+
+        var check = Console.ReadKey();
+
+        Console.Clear();
+
+        if (check.Key.ToString().ToLower() == "y")
+        {
+            Console.Clear();
+
+            PackManHydra.monsterOneCounter = 0;
+            PackManHydra.monsterTwoCounter = 0;
+            PackManHydra.monsterThreeCounter = 0;
+            PackManHydra.monsterFourCounter = 0;
+
+            PackManHydra.points = 0;
+            PackManHydra.lives = 3;
+            PackManHydra.currentLevel = 2;
+
+            Console.ForegroundColor = ConsoleColor.Red;
+
+            Mariyan.DrawGameBoardLevelTwo();
+            Dimitar.StartCounter();
+
+            PackManHydra.InitDotsArray(1);
+
+            waveOutDevice.Init(audioFileReader);
+            waveOutDevice.Play();
+
+            PackManHydra.endGame = true;
+
+            Georgi.RefreshScreen(PackManHydra.badGuysCoordinates, Mariyan.wallsLevelTwo);
+        }
+        else if (check.Key.ToString().ToLower() == "n")
+        {
+            Console.Clear();
+
+            PackManHydra.monsterOneCounter = 0;
+            PackManHydra.monsterTwoCounter = 0;
+            PackManHydra.monsterThreeCounter = 0;
+            PackManHydra.monsterFourCounter = 0;
+
+            PackManHydra.points = 0;
+            PackManHydra.lives = 3;
+            PackManHydra.currentLevel = 1;
+
+            PackManHydra.endGame = true;
+
+            PackManHydra.endLevelOne = false;
+
+            PackManHydra.returnFromLevelTwo = false;
+            Console.Clear();
+
+            PackManHydra.Main();
+        }
+    }
 }
 
