@@ -111,7 +111,7 @@ class PackManHydra
 
                 Georgi.RefreshScreen(badGuysCoordinates, Mariyan.wallsLevelOne);
 
-                if (points == 0) // 1280 
+                if (points == 1280) // 1280 
                 {
                     Thread.Sleep(1500);
 
@@ -158,7 +158,7 @@ class PackManHydra
 
                 Georgi.RefreshScreen(badGuysCoordinates, Mariyan.wallsLevelTwo);
 
-                if (points == 0) //2605
+                if (points == 2605) //2605
                 {
                     Thread.Sleep(1500);
                     endLevelTwo = true;
