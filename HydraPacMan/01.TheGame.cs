@@ -110,7 +110,7 @@ class PackManHydra
 
                 Georgi.RefreshScreen(badGuysCoordinates, Mariyan.wallsLevelOne);
 
-                if (points == 1280) //1280
+                if (points == 1280) //1280 
                 {
                     Thread.Sleep(1500);
 
@@ -162,6 +162,23 @@ class PackManHydra
                 {
                     Thread.Sleep(1500);
                     endLevelTwo = true;
+
+                    try
+                    {
+                        StreamWriter userScores = new StreamWriter(@"..\..\HighScores.txt");
+
+                        using (userScores)
+                        {
+                            user.Append(points);
+                            userScores.WriteLine(user);
+                        }
+                    }
+                    catch (FileNotFoundException exMessage)
+                    {
+                        Console.WriteLine("The file is not found!");
+                        Console.WriteLine(exMessage.Message);
+                    }
+
                     break;
                 }
 
@@ -172,29 +189,6 @@ class PackManHydra
 
             }
 
-            // End of level two
-            Console.Clear();
-            Mariyan.GameOutro();
-
-            if (endGame == false)
-            {
-                try
-                {
-
-                    StreamWriter userScores = new StreamWriter(@"..\..\HighScores.txt");
-
-                    using (userScores)
-                    {
-                        user.Append(points);
-                        userScores.WriteLine(user);
-                    }
-                }
-                catch (FileNotFoundException exMessage)
-                {
-                    Console.WriteLine("The file is not found!");
-                    Console.WriteLine(exMessage.Message);
-                }
-            }
         }
 
         else if (choice.Key == ConsoleKey.D2)
@@ -213,6 +207,9 @@ class PackManHydra
             Console.Clear();
             Environment.Exit(-1);
         }
+
+        //Console.Clear();
+        //Mariyan.GameOutro();
 
         Console.CursorVisible = false;
     }
