@@ -110,7 +110,7 @@ class PackManHydra
 
                 Georgi.RefreshScreen(badGuysCoordinates, Mariyan.wallsLevelOne);
 
-                if (points == 1280) 
+                if (points == 1280) //1280
                 {
                     Thread.Sleep(1500);
 
@@ -158,7 +158,7 @@ class PackManHydra
 
                 Georgi.RefreshScreen(badGuysCoordinates, Mariyan.wallsLevelTwo);
 
-                if (points == 2600) 
+                if (points == 2600) //2600
                 {
                     Thread.Sleep(1500);
                     endLevelTwo = true;
@@ -178,12 +178,21 @@ class PackManHydra
 
             if (endGame == false)
             {
-                StreamWriter userScores = new StreamWriter(@"..\..\HighScores.txt");
-
-                using (userScores)
+                try
                 {
-                    user.Append(points);
-                    userScores.WriteLine(user);
+
+                    StreamWriter userScores = new StreamWriter(@"..\..\HighScores.txt");
+
+                    using (userScores)
+                    {
+                        user.Append(points);
+                        userScores.WriteLine(user);
+                    }
+                }
+                catch (FileNotFoundException exMessage)
+                {
+                    Console.WriteLine("The file is not found!");
+                    Console.WriteLine(exMessage.Message);
                 }
             }
         }
@@ -219,10 +228,20 @@ class PackManHydra
         Console.SetCursorPosition(3, 5);
         Console.ForegroundColor = ConsoleColor.White;
 
-        StreamReader userScoresRead = new StreamReader(@"..\..\HighScores.txt");
+        try
+        {
 
-        Console.WriteLine(userScoresRead.ReadToEnd());
-        userScoresRead.Close();
+
+            StreamReader userScoresRead = new StreamReader(@"..\..\HighScores.txt");
+
+            Console.WriteLine(userScoresRead.ReadToEnd());
+            userScoresRead.Close();
+        }
+        catch (FileLoadException exMessage)
+        {
+            Console.WriteLine("The file can't be load.");
+            Console.WriteLine(exMessage.Message);
+        }
 
         Console.SetCursorPosition(5, 30);
         Console.ForegroundColor = ConsoleColor.Green;

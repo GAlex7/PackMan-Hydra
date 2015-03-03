@@ -207,28 +207,24 @@ class Georgi
             {
                 if (walls[y, x - 1] != 1)
                     posoka = left;
-                //else posoka = stop;
             }
 
             if (userInput.Key == ConsoleKey.RightArrow)
             {
                 if (walls[y, x + 1] != 1)
                     posoka = right;
-                //else posoka = stop;
             }
 
             if (userInput.Key == ConsoleKey.UpArrow)
             {
                 if (walls[y - 1, x] != 1)
                     posoka = up;
-                //else posoka = stop;
             }
 
             if (userInput.Key == ConsoleKey.DownArrow)
             {
                 if (walls[y + 1, x] != 1)
                     posoka = down;
-                //else posoka = stop;
             }
         }
         // moving...
