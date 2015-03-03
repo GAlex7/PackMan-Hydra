@@ -9,15 +9,17 @@ class Mariyan
 {
     public static void GameOutro()
     {
-        Console.SetCursorPosition(5, 15);
-        Console.WriteLine(@" ┌─────────────────────────────────────┐
-      │                                     │
-      │           Congratulations!          │
-      │    You passed the terrors of C#!    │
-      │                                     │
-      └─────────────────────────────────────┘");
+        Console.ForegroundColor = ConsoleColor.Green;
 
-        int col = 5;
+        Console.SetCursorPosition(4, 15);
+        Console.WriteLine(@"┌────────────────────┐
+    │  Congratulations!  │
+    │                    │
+    │  You  passed  the  │
+    │ the terrors of C#! │
+    └────────────────────┘");
+
+        int col = 3;
         int row = 14;
 
         bool right = true;
@@ -27,32 +29,34 @@ class Mariyan
 
         int counter = 0;
 
+        Console.ForegroundColor = ConsoleColor.Cyan;
+
         while (true)
         {
-            Thread.Sleep(200);
+            Thread.Sleep(150);
 
-            if (col == 46 && row == 14)
+            if (col == 26 && row == 14)
             {
                 right = false;
                 down = true;
                 counter = 0;
             }
 
-            if (row == 21 && col == 46)
+            if (row == 21 && col == 26)
             {
                 down = false;
                 left = true;
                 counter = 0;
             }
 
-            if (col == 5 && row == 21)
+            if (col == 3 && row == 21)
             {
                 left = false;
                 up = true;
                 counter = 0;
             }
 
-            if (row == 14 && col == 5)
+            if (row == 14 && col == 3)
             {
                 up = false;
                 right = true;
@@ -68,7 +72,7 @@ class Mariyan
                 if (col % 2 == 0) Console.Write("<");
                 else Console.Write("-");
 
-                if (col > 41) counter++;
+                if (col > 21) counter++;
 
                 if (counter > 4)
                 {
@@ -133,50 +137,62 @@ class Mariyan
                 if (row % 2 == 0) Console.Write("^");
                 else Console.Write(":");
 
-                if (row <= 16)
+                if (row > 16) counter++;
+
+                if (counter > 0)
                 {
-                    Console.SetCursorPosition(col, row + 1);
-                    Console.Write(" ");
-                    Console.SetCursorPosition(col, row + 2);
-                    Console.Write("Д");
-                    Console.SetCursorPosition(col, row + 3);
-                    Console.Write("И");
-                    Console.SetCursorPosition(col, row + 4);
-                    Console.Write("Н");
-                    Console.SetCursorPosition(col, row + 5);
+                    Console.SetCursorPosition(col - counter, row + 5 - counter);
                     Console.Write("Е");
                 }
                 else
                 {
-                    counter++;
-                    if (counter > 0)
-                    {
-                        Console.SetCursorPosition(col - counter, row + 5 - counter);
-                        Console.Write("Е");
-                    }
-                    if (counter > 1)
-                    {
-                        Console.SetCursorPosition(col - counter + 1, row + 4 - counter + 1);
-                        Console.Write("Н");
-                    }
-                    if (counter > 2)
-                    {
-                        Console.SetCursorPosition(col - counter + 2, row + 3 - counter + 2);
-                        Console.Write("И");
-                    }
-                    if (counter > 3)
-                    {
-                        Console.SetCursorPosition(col - counter + 3, row + 2 - counter + 3);
-                        Console.Write("Д");
-                    }
-                    if (counter > 4)
-                    {
-                        Console.SetCursorPosition(col - counter + 4, row + 1 - counter + 4);
-                        Console.Write(" ");
-                    }
+                    Console.SetCursorPosition(col, row + 5);
+                    Console.Write("Е");
                 }
 
+                if (counter > 1)
+                {
+                    Console.SetCursorPosition(col - counter + 1, row + 4 - counter + 1);
+                    Console.Write("Н");
+                }
+                else
+                {
+                    Console.SetCursorPosition(col, row + 4);
+                    Console.Write("Н");
+                }
 
+                if (counter > 2)
+                {
+                    Console.SetCursorPosition(col - counter + 2, row + 3 - counter + 2);
+                    Console.Write("И");
+                }
+                else
+                {
+                    Console.SetCursorPosition(col, row + 3);
+                    Console.Write("И");
+                }
+
+                if (counter > 3)
+                {
+                    Console.SetCursorPosition(col - counter + 3, row + 2 - counter + 3);
+                    Console.Write("Д");
+                }
+                else
+                {
+                    Console.SetCursorPosition(col, row + 2);
+                    Console.Write("Д");
+                }
+
+                if (counter > 4)
+                {
+                    Console.SetCursorPosition(col - counter + 4, row + 1 - counter + 4);
+                    Console.Write(" ");
+                }
+                else
+                {
+                    Console.SetCursorPosition(col, row + 1);
+                    Console.Write(" ");
+                }
             }
             else if (left)
             {
@@ -187,47 +203,57 @@ class Mariyan
                 if (col % 2 == 0) Console.Write(">");
                 else Console.Write("-");
 
-                if (col > 9)
+                if (col <= 7) counter++;
+
+                if (counter > 4)
+                {
+                    Console.SetCursorPosition(col - 1 + counter - 4, row - counter + 4);
+                    Console.Write(" ");
+                }
+                else
                 {
                     Console.SetCursorPosition(col - 1, row);
                     Console.Write(" ");
+                }
+                if (counter > 3)
+                {
+                    Console.SetCursorPosition(col - 2 + counter - 3, row - counter + 3);
+                    Console.Write("Д");
+                }
+                else
+                {
                     Console.SetCursorPosition(col - 2, row);
                     Console.Write("Д");
+                }
+                if (counter > 2)
+                {
+                    Console.SetCursorPosition(col - 3 + counter - 2, row - counter + 2);
+                    Console.Write("И");
+                }
+                else
+                {
                     Console.SetCursorPosition(col - 3, row);
                     Console.Write("И");
+                }
+                if (counter > 1)
+                {
+                    Console.SetCursorPosition(col - 4 + counter - 1, row - counter + 1);
+                    Console.Write("Н");
+                }
+                else
+                {
                     Console.SetCursorPosition(col - 4, row);
                     Console.Write("Н");
-                    Console.SetCursorPosition(col - 5, row);
+                }
+                if (counter > 0)
+                {
+                    Console.SetCursorPosition(col - 5 + counter, row - counter);
                     Console.Write("Е");
                 }
                 else
                 {
-                    counter++;
-                    if (counter > 4)
-                    {
-                        Console.SetCursorPosition(col - 1 + counter - 4, row - counter + 4);
-                        Console.Write(" ");
-                    }
-                    if (counter > 3)
-                    {
-                        Console.SetCursorPosition(col - 2 + counter - 3, row - counter + 3);
-                        Console.Write("Д");
-                    }
-                    if (counter > 2)
-                    {
-                        Console.SetCursorPosition(col - 3 + counter - 2, row - counter + 2);
-                        Console.Write("И");
-                    }
-                    if (counter > 1)
-                    {
-                        Console.SetCursorPosition(col - 4 + counter - 1, row - counter + 1);
-                        Console.Write("Н");
-                    }
-                    if (counter > 0)
-                    {
-                        Console.SetCursorPosition(col - 5 + counter, row - counter);
-                        Console.Write("Е");
-                    }
+                    Console.SetCursorPosition(col - 5, row);
+                    Console.Write("Е");
                 }
             }
             else if (up)
@@ -239,47 +265,57 @@ class Mariyan
                 if (row % 2 == 0) Console.Write("v");
                 else Console.Write(":");
 
-                if (row >= 19)
+                if (row < 19) counter++;
+
+                if (counter > 0)
                 {
-                    Console.SetCursorPosition(col, row - 1);
-                    Console.Write(" ");
-                    Console.SetCursorPosition(col, row - 2);
-                    Console.Write("Д");
-                    Console.SetCursorPosition(col, row - 3);
-                    Console.Write("И");
-                    Console.SetCursorPosition(col, row - 4);
-                    Console.Write("Н");
-                    Console.SetCursorPosition(col, row - 5);
+                    Console.SetCursorPosition(col + counter, row - 5 + counter);
                     Console.Write("Е");
                 }
                 else
                 {
-                    counter++;
-                    if (counter > 0)
-                    {
-                        Console.SetCursorPosition(col + counter, row - 5 + counter);
-                        Console.Write("Е");
-                    }
-                    if (counter > 1)
-                    {
-                        Console.SetCursorPosition(col + counter - 1, row - 4 + counter - 1);
-                        Console.Write("Н");
-                    }
-                    if (counter > 2)
-                    {
-                        Console.SetCursorPosition(col + counter - 2, row - 3 + counter - 2);
-                        Console.Write("И");
-                    }
-                    if (counter > 3)
-                    {
-                        Console.SetCursorPosition(col + counter - 3, row - 2 + counter - 3);
-                        Console.Write("Д");
-                    }
-                    if (counter > 4)
-                    {
-                        Console.SetCursorPosition(col + counter - 4, row - 1 + counter - 4);
-                        Console.Write(" ");
-                    }
+                    Console.SetCursorPosition(col, row - 5);
+                    Console.Write("Е");
+                }
+                if (counter > 1)
+                {
+                    Console.SetCursorPosition(col + counter - 1, row - 4 + counter - 1);
+                    Console.Write("Н");
+                }
+                else
+                {
+                    Console.SetCursorPosition(col, row - 4);
+                    Console.Write("Н");
+                }
+                if (counter > 2)
+                {
+                    Console.SetCursorPosition(col + counter - 2, row - 3 + counter - 2);
+                    Console.Write("И");
+                }
+                else
+                {
+                    Console.SetCursorPosition(col, row - 3);
+                    Console.Write("И");
+                }
+                if (counter > 3)
+                {
+                    Console.SetCursorPosition(col + counter - 3, row - 2 + counter - 3);
+                    Console.Write("Д");
+                }
+                else
+                {
+                    Console.SetCursorPosition(col, row - 2);
+                    Console.Write("Д");
+                }
+                if (counter > 4)
+                {
+                    Console.SetCursorPosition(col + counter - 4, row - 1 + counter - 4);
+                    Console.Write(" ");
+                }
+                else
+                {
+                    Console.SetCursorPosition(col, row - 1);
+                    Console.Write(" ");
                 }
             }
         }
