@@ -15,7 +15,7 @@ class Mariyan
         Console.WriteLine(@"┌────────────────────┐
     │  Congratulations!  │
     │                    │
-    │  You  passed  the  │
+    │     You  passed    │
     │ the terrors of C#! │
     └────────────────────┘");
 
