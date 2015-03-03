@@ -1,13 +1,13 @@
-﻿using System;
+﻿using NAudio;
+using NAudio.Wave;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Media;
 using System.Text;
-using NAudio;
 using System.Threading;
-using NAudio.Wave;
 
 class PackManHydra
 {
@@ -17,7 +17,7 @@ class PackManHydra
     public static string ourGuy = "X<>^vx--::";
     public static string monsters = "xНЕИД";
 
-    public static string[] colors = { "Yellow", "Green", "White", "DarkMagenta", "Cyan" };
+    public static string[] colors = { "Yellow", "Green", "White", "Magenta", "Cyan" };
     public static int[,] badGuysCoordinates = new int[5, 4];
     public static int[,] smallAndBigDots = new int[29, 30];
 
@@ -45,6 +45,8 @@ class PackManHydra
     public static List<string> highScores = new List<string>();
     public static StringBuilder user = new StringBuilder();
 
+    public static IWavePlayer waveOutDevice;
+    public static AudioFileReader audioFileReader = new AudioFileReader(@"..\..\Sounds\ThemeSong.mp3");
 
     public static void Main()
     {
@@ -71,8 +73,6 @@ class PackManHydra
 
         Ivaylo.PrintingMenuGame();
 
-        IWavePlayer waveOutDevice;
-        AudioFileReader audioFileReader = new AudioFileReader(@"..\..\Sounds\ThemeSong.mp3");
         waveOutDevice = new WaveOut();
 
         ConsoleKeyInfo choice = Console.ReadKey();
@@ -88,8 +88,8 @@ class PackManHydra
             var nickname = new List<ConsoleKeyInfo>();
 
             Dimitar.AskUserForNickname(ref currentColumn, ref inputSuccess, nickname);
-            
-            Console.ForegroundColor = ConsoleColor.Red;
+
+            Console.ForegroundColor = ConsoleColor.White;
 
             Mariyan.DrawGameBoardLevelOne();
             Dimitar.StartCounter();
@@ -101,7 +101,6 @@ class PackManHydra
 
             while (!endLevelOne)
             {
-
                 Thread.Sleep(200);
 
                 Ivaylo.MonsterNMovingLevelOne();
@@ -111,7 +110,7 @@ class PackManHydra
 
                 Georgi.RefreshScreen(badGuysCoordinates, Mariyan.wallsLevelOne);
 
-                if (points == 1280) // 1280 
+                if (points == 1280) 
                 {
                     Thread.Sleep(1500);
 
@@ -119,6 +118,7 @@ class PackManHydra
                     currentLevel = 2;
                     break;
                 }
+
                 else if (endGame == false)
                 {
                     Dimitar.AskUserToRestartLevelOne(waveOutDevice, audioFileReader);
@@ -132,7 +132,7 @@ class PackManHydra
 
             Console.Clear();
 
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.White;
 
             Mariyan.DrawGameBoardLevelTwo();
             Dimitar.StartCounter();
@@ -158,7 +158,7 @@ class PackManHydra
 
                 Georgi.RefreshScreen(badGuysCoordinates, Mariyan.wallsLevelTwo);
 
-                if (points == 2605) //2605
+                if (points == 2600) 
                 {
                     Thread.Sleep(1500);
                     endLevelTwo = true;
@@ -172,10 +172,9 @@ class PackManHydra
 
             }
 
-            // Край на второ ниво
+            // End of level two
             Console.Clear();
             Mariyan.GameOutro();
-            
 
             if (endGame == false)
             {

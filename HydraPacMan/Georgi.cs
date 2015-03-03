@@ -8,7 +8,6 @@ using System.Threading;
 
 class Georgi
 {
-    // Изчертаване на екрана
     static public void RefreshScreen(int[,] crawliesPos, int[,] walls)
     {
         //Declarations required for audio out and the MP3 stream
@@ -67,8 +66,6 @@ class Georgi
                 Console.WriteLine("EATEN!");
                 Thread.Sleep(1500); Console.SetCursorPosition(13, 15);
                 Console.WriteLine("      ");
-                //crawliesPos[0, 0] = 15; crawliesPos[0, 1] = 21;
-                //crawliesPos[0, 2] = 15; crawliesPos[0, 3] = 21;
                 PackManHydra.direction = 0;
 
                 if (PackManHydra.lives < 1)
@@ -147,7 +144,7 @@ class Georgi
                                 break;
                             }
                     }
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.White;
 
                     Console.Write(dotsChar);
 
@@ -157,7 +154,7 @@ class Georgi
 
                     Console.Write(PackManHydra.monsters[i]);
 
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
 
 
@@ -173,7 +170,7 @@ class Georgi
                 Console.SetCursorPosition(7, 30);
                 Console.Write("Level:  {0}  Score:{1,6}", PackManHydra.currentLevel, PackManHydra.points);
 
-                Console.ForegroundColor = ConsoleColor.Red;
+                Console.ForegroundColor = ConsoleColor.White;
 
             }
         }

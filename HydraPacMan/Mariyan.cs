@@ -29,8 +29,6 @@ class Mariyan
 
         int counter = 0;
 
-        Console.ForegroundColor = ConsoleColor.Cyan;
-
         while (true)
         {
             Thread.Sleep(150);
@@ -69,8 +67,18 @@ class Mariyan
                 Console.SetCursorPosition(col - 1, row);
                 Console.Write(" ");
                 Console.SetCursorPosition(col, row);
-                if (col % 2 == 0) Console.Write("<");
-                else Console.Write("-");
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                if (col % 2 == 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write("<");
+                }
+
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write("-");
+                }
 
                 if (col > 21) counter++;
 
@@ -87,42 +95,50 @@ class Mariyan
 
                 if (counter > 3)
                 {
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.SetCursorPosition(col + 2 - counter + 3, row + counter - 3);
                     Console.Write("Д");
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.SetCursorPosition(col + 2, row);
                     Console.Write("Д");
                 }
 
                 if (counter > 2)
                 {
+                    Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.SetCursorPosition(col + 3 - counter + 2, row + counter - 2);
                     Console.Write("И");
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.SetCursorPosition(col + 3, row);
                     Console.Write("И");
                 }
                 if (counter > 1)
                 {
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.SetCursorPosition(col + 4 - counter + 1, row + counter - 1);
                     Console.Write("Н");
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.SetCursorPosition(col + 4, row);
                     Console.Write("Н");
                 }
                 if (counter > 0)
                 {
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.SetCursorPosition(col + 5 - counter, row + counter);
                     Console.Write("Е");
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.SetCursorPosition(col + 5, row);
                     Console.Write("Е");
                 }
@@ -134,51 +150,73 @@ class Mariyan
                 Console.SetCursorPosition(col, row - 1);
                 Console.Write(" ");
                 Console.SetCursorPosition(col, row);
-                if (row % 2 == 0) Console.Write("^");
-                else Console.Write(":");
+
+                if (row % 2 == 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write("^");
+                }
+
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write(":");
+                }
 
                 if (row > 16) counter++;
 
                 if (counter > 0)
                 {
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.SetCursorPosition(col - counter, row + 5 - counter);
                     Console.Write("Е");
                 }
+
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.SetCursorPosition(col, row + 5);
                     Console.Write("Е");
                 }
 
                 if (counter > 1)
                 {
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.SetCursorPosition(col - counter + 1, row + 4 - counter + 1);
                     Console.Write("Н");
                 }
+
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.SetCursorPosition(col, row + 4);
                     Console.Write("Н");
                 }
 
                 if (counter > 2)
                 {
+                    Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.SetCursorPosition(col - counter + 2, row + 3 - counter + 2);
                     Console.Write("И");
                 }
+
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.SetCursorPosition(col, row + 3);
                     Console.Write("И");
                 }
 
                 if (counter > 3)
                 {
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.SetCursorPosition(col - counter + 3, row + 2 - counter + 3);
                     Console.Write("Д");
                 }
+
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.SetCursorPosition(col, row + 2);
                     Console.Write("Д");
                 }
@@ -200,8 +238,18 @@ class Mariyan
                 Console.SetCursorPosition(col + 1, row);
                 Console.Write(" ");
                 Console.SetCursorPosition(col, row);
-                if (col % 2 == 0) Console.Write(">");
-                else Console.Write("-");
+
+                if (col % 2 == 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write(">");
+                }
+
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write("-");
+                }
 
                 if (col <= 7) counter++;
 
@@ -210,48 +258,65 @@ class Mariyan
                     Console.SetCursorPosition(col - 1 + counter - 4, row - counter + 4);
                     Console.Write(" ");
                 }
+
                 else
                 {
                     Console.SetCursorPosition(col - 1, row);
                     Console.Write(" ");
                 }
+
                 if (counter > 3)
                 {
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.SetCursorPosition(col - 2 + counter - 3, row - counter + 3);
                     Console.Write("Д");
                 }
+
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.SetCursorPosition(col - 2, row);
                     Console.Write("Д");
                 }
+
                 if (counter > 2)
                 {
+                    Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.SetCursorPosition(col - 3 + counter - 2, row - counter + 2);
                     Console.Write("И");
                 }
+
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.SetCursorPosition(col - 3, row);
                     Console.Write("И");
                 }
+
                 if (counter > 1)
                 {
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.SetCursorPosition(col - 4 + counter - 1, row - counter + 1);
                     Console.Write("Н");
                 }
+
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.SetCursorPosition(col - 4, row);
                     Console.Write("Н");
                 }
+
                 if (counter > 0)
                 {
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.SetCursorPosition(col - 5 + counter, row - counter);
                     Console.Write("Е");
                 }
+
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.SetCursorPosition(col - 5, row);
                     Console.Write("Е");
                 }
@@ -262,48 +327,72 @@ class Mariyan
                 Console.SetCursorPosition(col, row + 1);
                 Console.Write(" ");
                 Console.SetCursorPosition(col, row);
-                if (row % 2 == 0) Console.Write("v");
-                else Console.Write(":");
+                if (row % 2 == 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write("v");
+                }
+
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write(":");
+                }
 
                 if (row < 19) counter++;
 
                 if (counter > 0)
                 {
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.SetCursorPosition(col + counter, row - 5 + counter);
                     Console.Write("Е");
                 }
+
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.White;
                     Console.SetCursorPosition(col, row - 5);
                     Console.Write("Е");
                 }
+
                 if (counter > 1)
                 {
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.SetCursorPosition(col + counter - 1, row - 4 + counter - 1);
                     Console.Write("Н");
                 }
+
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.SetCursorPosition(col, row - 4);
                     Console.Write("Н");
                 }
+
                 if (counter > 2)
                 {
+                    Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.SetCursorPosition(col + counter - 2, row - 3 + counter - 2);
                     Console.Write("И");
                 }
+
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Magenta;
                     Console.SetCursorPosition(col, row - 3);
                     Console.Write("И");
                 }
+
                 if (counter > 3)
                 {
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.SetCursorPosition(col + counter - 3, row - 2 + counter - 3);
                     Console.Write("Д");
                 }
+
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Cyan;
                     Console.SetCursorPosition(col, row - 2);
                     Console.Write("Д");
                 }

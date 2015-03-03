@@ -287,7 +287,7 @@ class Dimitar
             PackManHydra.lives = 3;
             PackManHydra.currentLevel = 1;
 
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.White;
 
             Mariyan.DrawGameBoardLevelOne();
             Dimitar.StartCounter();
@@ -349,7 +349,7 @@ class Dimitar
             PackManHydra.lives = 3;
             PackManHydra.currentLevel = 2;
 
-            Console.ForegroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.White;
 
             Mariyan.DrawGameBoardLevelTwo();
             Dimitar.StartCounter();
