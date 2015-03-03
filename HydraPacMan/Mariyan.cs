@@ -3,9 +3,286 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 class Mariyan
 {
+    public static void GameOutro()
+    {
+        Console.SetCursorPosition(5, 15);
+        Console.WriteLine(@" ┌─────────────────────────────────────┐
+      │                                     │
+      │           Congratulations!          │
+      │    You passed the terrors of C#!    │
+      │                                     │
+      └─────────────────────────────────────┘");
+
+        int col = 5;
+        int row = 14;
+        bool right = true;
+        bool down = false;
+        bool left = false;
+        bool up = false;
+        int counter = 0;
+
+        while (true)
+        {
+            Thread.Sleep(400);
+
+            if (col == 46 && row == 14)
+            {
+                right = false;
+                down = true;
+                counter = 0;
+            }
+
+            if (row == 21 && col == 46)
+            {
+                down = false;
+                left = true;
+                counter = 0;
+            }
+
+            if (col == 5 && row == 21)
+            {
+                left = false;
+                up = true;
+                counter = 0;
+            }
+
+            if (row == 14 && col == 5)
+            {
+                up = false;
+                right = true;
+                counter = 0;
+            }
+
+            if (right)
+            {
+                col++;
+                Console.SetCursorPosition(col - 1, row);
+                Console.Write(" ");
+                Console.SetCursorPosition(col, row);
+                if (col % 2 == 0) Console.Write("<");
+                else Console.Write("-");
+
+                if (col > 41) counter++;
+
+                if (counter > 4)
+                {
+                    Console.SetCursorPosition(col + 1 - counter + 4, row + counter - 4);
+                    Console.Write(" ");
+                }
+                else
+                {
+                    Console.SetCursorPosition(col + 1, row);
+                    Console.Write(" ");
+                }
+
+                if (counter > 3)
+                {
+                    Console.SetCursorPosition(col + 2 - counter + 3, row + counter - 3);
+                    Console.Write("Д");
+                }
+                else
+                {
+                    Console.SetCursorPosition(col + 2, row);
+                    Console.Write("Д");
+                }
+
+                if (counter > 2)
+                {
+                    Console.SetCursorPosition(col + 3 - counter + 2, row + counter - 2);
+                    Console.Write("И");
+                }
+                else
+                {
+                    Console.SetCursorPosition(col + 3, row);
+                    Console.Write("И");
+                }
+                if (counter > 1)
+                {
+                    Console.SetCursorPosition(col + 4 - counter + 1, row + counter - 1);
+                    Console.Write("Н");
+                }
+                else
+                {
+                    Console.SetCursorPosition(col + 4, row);
+                    Console.Write("Н");
+                }
+                if (counter > 0)
+                {
+                    Console.SetCursorPosition(col + 5 - counter, row + counter);
+                    Console.Write("Е");
+                }
+                else
+                {
+                    Console.SetCursorPosition(col + 5, row);
+                    Console.Write("Е");
+                }
+
+            }
+            else if (down)
+            {
+                row++;
+                Console.SetCursorPosition(col, row - 1);
+                Console.Write(" ");
+                Console.SetCursorPosition(col, row);
+                if (row % 2 == 0) Console.Write("^");
+                else Console.Write(":");
+
+                if (row <= 16)
+                {
+                    Console.SetCursorPosition(col, row + 1);
+                    Console.Write(" ");
+                    Console.SetCursorPosition(col, row + 2);
+                    Console.Write("Д");
+                    Console.SetCursorPosition(col, row + 3);
+                    Console.Write("И");
+                    Console.SetCursorPosition(col, row + 4);
+                    Console.Write("Н");
+                    Console.SetCursorPosition(col, row + 5);
+                    Console.Write("Е");
+                }
+                else
+                {
+                    counter++;
+                    if (counter > 0)
+                    {
+                        Console.SetCursorPosition(col - counter, row + 5 - counter);
+                        Console.Write("Е");
+                    }
+                    if (counter > 1)
+                    {
+                        Console.SetCursorPosition(col - counter + 1, row + 4 - counter + 1);
+                        Console.Write("Н");
+                    }
+                    if (counter > 2)
+                    {
+                        Console.SetCursorPosition(col - counter + 2, row + 3 - counter + 2);
+                        Console.Write("И");
+                    }
+                    if (counter > 3)
+                    {
+                        Console.SetCursorPosition(col - counter + 3, row + 2 - counter + 3);
+                        Console.Write("Д");
+                    }
+                    if (counter > 4)
+                    {
+                        Console.SetCursorPosition(col - counter + 4, row + 1 - counter + 4);
+                        Console.Write(" ");
+                    }
+                }
+
+
+            }
+            else if (left)
+            {
+                col--;
+                Console.SetCursorPosition(col + 1, row);
+                Console.Write(" ");
+                Console.SetCursorPosition(col, row);
+                if (col % 2 == 0) Console.Write(">");
+                else Console.Write("-");
+
+                if (col > 9)
+                {
+                    Console.SetCursorPosition(col - 1, row);
+                    Console.Write(" ");
+                    Console.SetCursorPosition(col - 2, row);
+                    Console.Write("Д");
+                    Console.SetCursorPosition(col - 3, row);
+                    Console.Write("И");
+                    Console.SetCursorPosition(col - 4, row);
+                    Console.Write("Н");
+                    Console.SetCursorPosition(col - 5, row);
+                    Console.Write("Е");
+                }
+                else
+                {
+                    counter++;
+                    if (counter > 4)
+                    {
+                        Console.SetCursorPosition(col - 1 + counter - 4, row - counter + 4);
+                        Console.Write(" ");
+                    }
+                    if (counter > 3)
+                    {
+                        Console.SetCursorPosition(col - 2 + counter - 3, row - counter + 3);
+                        Console.Write("Д");
+                    }
+                    if (counter > 2)
+                    {
+                        Console.SetCursorPosition(col - 3 + counter - 2, row - counter + 2);
+                        Console.Write("И");
+                    }
+                    if (counter > 1)
+                    {
+                        Console.SetCursorPosition(col - 4 + counter - 1, row - counter + 1);
+                        Console.Write("Н");
+                    }
+                    if (counter > 0)
+                    {
+                        Console.SetCursorPosition(col - 5 + counter, row - counter);
+                        Console.Write("Е");
+                    }
+                }
+            }
+            else if (up)
+            {
+                row--;
+                Console.SetCursorPosition(col, row + 1);
+                Console.Write(" ");
+                Console.SetCursorPosition(col, row);
+                if (row % 2 == 0) Console.Write("v");
+                else Console.Write(":");
+
+                if (row >= 19)
+                {
+                    Console.SetCursorPosition(col, row - 1);
+                    Console.Write(" ");
+                    Console.SetCursorPosition(col, row - 2);
+                    Console.Write("Д");
+                    Console.SetCursorPosition(col, row - 3);
+                    Console.Write("И");
+                    Console.SetCursorPosition(col, row - 4);
+                    Console.Write("Н");
+                    Console.SetCursorPosition(col, row - 5);
+                    Console.Write("Е");
+                }
+                else
+                {
+                    counter++;
+                    if (counter > 0)
+                    {
+                        Console.SetCursorPosition(col + counter, row - 5 + counter);
+                        Console.Write("Е");
+                    }
+                    if (counter > 1)
+                    {
+                        Console.SetCursorPosition(col + counter - 1, row - 4 + counter - 1);
+                        Console.Write("Н");
+                    }
+                    if (counter > 2)
+                    {
+                        Console.SetCursorPosition(col + counter - 2, row - 3 + counter - 2);
+                        Console.Write("И");
+                    }
+                    if (counter > 3)
+                    {
+                        Console.SetCursorPosition(col + counter - 3, row - 2 + counter - 3);
+                        Console.Write("Д");
+                    }
+                    if (counter > 4)
+                    {
+                        Console.SetCursorPosition(col + counter - 4, row - 1 + counter - 4);
+                        Console.Write(" ");
+                    }
+                }
+            }
+        }
+    }
+
     public static int[,] monsterDCoordinatesLevelOne = new int[,] 
         {
             {20, 2},    
