@@ -110,11 +110,12 @@ class PackManHydra
 
                 Georgi.RefreshScreen(badGuysCoordinates, Mariyan.wallsLevelOne);
 
-                if (points == 1280) //1280 
+                if (points >= 1280) //1280 
                 {
                     Thread.Sleep(1500);
 
                     endLevelOne = true;
+
                     currentLevel = 2;
                     break;
                 }
@@ -158,7 +159,7 @@ class PackManHydra
 
                 Georgi.RefreshScreen(badGuysCoordinates, Mariyan.wallsLevelTwo);
 
-                if (points == 2600) //2600
+                if (points >= 2600) //2600
                 {
                     Thread.Sleep(1500);
                     endLevelTwo = true;
@@ -166,6 +167,7 @@ class PackManHydra
                     try
                     {
                         StreamWriter userScores = new StreamWriter(@"..\..\HighScores.txt");
+
 
                         using (userScores)
                         {
@@ -208,8 +210,8 @@ class PackManHydra
             Environment.Exit(-1);
         }
 
-        //Console.Clear();
-        //Mariyan.GameOutro();
+        Console.Clear();
+        Mariyan.GameOutro();
 
         Console.CursorVisible = false;
     }
