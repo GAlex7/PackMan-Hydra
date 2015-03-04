@@ -104,9 +104,9 @@ class DimitarPiskov
             Console.SetCursorPosition(8, 19);
             Console.Write("     Points:");
             Console.SetCursorPosition(8, 21);
-            Console.Write(" . - 10 points");
+            Console.Write(" . - 5 points");
             Console.SetCursorPosition(8, 22);
-            Console.Write(" # - 50 points");
+            Console.Write(" # - 25 points");
 
             for (int i = 6; i < 26; i++)
             {
