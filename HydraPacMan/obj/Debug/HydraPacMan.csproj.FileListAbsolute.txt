@@ -1,0 +1,7 @@
+C:\Users\dsd36\Desktop\Pacman\HydraPacMan\bin\Debug\HydraPacMan.exe.config
+C:\Users\dsd36\Desktop\Pacman\HydraPacMan\bin\Debug\HydraPacMan.exe
+C:\Users\dsd36\Desktop\Pacman\HydraPacMan\bin\Debug\HydraPacMan.pdb
+C:\Users\dsd36\Desktop\Pacman\HydraPacMan\bin\Debug\NAudio.dll
+C:\Users\dsd36\Desktop\Pacman\HydraPacMan\obj\Debug\HydraPacMan.csprojResolveAssemblyReference.cache
+C:\Users\dsd36\Desktop\Pacman\HydraPacMan\obj\Debug\HydraPacMan.exe
+C:\Users\dsd36\Desktop\Pacman\HydraPacMan\obj\Debug\HydraPacMan.pdb
